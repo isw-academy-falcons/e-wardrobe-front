@@ -1,10 +1,10 @@
 import React from 'react';
 import homescreen from "../assets/image7.svg";
-import './Homescreen.css';
+import './Home.css';
 import Logo from "../components/Logo";
 import { useNavigate } from 'react-router-dom';
 
-const Homescreen = () => {
+const Home = () => {
   const navigate = useNavigate();
 
 // Creating the navigation handlers
@@ -50,4 +50,4 @@ const Homescreen = () => {
   );
 };
 
-export default Homescreen;
+export default Home;
