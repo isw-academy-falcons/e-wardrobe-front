@@ -93,3 +93,67 @@
   font-size: 14px;
   height: 62px;
 }
+
+.landing-header {
+  margin-top: 80.5px;
+  color: #1E1E1E;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 60px; /* 93.75% */
+  text-transform: uppercase;
+}
+
+.styles-content {
+  margin-top: 80px;
+}
+
+.styles-header1 {
+  margin-top: 96px;
+  color: #1C1C1C;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.styles-text {
+  margin-top: 39px;
+  color: #1C1C1C;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.unlock-styles {
+  margin-top: 133px;
+  color: #1C1C1C;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.testimonials-background {
+  background-color: #4E4442;
+  margin-bottom: 79px;
+}
+
+.testimonials-image {
+  margin-top: 60px;
+  margin-bottom: 59px;
+}
+
+.footer-background {
+  background: #1C1C1C;
+}
+
+.footer-text {
+  font-size: 5px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px; /* 400% */
+  text-transform: uppercase;
+}

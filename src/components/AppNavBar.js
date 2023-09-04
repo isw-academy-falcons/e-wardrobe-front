@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 import ProfileAvatar from "../images/landing/profile.svg";
 
-const NavBar = () => {
+const AppNavBar = () => {
 	return (
 		<Navbar collapseOnSelect expand="lg" className="app-navbar">
       <Container>
@@ -51,4 +51,4 @@ const NavBar = () => {
 	);
 };
 
-export default NavBar;
+export default AppNavBar;
