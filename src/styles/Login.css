@@ -1,0 +1,347 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+
+/* LOGIN */
+
+
+.Login,
+.SignUp {
+  text-align: center;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.illustration {
+  height: 300px;
+  width: 100%;
+  margin-bottom: -125px;
+}
+
+.login-container {
+  box-shadow: 5px 6px 12px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  width: 35%;
+  margin: 5px auto 40px;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.input-container-header{
+ font-weight: bold;
+ font-size: 32px;
+}
+
+.login-container input,
+.name-inputs input,
+.input-container input {
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 10px 0 10px 5px;
+  margin: 0 auto;
+  margin-top: 15px;
+  width: 89%;
+  font-size: 12px;
+}
+
+.login-paragraph {
+  font-size: 12px;
+  margin: 20px;
+}
+
+/* .login-button {
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid red;
+  width: 90%;
+  background-color: #1c1c1c;
+  color: #fcde7c;
+  display: block;
+  margin: 15px auto;
+  cursor: pointer;
+} */
+
+.login-container .login-button, .signUp-container .login-button{
+  padding: 15px;
+  border-radius: 5px;
+  width: 90%;
+  background: #1c1c1c ;
+  color: #fcde7c;
+  display: block;
+  margin: 15px auto;
+  cursor: pointer;
+}
+
+.login-header {
+  color: #FCDE7C;
+  text-transform: uppercase;
+  font-family: 'Leckerli One', cursive;
+  font-size: 24px;;
+}
+
+.overlay {
+  background-image: linear-gradient(#1c1c1c, #1c1c1c);
+  opacity: 0.89;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 5px 0;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.login-modal {
+  display: block;
+  margin: -20px auto;
+}
+/* END OF LOGIN */
+
+
+
+
+
+/* SIGN UP */
+.SignUp, .Login{
+  background-color: #FCDE7C;
+}
+
+.Signup-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
+
+.signUp-container {
+  box-shadow: 5px 6px 12px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  width: 35%;
+  margin-left:20px;
+  background-color: #fff;
+  padding: 8px;
+}
+
+
+
+.signup-header2{
+  color: #FCDE7C;
+  text-transform: uppercase;
+  font-family: 'Leckerli One', cursive;
+  font-size: 80px;
+  margin:50% 50% 0 -50%;;
+  
+}
+
+
+.Signup-illustration {
+  margin-left: auto;
+  margin-top: auto;
+  height: 600px;
+}
+
+.illustration2 {
+  height: 400px;
+}
+
+
+.SignUp-gender {
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 10px 0 10px 5px;
+  margin: 0 auto;
+  margin-top: 15px;
+  width: 91%;
+  color: grey;
+  font-size: 12px;
+}
+
+/* BEGINNING OF MEDIA SCREEN FOR SIGN UP PAGE AND LOGIN PAGE*/
+@media screen and (max-width: 767px) {
+
+  .signUp-container {
+    box-shadow: 5px 6px 12px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 75%;
+    margin: -500px auto 10px;
+   
+    padding: 10px;
+  }
+  
+  .illustration2 {
+    display: none;
+  }
+
+
+  .login-container {
+    box-shadow: 5px 6px 12px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 75%;
+    margin: 0 auto 40px;
+    
+  }
+
+  .Signup-container {
+    margin-top:-20px;
+    display: flex;
+    flex-direction: column-reverse;
+    
+  }
+
+  .signup{
+    height:150%;
+    
+  }
+
+  .Signup-illustration {
+    margin-left: 0;
+    margin-top: 0;
+    
+  }
+
+  .signup-header2{
+    font-size: 40px;
+    margin:20px;
+    
+  }
+
+  .signUp-container {
+    width: 70%;
+  }
+}
+/*END OF MEDIA SCREEN FOR SIGN UP PAGE */
+/* END OF SIGN UP PAGE */
+
+
+
+
+/* #PRICING */
+
+
+.pricing-container {
+  width: 30%;
+  border-radius: 6px;
+  border: 1px solid #aeaeae;
+  background: linear-gradient(
+    163deg,
+    #ffd755 -19.63%,
+    rgba(225, 45, 21, 0.63) 115.68%
+  );
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px 10px;
+  margin: 120px 30px;
+}
+
+.pricing-container button {
+  padding: 20px;
+  margin: 10px 26px 40px;
+  border-radius: 5px;
+  background: #161616;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.pricing-container h2 {
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+}
+
+.pricing-container ul {
+  color: white;
+  font-size: 16px;
+  line-height: 42px;
+}
+
+.pricing-container-style {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.pricing-parent-body {
+  position: relative;
+  background: linear-gradient(
+    66deg,
+    #878787 0.56%,
+    rgba(217, 217, 217, 0.93) 94.33%
+  );
+}
+
+.pricing-header {
+  text-align: center;
+  padding: 10px;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+.illustration3 {
+  position: absolute;
+  top: 102px;
+  right: 180px;
+}
+
+.illustration4 {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+}
+
+
+/* BEGINNING OF MEDIA SCREEN FOR PRICING PAGE */
+@media screen and (max-width: 767px) {
+  .illustration3 {
+    display: none;
+  }
+
+  .illustration4 {
+    display: none;
+  }
+
+  .pricing-container-style {
+    flex-direction: column;
+  }
+
+  .pricing-header {
+    font-size: 20px;
+    padding: 50px;
+  }
+
+  .pricing-container {
+    width: 90%;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 10px auto;
+  }
+  .pricing-parent-body {
+    height: 160vh;
+  }
+
+  .spacing {
+    margin-top: 125px;
+  }
+}
+/*END OF MEDIA SCREEN FOR PRICING PAGE */
+
+
+/* END OF PRICING PAGE */
