@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap');
+
+.app-navbar {
+  background-color: #1c1c1c;
+}
+
+.navbar-brand {
+  color: #fff;
+  font-family: 'Leckerli One', cursive;
+}
+
+.navbar-brand:hover {
+  color: #FCDE7C;
+}
+
+.nav-link {
+  color: white;
+  font-size: 10px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.nav-link:hover {
+  color: #FCDE7C;
+}
+
+.navbar-toggler {
+  background-color: #fff;
+}
+
+.app-navbar .nav-link.active {
+  color: #FCDE7C;
+}
+
+.right-margin {
+  margin-right: 3px;
+}
+
+.generate-outfit-text {
+	font-size: 37px;
+  font-weight: 700;
+  color: #1C1C1C;
+  font-style: normal;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.button-width {
+  width: 350px;
+  color: #FCDE7C;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.e-wardrobe-background {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/landing/e-wardrobe.svg");
+}
+
+.e-wardrobe-header {
+  color: #FFF;
+  font-size: 32px;
+  font-weight: 700;
+  font-style: normal;
+  margin-top: 44.5px;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.e-wardrobe-text {
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.button-width-e-wardrobe {
+  width: 220px;
+  height: 62px;
+  font-size: 14px;
+  color: #FCDE7C;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.landing-header {
+	font-size: 32px;
+	color: #1E1E1E;
+  font-weight: 700;
+  line-height: 60px;
+  margin-top: 80.5px;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.styles-content {
+  margin-top: 80px;
+}
+
+.styles-header1 {
+	font-size: 27px;
+  margin-top: 96px;
+  color: #1C1C1C;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.styles-text {
+  font-size: 20px;
+  margin-top: 39px;
+  color: #1C1C1C;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.unlock-styles {
+  font-size: 24px;
+  color: #1C1C1C;
+  font-weight: 500;
+  margin-top: 133px;
+  font-style: normal;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.testimonials-background {
+	margin-bottom: 79px;
+  background-color: #4E4442;
+}
+
+.testimonials-image {
+  margin-top: 60px;
+  margin-bottom: 59px;
+}
+
+.footer-background {
+  background: #1C1C1C;
+}
+
+.footer-text {
+  font-size: 5px;
+  font-weight: 400;
+  line-height: 60px;
+  font-style: normal;
+  text-transform: uppercase;
+}
