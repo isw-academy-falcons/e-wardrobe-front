@@ -32,9 +32,9 @@ const NavBar = () => {
           </Nav>
           <Nav className="me-auto">
             <Nav.Link href="/landing-page">Home</Nav.Link>
-            <NavDropdown title="Gallery" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#sc">Saved Collection</NavDropdown.Item>
-              <NavDropdown.Item href="#ew">E-wardrobe</NavDropdown.Item>
+            <NavDropdown title="E-wardrobe" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="#sc">SkyFitzz Web Gallery</NavDropdown.Item>
+              <NavDropdown.Item href="#ew">Generated Collections</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
             <Nav.Link href="#about">About</Nav.Link>
