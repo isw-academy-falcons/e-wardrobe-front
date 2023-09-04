@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./styles/Login.css";
 import MySvg3 from "./assets/images/illustration3.svg";
 import MySvg4 from "./assets/images/illustration4.svg";
 

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./styles.css";
+import "./styles/Login.css";
 import axios from "axios";
 import MySvg2 from "./assets/images/illustration2.svg";
 import loginVideo from "./assets/images/loginVideo.mp4";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
@@ -12,6 +12,7 @@ export default function Signup() {
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -22,18 +23,21 @@ export default function Signup() {
     }
 
     
-    try {
-      // Send a POST request to the backend signup endpoint
-      const response = await axios.post("http://backend-url/api/signup", user);
+    // try {
+    //   // Send a POST request to the backend signup endpoint
+    //   const response = await axios.post("http://backend-url/api/signup", user);
 
-      // Handle successful signup
-      console.log("Signup successful:", response.data);
-      // Redirect the user to the login page or show a success message
-    } catch (error) {
-      // Handle signup errors, such as validation errors or duplicate email
-      console.error("Signup error:", error.response.data);
-      // Display error messages to the user
-    }
+    //   // Handle successful signup
+    //   console.log("Signup successful:", response.data);
+    //   // Redirect the user to the login page or show a success message
+    //   navigate("/redirect")
+    // } catch (error) {
+    //   // Handle signup errors, such as validation errors or duplicate email
+    //   console.error("Signup error:", error.response.data);
+    //   // Display error messages to the user
+    // }
+
+    navigate("/redirect")
 
     setFirstName("");
     setLastName("");
@@ -59,7 +63,7 @@ export default function Signup() {
           <div className="signUp-container">
             <form onSubmit={handleSubmit}>
               <div className="input-container">
-                <h2>SIGN UP</h2>
+                <h2 className="input-container-header">SIGN UP</h2>
                 <div className="name-inputs">
                   <input
                     type="text"
@@ -122,7 +126,7 @@ export default function Signup() {
                 Already have an account? <Link to="/login">Log In</Link>
               </p>
 
-              <button className="login-btn" type="submit">
+              <button className="login-button" type="submit">
                 Sign Up
               </button>
             </form>

@@ -1,8 +1,8 @@
-import "./styles.css";
 import MySvg from "./assets/images/illustration1.svg";
 import loginVideo from "./assets/images/loginVideo.mp4";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./styles/Login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -38,7 +38,7 @@ export default function Login() {
           <div className="login-container">
             <form onSubmit={handleSubmit}>
               <div>
-                <h2>LOGIN</h2>
+                <h2 className="input-container-header">LOGIN</h2>
                 <input
                   type="email"
                   placeholder="Enter Name"
@@ -62,7 +62,7 @@ export default function Login() {
                 Do not have an account? <Link to="/signup">Sign Up</Link>
               </p>
 
-              <button className="login-btn" type="submit">
+              <button className="login-button" type="submit">
                 Login
               </button>
             </form>
