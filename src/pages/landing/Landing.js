@@ -3,12 +3,13 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
-import Footer from "../components/Footer";
-import AppNavBar from "../components/AppNavBar";
-import HeroImage from "../images/landing/hero-image.svg";
-import ArrowRight from "../images/landing/arrow-right-alt.svg";
-import FashionStyles from "../images/landing/fashion-pictures.svg";
-import TestimonialContainer from "../images/landing/testimonial-container.svg";
+import "./Landing.css";
+import Footer from "../../components/Footer";
+import AppNavBar from "../../components/AppNavBar";
+import HeroImage from "../../images/landing/hero-image.svg";
+import ArrowRight from "../../images/landing/arrow-right-alt.svg";
+import FashionStyles from "../../images/landing/fashion-pictures.svg";
+import TestimonialContainer from "../../images/landing/testimonial-container.svg";
 
 const Landing = () => {
 	return (
@@ -61,9 +62,9 @@ const Landing = () => {
         <Row className="styles-content">
           <Col lg={true} className="hero-image">
             <img
+              height="484.2px"
               src={FashionStyles}
               alt="Fashion Styles"
-              height="484.2px"
             />
           </Col>
           <Col lg={true}>
@@ -77,10 +78,10 @@ const Landing = () => {
 						<p className="unlock-styles">
 							UNLOCK STYLES NOW
 							<img
-								src={ArrowRight}
-								alt="Right Arrow"
 								width="48px"
 								height="48px"
+								src={ArrowRight}
+								alt="Right Arrow"
 							/>
 						</p>
           </Col>
@@ -90,10 +91,10 @@ const Landing = () => {
 			<h3 className="text-center landing-header">Testimonials</h3>
 			<section className="testimonials-background text-white hero-image">
 				<img
+					width="478.8px"
+					height="172.5px"
 					src={TestimonialContainer}
 					alt="Testimonial Container"
-					height="172.5px"
-					width="478.8px"
 					className="testimonials-image"
 				/>
 			</section>
