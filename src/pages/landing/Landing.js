@@ -6,10 +6,10 @@ import Container from "react-bootstrap/Container";
 import "./Landing.css";
 import Footer from "../../components/Footer";
 import AppNavBar from "../../components/AppNavBar";
-import HeroImage from "../../images/landing/hero-image.svg";
-import ArrowRight from "../../images/landing/arrow-right-alt.svg";
-import FashionStyles from "../../images/landing/fashion-pictures.svg";
-import TestimonialContainer from "../../images/landing/testimonial-container.svg";
+import HeroImage from "../../assets/images/landing/hero-image.svg";
+import ArrowRight from "../../assets/images/landing/arrow-right-alt.svg";
+import FashionStyles from "../../assets/images/landing/fashion-pictures.svg";
+import TestimonialContainer from "../../assets/images/landing/testimonial-container.svg";
 
 const Landing = () => {
 	return (
