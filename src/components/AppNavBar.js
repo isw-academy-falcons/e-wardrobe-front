@@ -3,6 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
+import "./AppNavBar.css";
 import ProfileAvatar from "../assets/images/landing/profile.svg";
 
 const AppNavBar = () => {
@@ -40,7 +41,7 @@ const AppNavBar = () => {
             <Nav.Link href="#about">About</Nav.Link>
           </Nav>
           <Nav className="d-flex">
-            <Nav.Link href="/landing-page">
+            <Nav.Link href="/landing-page" className="profile-name">
               <img src={ProfileAvatar} alt="User profile avatar" className="right-margin" height="20px" />
               Damilola
             </Nav.Link>
