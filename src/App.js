@@ -8,6 +8,7 @@ import Pricing from "./Pricing";
 import Redirect from './Redirect';
 import PageNotFound from './PageNotFound';
 import Landing from "./pages/landing/Landing";
+import Gallery from "./pages/gallery/Gallery";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         {/* Add more routes as needed */}
         <Route path='/landing-page' element={<Landing />} />
+        <Route path='/gallery' element={<Gallery />} />
       </Routes>
     </Router>
 
