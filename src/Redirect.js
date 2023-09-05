@@ -1,28 +1,3 @@
-// import React from "react";
-// import redirectImage from "./assets/images/redirect.svg";
-// import "./styles/Redirect.css";
-// import EastIcon from "@mui/icons-material/East";
-// import {useNavigate} from 'react-router-dom';
-
-// const Redirect = () => {
-//   const navigate = useNavigate();
-//   const loginHandler =()=> navigate("/login");
-//   return (
-//     <div className="redirect">
-//       <div className="wrapper">
-//         <h1>you have successfully registered</h1>
-//         <div className="control">
-//            <div><img src={redirectImage} alt="redirect" className="image"/> </div> 
-//            <div className="flex" onClick={loginHandler}><span>Continue To Login</span> <span><EastIcon /></span> </div>   
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Redirect;
-
-
 import React, { useState, useEffect } from "react";
 import redirectImage from "./assets/images/redirect.svg";
 import "./styles/Redirect.css";
@@ -57,13 +32,13 @@ const Redirect = () => {
 
   return (
     <div className="redirect">
-      <div className="wrapper">
-        <h1>you have successfully registered</h1>
-        <div className="control">
+      <div className="redirect-wrapper">
+        <h1 className="redirect-h1">you have successfully registered</h1>
+        <div className="redirect-control">
           <div>
-            <img src={redirectImage} alt="redirect" className="image" />
+            <img src={redirectImage} alt="redirect" className="redirect-image" />
           </div>
-          <div className="flex" onClick={loginHandler}>
+          <div className="redirect-flex" onClick={loginHandler}>
             <span>Continue To Login ({countdown}s)</span>
             <span>
               <EastIcon />

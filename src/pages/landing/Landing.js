@@ -6,8 +6,8 @@ import Container from "react-bootstrap/Container";
 import "./Landing.css";
 import Footer from "../../components/Footer";
 import AppNavBar from "../../components/AppNavBar";
+import { FaLongArrowAltRight } from "react-icons/fa";
 import HeroImage from "../../assets/images/landing/hero-image.svg";
-import ArrowRight from "../../assets/images/landing/arrow-right-alt.svg";
 import FashionStyles from "../../assets/images/landing/fashion-pictures.svg";
 import TestimonialContainer from "../../assets/images/landing/testimonial-container.svg";
 
@@ -47,7 +47,7 @@ const Landing = () => {
               </p>
               <Button
                 variant="outline-warning"
-                className="button-width-e-wardrobe mb-4"
+                className="button-width-e-wardrobe mb-5"
               >
                 Explore E-Wardrobe
               </Button>
@@ -77,12 +77,7 @@ const Landing = () => {
             </p>
 						<p className="unlock-styles">
 							UNLOCK STYLES NOW
-							<img
-								width="48px"
-								height="48px"
-								src={ArrowRight}
-								alt="Right Arrow"
-							/>
+              <FaLongArrowAltRight className="arrow-right" size="48px" />
 						</p>
           </Col>
         </Row>
