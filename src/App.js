@@ -10,6 +10,7 @@ import PageNotFound from './PageNotFound';
 import Landing from "./pages/landing/Landing";
 import Gallery from "./pages/gallery/Gallery";
 import Ewardrobe from "./pages/ewardrobe/Ewardrobe";
+import UploadOutfits from "./pages/outfitGenerator/UploadOutfits";
 
 function App() {
   return (
@@ -22,9 +23,10 @@ function App() {
         <Route path='/redirect' element={<Redirect/>}/>
         <Route path="/signup" element={<Signup />} />
         {/* Add more routes as needed */}
-        <Route path='/landing-page' element={<Landing />} />
         <Route path='/gallery' element={<Gallery />} />
+        <Route path='/landing-page' element={<Landing />} />
         <Route path='/e-wardrobe' element={<Ewardrobe />} />
+        <Route path='/outfit-generator' element={<UploadOutfits />} />
       </Routes>
     </Router>
 

@@ -1,6 +1,7 @@
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 
 import "./Landing.css";
@@ -12,6 +13,12 @@ import FashionStyles from "../../assets/images/landing/fashion-pictures.svg";
 import TestimonialContainer from "../../assets/images/landing/testimonial-container.svg";
 
 const Landing = () => {
+  const navigate = useNavigate();
+  // Handle button click function for outfit generation
+  const handleGenerateOutfitClick = () => {
+    navigate("/outfit-generator");
+  };
+
 	return (
     <>
 			{/* Navigation Bar */}
@@ -25,7 +32,7 @@ const Landing = () => {
               <span style={{ color: "#02C5BB" }}>Outfit Matches</span> Just a
               Click Away
             </p>
-            <Button variant="dark" className="button-width">
+            <Button variant="dark" className="button-width" onClick={handleGenerateOutfitClick}>
               Generate Outfit
             </Button>
           </Col>
