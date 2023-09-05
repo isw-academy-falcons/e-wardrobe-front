@@ -186,3 +186,9 @@
 .button-width:hover {
   color: #FCDE7C;
 }
+
+.weather-value {
+	display:flex;
+	align-items: center;
+	justify-content: flex-start;
+}
