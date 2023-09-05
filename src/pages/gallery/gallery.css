@@ -1,0 +1,288 @@
+.gallery-page{
+    background-color: #FCF8F8;
+}
+
+.gallery-subtitle{
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin: 1.75em 0 0.75em;
+}
+
+.search-field{
+    width: max(100px, 40%);
+    margin: 0.75em auto;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}
+
+.search-input{
+    width: 100%;
+    position: relative;
+    font-size: 12px;
+}
+
+.search-input .search-icon{
+    position: absolute;
+    top: 35%;
+    left: 5%;
+    color: #aaaaaa;
+}
+
+.search-input input{
+    border: 1px solid #aaaaaa;
+    padding: 15px 0 15px 10%;
+    width: max(100px, 100%);
+    border-radius: 3px;
+}
+
+.search-field .filter-icon{
+    font-size: 25px;
+    color: #6b6b6b;
+    font-weight: 700;
+}
+
+.search-field .filter-text{
+    font-size: 14px;
+    color: #6b6b6b;
+}
+
+.gallery-display{
+    width: max(500px,80%);
+    margin: 2em auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 2em;
+}
+
+.gallery-display .grid-item-container-1{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    position: relative;
+}
+
+
+.gallery-display .grid-item-container-2{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    position: relative;
+}
+
+.gallery-display .grid-item-container-3{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    position: relative;
+}
+
+.gallery-display .grid-item-container-4{
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    position: relative;
+}
+
+.gallery-display .grid-item-container-5{
+    grid-row-start: 2;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    position: relative;
+}
+
+.gallery-display .grid-item-container-6{
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    position: relative;
+}
+
+.gallery-display .grid-item-container-7{
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    position: relative;
+}
+
+.gallery-display .img1,
+.gallery-display .img2,
+.gallery-display .img3,
+.gallery-display .img4,
+.gallery-display .img5,
+.gallery-display .img6,
+.gallery-display .img7{
+    width: 100%;
+    height: 100%;
+}
+
+.hover-effect-1,
+.hover-effect-2,
+.hover-effect-3,
+.hover-effect-4,
+.hover-effect-5,
+.hover-effect-6,
+.hover-effect-7{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    transition: width 2s linear 1s;
+}
+
+.gallery-display .grid-item-container-1:hover{
+    cursor: pointer;
+    .hover-effect-1{
+        display: block;
+    }
+}
+
+.gallery-display .grid-item-container-2:hover{
+    cursor: pointer;
+    .hover-effect-2{
+        display: block;
+    }
+}
+
+.gallery-display .grid-item-container-3:hover{
+    cursor: pointer;
+    .hover-effect-3{
+        display: block;
+    }
+}
+
+.gallery-display .grid-item-container-4:hover{
+    cursor: pointer;
+    .hover-effect-4{
+        display: block;
+    }
+}
+
+.gallery-display .grid-item-container-5:hover{
+    cursor: pointer;
+    .hover-effect-5{
+        display: block;
+    }
+}
+
+.gallery-display .grid-item-container-6:hover{
+    cursor: pointer;
+    .hover-effect-6{
+        display: block;
+    }
+}
+
+.gallery-display .grid-item-container-7:hover{
+    cursor: pointer;
+    .hover-effect-7{
+        display: block;
+    }
+}
+
+.hover-effect-1 .hover-effect-container,
+.hover-effect-2 .hover-effect-container,
+.hover-effect-3 .hover-effect-container,
+.hover-effect-4 .hover-effect-container,
+.hover-effect-5 .hover-effect-container,
+.hover-effect-6 .hover-effect-container,
+.hover-effect-7 .hover-effect-container{
+    position: relative;
+    height: 100%;
+}
+
+.hover-effect-1 .hover-effect-container .hover-add-collection,
+.hover-effect-2 .hover-effect-container .hover-add-collection,
+.hover-effect-3 .hover-effect-container .hover-add-collection,
+.hover-effect-4 .hover-effect-container .hover-add-collection,
+.hover-effect-5 .hover-effect-container .hover-add-collection,
+.hover-effect-6 .hover-effect-container .hover-add-collection,
+.hover-effect-7 .hover-effect-container .hover-add-collection{
+    position: absolute;
+    right: 7%;
+    top: 20px;
+}
+
+.hover-effect-1 .hover-effect-container .hover-add-collection button,
+.hover-effect-2 .hover-effect-container .hover-add-collection button,
+.hover-effect-3 .hover-effect-container .hover-add-collection button,
+.hover-effect-4 .hover-effect-container .hover-add-collection button,
+.hover-effect-5 .hover-effect-container .hover-add-collection button,
+.hover-effect-6 .hover-effect-container .hover-add-collection button,
+.hover-effect-7 .hover-effect-container .hover-add-collection button{
+    background-color: #ffffff;
+    border: #ffffff;
+    border-radius: 4px;
+    color: #000000;
+    font-size: 11px;
+    padding: 0.7rem 1.5rem 0.7rem 0.7rem;
+}
+
+.hover-position-add-collection{
+    position: relative;
+}
+
+.hover-position-add-collection span{
+    position: absolute;
+    top: 30%;
+    right: 5px;
+}
+
+/* download position style */
+
+.hover-effect-1 .hover-effect-container .hover-add-download,
+.hover-effect-2 .hover-effect-container .hover-add-download,
+.hover-effect-3 .hover-effect-container .hover-add-download,
+.hover-effect-4 .hover-effect-container .hover-add-download,
+.hover-effect-5 .hover-effect-container .hover-add-download,
+.hover-effect-6 .hover-effect-container .hover-add-download,
+.hover-effect-7 .hover-effect-container .hover-add-download{
+    position: absolute;
+    right: 7%;
+    bottom: 20px;
+}
+
+.hover-effect-1 .hover-effect-container .hover-add-download button,
+.hover-effect-2 .hover-effect-container .hover-add-download button,
+.hover-effect-3 .hover-effect-container .hover-add-download button,
+.hover-effect-4 .hover-effect-container .hover-add-download button,
+.hover-effect-5 .hover-effect-container .hover-add-download button,
+.hover-effect-6 .hover-effect-container .hover-add-download button,
+.hover-effect-7 .hover-effect-container .hover-add-download button{
+    background-color: #ffffff;
+    border: #ffffff;
+    border-radius: 4px;
+    color: #000000;
+    font-size: 11px;
+    padding: 0.7rem 1.5rem 0.7rem 0.7rem;
+}
+
+.hover-position-add-downlaod{
+    position: relative;
+}
+
+.hover-position-add-download span{
+    position: absolute;
+    top: 30%;
+    right: 5px;
+}
+
+.load-more-gallery{
+    width: 300px;
+    margin: 2em auto;
+    display: block;
+    padding: 1.25em 0;
+    color: #ffffff;
+    background-color: #1c1c1c;
+    text-align: center;
+    border-radius: 5px;
+}
