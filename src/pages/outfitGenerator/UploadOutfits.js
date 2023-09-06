@@ -1,6 +1,7 @@
 import axios from "axios";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Card from 'react-bootstrap/Card';
 import { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Container from "react-bootstrap/Container";
@@ -16,10 +17,12 @@ const UploadOutfits = () => {
 	const countryCode = 'NG';
 	const stateCode = 'Lagos State';
   const apiKey = '30cb3a6478f5520b4ad670909cf5b82a';
-  
+
 	const [weather, setWeather] = useState(null);
 	const [latitude, setLatitude] = useState(null);
 	const [longitude, setLongitude] = useState(null);
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [selectedImages, setSelectedImages] = useState({dress: [], tops: [], bottoms: []});
 
   // Function to execute when user doesn't grant location access
   const whenLatOrLonIsNull = () => {
@@ -82,6 +85,13 @@ const UploadOutfits = () => {
   const time = currentDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
   const date = currentDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
 
+  const handleImageChange = (e, category) => {
+    e.preventDefault();
+    const files = e.target.files;
+    setSelectedImages({...selectedImages, [category]: [...selectedImages[category], ...files]});
+    setIsUploaded(true);
+  };
+
   return (
 		<>
 			{/* Navbar */}
@@ -91,7 +101,7 @@ const UploadOutfits = () => {
 				<Row>
           {/* Weather results */}
 					<Col>
-            <section className="weather-value">              
+            <section className="weather-value">
               {weather.weather[0].description}
               <img src={iconUrl} alt="Weather Icon" />
               {temperature}°C
@@ -108,24 +118,85 @@ const UploadOutfits = () => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1" className="text-center item-dropdown-menu">Dress</Dropdown.Item>
+                <Dropdown.Item href="#/action-1" className="text-center item-dropdown-menu">
+                  <label htmlFor="dress-input">Dress</label>
+                  <input id="dress-input" type="file" accept="image/*" multiple onChange={e => handleImageChange(e, "dress")} hidden />
+                </Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item href="#/action-2" className="text-center item-dropdown-menu">Tops</Dropdown.Item>
+                <Dropdown.Item href="#/action-2" className="text-center item-dropdown-menu">
+                  <label htmlFor="top-input">Tops</label>
+                  <input id="top-input" type="file" accept="image/*" multiple onChange={e => handleImageChange(e, "tops")} hidden />
+                </Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item href="#/action-2" className="text-center item-dropdown-menu">Bottoms</Dropdown.Item>
+                <Dropdown.Item href="#/action-2" className="text-center item-dropdown-menu">
+                  <label htmlFor="bottoms-input">Bottoms</label>
+                  <input id="bottoms-input" type="file" accept="image/*" multiple onChange={e => handleImageChange(e, "bottoms")} hidden />
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Col>
 				</Row>
 			</Container>
       {/* Generate Outfit Body */}
-      <Container>
-        <section className="outfit-body">
-          <img src={WaitingImage} alt="An avatar showing a boy waiting for you to upload your file(s)" />
-          Waiting for you to upload images
-        </section>
-      </Container>
-			{/* Footer */}
+      {!isUploaded ? (
+        <Container>
+          <section className="outfit-body">
+            <img src={WaitingImage} alt="An avatar showing a boy waiting for you to upload your file(s)" />
+            Waiting for you to upload images
+          </section>
+        </Container>
+      ) : (
+        <Container>
+          {/* Tops Images */}
+          {selectedImages.tops.length > 0 && (
+            <>
+              <h3 className="cloth-display">Tops</h3>
+              <Row xs={1} md={3} className="g-4" style={{ marginBottom: "77px" }}>
+                {selectedImages.tops.map(image => (
+                  <Col key={`tops-${image.name}`}>
+                    <Card className="cloth-container">
+                      <Card.Img variant="bottom" src={URL.createObjectURL(image)} />
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </>
+          )}
+
+          {/* Bottoms Images */}
+          {selectedImages.bottoms.length > 0 && (
+            <>
+              <h3 className="cloth-display">Bottoms</h3>
+              <Row xs={1} md={3} className="g-4" style={{ marginBottom: "77px" }}>
+                {selectedImages.bottoms.map(image => (
+                  <Col key={`bottoms-${image.name}`}>
+                    <Card className="cloth-container">
+                      <Card.Img variant="bottom" src={URL.createObjectURL(image)} />
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </>
+          )}
+
+          {/* Dress Images */}
+          {selectedImages.dress.length > 0 && (
+            <>
+              <h3 className="cloth-display">Dresses</h3>
+              <Row xs={1} md={3} className="g-4" style={{ marginBottom: "77px" }}>
+                {selectedImages.dress.map(image => (
+                  <Col key={`dress-${image.name}`}>
+                    <Card className="cloth-container">
+                      <Card.Img variant="bottom" src={URL.createObjectURL(image)} />
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </>
+          )}
+        </Container>
+      )}
+      {/* Footer */}
 			<Footer />
 		</>
 	);

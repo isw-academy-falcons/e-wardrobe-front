@@ -63,3 +63,18 @@
 	flex-direction: column;
 	justify-content: center;
 }
+
+.cloth-display {
+	display: flex;
+	margin-bottom: 11px;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	text-transform: uppercase;
+}
+
+.cloth-container {
+	height: 325px;
+	overflow: hidden;
+	border-radius: 0%;
+}
