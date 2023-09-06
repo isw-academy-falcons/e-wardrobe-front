@@ -9,6 +9,7 @@ import Container from "react-bootstrap/Container";
 
 import "./UploadOutfits.css";
 import Footer from "../../components/Footer";
+import MyApiKey from "../../my_api_config.js";
 import AppNavBar from "../../components/AppNavBar";
 import TopMatch from "../../assets/images/outfitGenerator/top.svg";
 import BottomMatch from "../../assets/images/outfitGenerator/bottom.svg";
@@ -20,7 +21,7 @@ const UploadOutfits = () => {
   const city = 'Lagos';
 	const countryCode = 'NG';
 	const stateCode = 'Lagos State';
-  const apiKey = '30cb3a6478f5520b4ad670909cf5b82a';
+  const apiKey = MyApiKey.apiKey;
 
 	const [weather, setWeather] = useState(null);
 	const [latitude, setLatitude] = useState(null);
