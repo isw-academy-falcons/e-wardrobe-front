@@ -9,6 +9,7 @@ import Redirect from './Redirect';
 import PageNotFound from './PageNotFound';
 import Landing from "./pages/landing/Landing";
 import Gallery from "./pages/gallery/Gallery";
+import Ewardrobe from "./pages/ewardrobe/Ewardrobe";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         {/* Add more routes as needed */}
         <Route path='/landing-page' element={<Landing />} />
         <Route path='/gallery' element={<Gallery />} />
+        <Route path='/e-wardrobe' element={<Ewardrobe />} />
       </Routes>
     </Router>
 
