@@ -19,10 +19,9 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path="/login" element={<Login />} />
         <Route path='/*' element={<PageNotFound/>}/>
+        <Route path="/signup" element={<Signup />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path='/redirect' element={<Redirect/>}/>
-        <Route path="/signup" element={<Signup />} />
-        {/* Add more routes as needed */}
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/landing-page' element={<Landing />} />
         <Route path='/e-wardrobe' element={<Ewardrobe />} />

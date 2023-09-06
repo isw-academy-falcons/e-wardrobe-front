@@ -33,8 +33,9 @@ const AppNavBar = () => {
           </Nav>
           <Nav className="me-auto">
             <Nav.Link href="/landing-page">Home</Nav.Link>
-            <NavDropdown title="E-wardrobe" id="collasible-nav-dropdown">
+            <NavDropdown title="E-wardrobe" id="collasible-nav-dropdown" className="e-wardrobe-dropdown">
               <NavDropdown.Item href="#sc">SkyFitzz Web Gallery</NavDropdown.Item>
+              <NavDropdown.Divider />
               <NavDropdown.Item href="#ew">Generated Collections</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#pricing">Pricing</Nav.Link>

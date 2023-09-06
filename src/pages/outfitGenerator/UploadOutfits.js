@@ -9,6 +9,7 @@ import "./UploadOutfits.css";
 import Footer from "../../components/Footer";
 import AppNavBar from "../../components/AppNavBar";
 import UploadImage from "../../assets/images/outfitGenerator/upload.svg";
+import WaitingImage from "../../assets/images/outfitGenerator/waiting.svg";
 
 const UploadOutfits = () => {
   const city = 'Lagos';
@@ -28,6 +29,9 @@ const UploadOutfits = () => {
 				setLatitude(response.data[0].lat);
 				setLongitude(response.data[0].lon);
 			})
+      .catch(error => {
+        console.error('Error fetching location:', error);
+      });
   };
 
   // Function to get the current location
@@ -96,24 +100,31 @@ const UploadOutfits = () => {
             <section className="weather-value">{time}</section>
 					</Col>
 					<Col xs={8} className="text-center outfit-header">GENERATE OUTFIT</Col>
-					<Col className="text-center">
-            <section className="outfit-upload">
-              <img src={UploadImage} alt="Upload Icon" height="66.20px" width="66.20px" />
-            </section>
+					<Col className="text-center outfit-upload">
+            <img src={UploadImage} alt="Upload Icon" height="66.20px" width="66.20px" />
             <Dropdown>
               <Dropdown.Toggle variant="link" id="dropdown-basic" className="outfit-text">
                 Upload Image
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Option 1</Dropdown.Item>
+                <Dropdown.Item href="#/action-1" className="text-center item-dropdown-menu">Dress</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item href="#/action-2">Option 2</Dropdown.Item>
+                <Dropdown.Item href="#/action-2" className="text-center item-dropdown-menu">Tops</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item href="#/action-2" className="text-center item-dropdown-menu">Bottoms</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Col>
 				</Row>
 			</Container>
+      {/* Generate Outfit Body */}
+      <Container>
+        <section className="outfit-body">
+          <img src={WaitingImage} alt="An avatar showing a boy waiting for you to upload your file(s)" />
+          Waiting for you to upload images
+        </section>
+      </Container>
 			{/* Footer */}
 			<Footer />
 		</>
