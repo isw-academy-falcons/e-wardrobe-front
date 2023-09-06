@@ -1,51 +1,79 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 
 import Footer from "../../components/Footer";
 import AppNavBar from "../../components/AppNavBar";
 
 const UploadOutfits = () => {
-	const [weather, setWeather] = useState(null);
-	const [latitude, setLatitude] = useState(null);
-	const [longitude, setLongitude] = useState(null);
-  const apiKey = '30cb3a6478f5520b4ad670909cf5b82a';
   const city = 'Lagos';
 	const countryCode = 'NG';
 	const stateCode = 'Lagos State';
+  const apiKey = '30cb3a6478f5520b4ad670909cf5b82a';
+  
+	const [weather, setWeather] = useState(null);
+	const [latitude, setLatitude] = useState(null);
+	const [longitude, setLongitude] = useState(null);
 
-	useEffect(() => {
-		// Make api request to get latitude and longitude
-		axios
+  // Function to execute when user doesn't grant location access
+  const whenLatOrLonIsNull = () => {
+    axios
 			.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}, ${stateCode}, ${countryCode}&limit=5&appid=${apiKey}`)
 			.then(response => {
 				setLatitude(response.data[0].lat);
 				setLongitude(response.data[0].lon);
 			})
-	}, []);
+  };
+
+  // Function to get the current location
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setLatitude(latitude);
+        setLongitude(longitude);
+      },
+      (error) => {
+        console.error('Error getting location:', error);
+      }
+    );
+  }, []);
 
 	useEffect(() => {
     // Make an API request to get weather data
     axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`)
+      .get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`)
       .then(response => {
         setWeather(response.data);
-				console.log(response);
       })
       .catch(error => {
         console.error('Error fetching weather data:', error);
       });
-  }, [apiKey, city, latitude, longitude]);
+  }, [apiKey, latitude, longitude]);
 
+  // When latitude or longitude is empty
+  if (!latitude || !longitude) {
+    whenLatOrLonIsNull();
+  }
+
+  // If weather response is empty
   if (!weather) {
     return <div>Loading...</div>;
   }
-
+  
+  // Get weather icon
 	const iconCode = weather.weather[0].icon;
-	console.log(iconCode);
 	const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
+  // Round the temperature to the nearest integer
+  const temperature = Math.round(weather.main.temp);
+  // Get the current date and time
+  const currentDate = new Date();
+  // Extract day, date, month, and time
+  const day = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
+  const date = currentDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+  const time = currentDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
 
 	return (
 		<>
@@ -54,8 +82,15 @@ const UploadOutfits = () => {
 			{/* Generate Outfit Header */}
 			<Container>
 				<Row>
-					<Col className="weather-value">
-						<img src={iconUrl} alt="Weather Icon" /> {weather.main.temp}°C
+          {/* Weather results */}
+					<Col>
+            <section className="weather-value">              
+              {weather.weather[0].description}
+              <img src={iconUrl} alt="Weather Icon" />
+              {temperature}°C
+            </section>
+            <section className="weather-value">{day} {date}</section>
+            <section className="weather-value">{time}</section>
 					</Col>
 					<Col xs={8} className="text-center"></Col>
 					<Col className="text-center"></Col>
