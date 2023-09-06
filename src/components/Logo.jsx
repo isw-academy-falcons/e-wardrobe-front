@@ -4,7 +4,7 @@ import './Logo.css';
 const Logo = ({className}) => {
 
   return (
-    <h2 className={`logo ${className}`}>Skyfitzz</h2>
+    <h2 className={`logo-home ${className}`}>Skyfitzz</h2>
   );
 }
 
