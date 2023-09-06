@@ -2,10 +2,13 @@ import axios from "axios";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { useEffect, useState } from "react";
+import Dropdown from "react-bootstrap/Dropdown";
 import Container from "react-bootstrap/Container";
 
+import "./UploadOutfits.css";
 import Footer from "../../components/Footer";
 import AppNavBar from "../../components/AppNavBar";
+import UploadImage from "../../assets/images/outfitGenerator/upload.svg";
 
 const UploadOutfits = () => {
   const city = 'Lagos';
@@ -62,7 +65,7 @@ const UploadOutfits = () => {
   if (!weather) {
     return <div>Loading...</div>;
   }
-  
+
   // Get weather icon
 	const iconCode = weather.weather[0].icon;
 	const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
@@ -72,10 +75,10 @@ const UploadOutfits = () => {
   const currentDate = new Date();
   // Extract day, date, month, and time
   const day = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
-  const date = currentDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
   const time = currentDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  const date = currentDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
 
-	return (
+  return (
 		<>
 			{/* Navbar */}
 			<AppNavBar />
@@ -92,8 +95,23 @@ const UploadOutfits = () => {
             <section className="weather-value">{day} {date}</section>
             <section className="weather-value">{time}</section>
 					</Col>
-					<Col xs={8} className="text-center"></Col>
-					<Col className="text-center"></Col>
+					<Col xs={8} className="text-center outfit-header">GENERATE OUTFIT</Col>
+					<Col className="text-center">
+            <section className="outfit-upload">
+              <img src={UploadImage} alt="Upload Icon" height="66.20px" width="66.20px" />
+            </section>
+            <Dropdown>
+              <Dropdown.Toggle variant="link" id="dropdown-basic" className="outfit-text">
+                Upload Image
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Option 1</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item href="#/action-2">Option 2</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Col>
 				</Row>
 			</Container>
 			{/* Footer */}
