@@ -16,10 +16,10 @@ const Ewardrobe = () => {
     return (
         <div className='e-wardrobe-page'>
             <AppNavBar/>
-            <h3 className='e-wardrobe-subtitle'>LOGO GALLERY</h3>
+            <h3 className='e-wardrobe-subtitle'>E-WARDROBE</h3>
             <section className="switch-wardrobe-generate">
                 <h4 className={active == 1 ? 'active':''} onClick={() => setActive(1)}>SKYFITZZ WEB GALLERY</h4>
-                <h4 className={active == 2 ? 'active':''} onClick={() => setActive(2)}>GENERTED COLLECTION</h4>
+                <h4 className={active == 2 ? 'active':''} onClick={() => setActive(2)}>GENERATED COLLECTION</h4>
             </section>
             {active == 1 ?(
                 <section className="display-wardrobe">
