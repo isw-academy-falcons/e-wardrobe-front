@@ -30,16 +30,15 @@ const UploadOutfits = () => {
   const [selectedImages, setSelectedImages] = useState({dress: [], tops: [], bottoms: []});
 
   // Function to execute when user doesn't grant location access
-  const whenLatOrLonIsNull = () => {
-    axios
-			.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}, ${stateCode}, ${countryCode}&limit=5&appid=${apiKey}`)
-			.then(response => {
-				setLatitude(response.data[0].lat);
-				setLongitude(response.data[0].lon);
-			})
-      .catch(error => {
-        console.error('Error fetching location:', error);
-      });
+  const whenLatOrLonIsNull = async () => {
+    try {
+      const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}, ${stateCode}, ${countryCode}&limit=5&appid=${apiKey}`)
+      setLatitude(response.data[0].lat);
+      setLongitude(response.data[0].lon);
+    }
+    catch(error) {
+      console.error('Error fetching location:', error);
+    };
   };
 
   // Function to get the current location
@@ -56,17 +55,17 @@ const UploadOutfits = () => {
     );
   }, []);
 
-	useEffect(() => {
+  const fetchWeather = async () => {
     // Make an API request to get weather data
-    axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`)
-      .then(response => {
-        setWeather(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching weather data:', error);
-      });
-  }, [apiKey, latitude, longitude]);
+    try {
+      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`)
+      setWeather(response.data);
+    }
+    catch(error) {
+      console.error('Error fetching weather data:', error);
+    }
+  }
+  fetchWeather();
 
   // When latitude or longitude is empty
   if (!latitude || !longitude) {
