@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AppNavBar from '../../components/AppNavBar';
 import Footer from '../../components/Footer';
+import Logo from '../../components/Logo';
 import './e-wardrobe.css';
 import skyImg1 from '../../assets/images/e-wardrobe/skyImg1.png';
 import skyImg2 from '../../assets/images/e-wardrobe/skyImg2.png';
@@ -16,7 +17,7 @@ const Ewardrobe = () => {
     return (
         <div className='e-wardrobe-page'>
             <AppNavBar/>
-            <h3 className='e-wardrobe-subtitle'>E-WARDROBE</h3>
+            <h3 className='e-wardrobe-subtitle'><Logo className='logo-gallery'/>E-WARDROBE</h3>
             <section className="switch-wardrobe-generate">
                 <h4 className={active == 1 ? 'active':''} onClick={() => setActive(1)}>SKYFITZZ WEB GALLERY</h4>
                 <h4 className={active == 2 ? 'active':''} onClick={() => setActive(2)}>GENERATED COLLECTION</h4>
