@@ -11,6 +11,7 @@ import Landing from "./pages/landing/Landing";
 import Gallery from "./pages/gallery/Gallery";
 import Ewardrobe from "./pages/ewardrobe/Ewardrobe";
 
+
 function App() {
   return (
     <Router>
@@ -25,6 +26,7 @@ function App() {
         <Route path='/landing-page' element={<Landing />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/e-wardrobe' element={<Ewardrobe />} />
+       
       </Routes>
     </Router>
 

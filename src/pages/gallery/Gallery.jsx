@@ -58,8 +58,7 @@ const Gallery = () => {
                     />
                     <span className='search-icon' onClick={handleSearch}><BsSearch /></span>
                 </div>
-                <span className='filter-icon'><BsFilterLeft /></span>
-                <span className='filter-text'>filter</span>
+                
             </section>
             <section className='gallery-display'>
             {images.map((image, index) => (
