@@ -57,36 +57,34 @@ const Gallery = () => {
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <span className='search-icon' onClick={handleSearch}><BsSearch /></span>
-                </div>
-                
+                </div>    
             </section>
             <section className='gallery-display'>
-            {images.map((image, index) => (
-    <div key={index} className={`grid-item-container-${index + 1}`}>
-        <a href={image.urls.full} target="_blank" rel="noopener noreferrer" download>
-            <img src={image.urls.regular} alt={`Gallery Img ${index + 1}`} className={`img${index + 1}`} />
-        </a>
-        <div className={`hover-effect-${index + 1}`}>
-            <div className="hover-effect-container">
-                <div className='hover-add-collection'>
-                    <div className="hover-position-add-collection">
-                        <button>Add to collection</button>
-                        <span> <AiOutlinePlus /> </span>
-                    </div>
-                </div>
-                <div className='hover-add-download'>
-                    <div className="hover-position-add-download">
+                {images.map((image, index) => (
+                    <div key={index} className={`grid-item-container-${index + 1}`}>
                         <a href={image.urls.full} target="_blank" rel="noopener noreferrer" download>
-                            <button>Download</button>
+                            <img src={image.urls.regular} alt={`Gallery Img ${index + 1}`} className={`img${index + 1}`} />
                         </a>
-                        <span> <BiSolidDownload /> </span>
+                        <div className={`hover-effect-${index + 1}`}>
+                            <div className="hover-effect-container">
+                                <div className='hover-add-collection'>
+                                    <div className="hover-position-add-collection">
+                                        <button>Add to collection</button>
+                                        <span> <AiOutlinePlus /> </span>
+                                    </div>
+                                </div>
+                                <div className='hover-add-download'>
+                                    <div className="hover-position-add-download">
+                                        <a href={image.urls.full} target="_blank" rel="noopener noreferrer" download>
+                                            <button>Download</button>
+                                        </a>
+                                        <span> <BiSolidDownload /> </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-))}
-
+                ))}
             </section>
             <button className='load-more-gallery' onClick={handleLoadMore}>Load More</button>
             <Footer />

@@ -41,7 +41,7 @@
 .generated-collection-img1, 
 .generated-collection-img2,
 .generated-collection-img3{
-    width: 31%;
+    width: 30%;
     position: relative;
 }
 .delete-wardrobe-item{
@@ -49,6 +49,10 @@
     bottom: 5%;
     right: 5%;
     color: #000000;
+}
+
+img{
+    width: 100%;
 }
 
 .delete-wardrobe-position{
@@ -74,4 +78,55 @@
     position: fixed;
     right: 5%;
     bottom: 10%;
+}
+@media  only screen and (max-width: 600px) {
+    .display-wardrobe, .display-generate-collection{
+        width: 80%;
+        margin: 2em auto 4em auto;
+        display: block;
+        justify-content: space-between;
+    }
+
+    .wardrobe-img1,
+    .wardrobe-img2,
+    .wardrobe-img3,
+    .generated-collection-img1, 
+    .generated-collection-img2,
+    .generated-collection-img3{
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    .e-wardrobe-subtitle{
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        margin: 1.75em 0 0.75em;
+    }
+
+    .switch-wardrobe-generate{
+        width: 90%;
+        margin: 1em auto;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .switch-wardrobe-generate .active{
+        padding-bottom: 5px;
+    }
+
+    .switch-wardrobe-generate h4{
+        font-size: 13px;
+        color: #6b6b6b;
+        cursor: pointer;
+    }
+}
+
+@media  only screen and (min-width: 600px) and (max-width: 965px){
+    .switch-wardrobe-generate{
+        width: 80%;
+        margin: 1em auto;
+        display: flex;
+        justify-content: space-between;
+    }
 }
