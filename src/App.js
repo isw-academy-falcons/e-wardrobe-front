@@ -12,6 +12,7 @@ import Gallery from "./pages/gallery/Gallery";
 import Ewardrobe from "./pages/ewardrobe/Ewardrobe";
 import UploadOutfits from "./pages/outfitGenerator/UploadOutfits";
 
+
 function App() {
   return (
     <Router>
