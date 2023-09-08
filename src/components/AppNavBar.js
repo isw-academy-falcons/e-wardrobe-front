@@ -34,12 +34,12 @@ const AppNavBar = () => {
           <Nav className="me-auto">
             <Nav.Link href="/landing-page">Home</Nav.Link>
             <NavDropdown title="E-wardrobe" id="collasible-nav-dropdown" className="e-wardrobe-dropdown">
-              <NavDropdown.Item href="#sc">SkyFitzz Web Gallery</NavDropdown.Item>
+              <NavDropdown.Item href="/gallery">SkyFitzz Web Gallery</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#ew">Generated Collections</NavDropdown.Item>
+              <NavDropdown.Item href="/e-wardrobe">Generated Collections</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
           </Nav>
           <Nav className="d-flex">
             <Nav.Link href="/landing-page" className="profile-name">
