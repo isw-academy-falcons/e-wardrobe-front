@@ -17,3 +17,7 @@
 .navbar-expand-lg .navbar-nav .nav-item.dropdown.show .nav-link.dropdown-toggle {
 	color: #02C5BB;
 }
+
+.e-wardrobe-dropdown .dropdown-menu {
+	border-radius: 0%;
+}
