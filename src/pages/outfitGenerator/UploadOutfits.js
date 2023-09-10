@@ -6,8 +6,8 @@ import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Container from "react-bootstrap/Container";
-
 import "./UploadOutfits.css";
+import Loader from "../../components/Loader";
 import Footer from "../../components/Footer";
 import AppNavBar from "../../components/AppNavBar";
 import TopMatch from "../../assets/images/outfitGenerator/top.svg";
@@ -74,7 +74,7 @@ const UploadOutfits = () => {
 
   // If weather response is empty
   if (!weather) {
-    return <div>Loading...</div>;
+    return <Loader isLoading={true} />;
   }
 
   // Get weather icon
@@ -277,6 +277,11 @@ const UploadOutfits = () => {
                   </Row>
                 </>
               )}
+
+              {!isUploaded && selectedImages.dress.length > 0 && (
+                <Loader isLoading={true} /> 
+              )}
+
               {/* Generate Buttons */}
               <Container className="outfit-buttons">
                 {selectedImages.tops.length !== 0 &&
