@@ -24,63 +24,63 @@ const bagData = [
       {
         id: 1,
         category: "Just In",
-        name: "Men's Classic Blue Blazer",
+        name: "Dior Men Briefcase 2023",
         price: "$129.99",
         image: `${menBag1Image}`
       },
       {
         id: 2,
         category: "Just In",
-        name: "Men's Casual Denim Jeans",
+        name: "Brown Suede Briefcase",
         price: "$49.95",
         image: `${menBag2Image}`
       },
       {
         id: 3,
         category: "Just In",
-        name: "Men's Leather Dress Shoes",
+        name: "Black Briefcase",
         price: "$89.99",
         image: `${menBag3Image}`
       },
       {
         id: 4,
         category: "sold out",
-        name: "Men's Sporty Sneakers",
+        name: "Darling African",
         price: "$59.95",
         image: `${menBag4Image}`
       },
       {
         id: 5,
         category: "Just In",
-        name: "Men's Formal Necktie",
-        price: "$19.99",
+        name: "Brown Briefcase",
+        price: "$319.99",
         image: `${menBag5Image}`
       },
       {
         id: 6,
         category: "sold out",
-        name: "Men's Vintage Watch",
+        name: "Black Game",
         price: "$149.50",
         image: `${menBag6Image}`
       },
       {
         id: 7,
         category: "Limited",
-        name: "Men's Classic Fedora Hat",
-        price: "$24.50",
+        name: "Louis Vuitton BR",
+        price: "$624.50",
         image: `${menBag7Image}`
       },
       {
         id: 8,
         category: "Limited",
-        name: "Men's Business Suit",
+        name: "Money keeper ",
         price: "$199.99",
         image: `${menBag8Image}`
       },
       {
         id: 9,
         category: "sold out",
-        name: "Men's Stylish Backpack",
+        name: "Mens Black Briefcase",
         price: "$79.95",
         image: `${menBag9Image}`
       }
@@ -89,64 +89,64 @@ const bagData = [
       {
         id: 10,
         category: "Limited",
-        name: "Women's Elegant Red Dress",
+        name: "Nicki world Baugette",
         price: "$69.99",
         image: `${womenBag1Image}`
       },
       {
         id: 11,
         category: "Limited",
-        name: "Women's Floral Print Skirt",
+        name: "Green pro Baugette",
         price: "$39.95",
         image: `${womenBag2Image}`
       },
       {
         id: 12,
         category: "Limited",
-        name: "Women's High Heel Shoes",
+        name: "Summer White-world",
         price: "$79.99",
         image: `${womenBag3Image}`
       },
       {
         id: 13,
         category: "sold out",
-        name: "Women's Fashionable Handbag",
+        name: "Mini Baugette",
         price: "$49.50",
         image: `${womenBag4Image}`
       },
       {
         id: 14,
         category: "Just In",
-        name: "Women's Stylish Sunglasses",
+        name: "Darling African Baugette",
         price: "$29.99",
         image: `${womenBag5Image}`
       },
       {
         id: 15,
         category: "Just In",
-        name: "Women's Chic Bracelet",
+        name: "Natures Call",
         price: "$19.95",
         image: `${womenBag6Image}`
       },
       {
         id: 16,
         category: "Just In",
-        name: "Women's Boho Hat",
+        name: "Louis Vuitton summer",
         price: "$34.50",
         image: `${womenBag7Image}`
       },
       {
         id: 17,
         category: "Just In",
-        name: "Women's Elegant Evening Gown",
+        name: "Dior Baugette 2023",
         price: "$149.99",
         image: `${womenBag8Image}`
       },
       {
         id: 18,
         category: "Just In",
-        name: "Women's Casual Tote Bag",
-        price: "$39.95",
+        name: "Cardi-B Limited Edition",
+        price: "$239.95",
         image: `${womenBag9Image}`
       }
     ]

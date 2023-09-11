@@ -9,10 +9,10 @@ import Redirect from './Redirect';
 import PageNotFound from './PageNotFound';
 import Landing from "./pages/landing/Landing";
 import Gallery from "./pages/gallery/Gallery";
+import About from "./pages/about/About";
 import Ewardrobe from "./pages/ewardrobe/Ewardrobe";
 import UploadOutfits from "./pages/outfitGenerator/UploadOutfits";
 import Fashion from "./pages/fashion/fashion";
-
 
 
 function App() {
@@ -26,6 +26,7 @@ function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path='/redirect' element={<Redirect/>}/>
         <Route path='/gallery' element={<Gallery />} />
+        <Route path='/about' element={<About />} />
         <Route path='/landing-page' element={<Landing />} />
         <Route path='/e-wardrobe' element={<Ewardrobe />} />
         <Route path='/outfit-generator' element={<UploadOutfits />} />
