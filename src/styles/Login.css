@@ -89,6 +89,32 @@ body {
   font-size: 24px;;
 }
 
+.login-error-popup {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff0000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.login-success-popup {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #046316;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
 .overlay {
   background-image: linear-gradient(#1c1c1c, #1c1c1c);
   opacity: 0.89;

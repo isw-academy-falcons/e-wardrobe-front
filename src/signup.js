@@ -18,26 +18,39 @@ export default function Signup() {
     e.preventDefault();
     // Perform signup logic here using the retrieved form data
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match.");
-    }
-
+      const user = {
+        firstName,
+        lastName,
+        email,
+        gender,
+        password,
+        confirmPassword,
+      };
     
-    // try {
-    //   // Send a POST request to the backend signup endpoint
-    //   const response = await axios.post("http://backend-url/api/signup", user);
-
-    //   // Handle successful signup
-    //   console.log("Signup successful:", response.data);
-    //   // Redirect the user to the login page or show a success message
-    //   navigate("/redirect")
-    // } catch (error) {
-    //   // Handle signup errors, such as validation errors or duplicate email
-    //   console.error("Signup error:", error.response.data);
-    //   // Display error messages to the user
-    // }
-
-    navigate("/redirect")
+      try {
+        const response = await fetch("http://localhost:8080/api/v1/user/sign-up", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        });
+    
+        if (response.ok) {
+          // Handle successful signup
+          const responseData = await response.json();
+          console.log("Signup successful:", responseData);
+          // Redirect the user to the login page or show a success message
+          navigate("/redirect");
+        } else {
+          // Handle signup errors, such as validation errors or duplicate email
+          const errorData = await response.json();
+          console.error("Signup error:", errorData);
+          // Display error messages to the user
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
 
     setFirstName("");
     setLastName("");

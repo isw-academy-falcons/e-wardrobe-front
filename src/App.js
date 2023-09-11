@@ -12,6 +12,8 @@ import Gallery from "./pages/gallery/Gallery";
 import About from "./pages/about/About";
 import Ewardrobe from "./pages/ewardrobe/Ewardrobe";
 import UploadOutfits from "./pages/outfitGenerator/UploadOutfits";
+import Fashion from "./pages/fashion/fashion";
+
 
 function App() {
   return (
@@ -28,7 +30,7 @@ function App() {
         <Route path='/landing-page' element={<Landing />} />
         <Route path='/e-wardrobe' element={<Ewardrobe />} />
         <Route path='/outfit-generator' element={<UploadOutfits />} />
-
+        <Route path='/fashion' element={<Fashion />} />
       </Routes>
     </Router>
 

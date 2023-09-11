@@ -1,0 +1,223 @@
+/* fashion.css */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .fashion-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .fashion-button {
+    width: 100%;
+    padding: 5px 10px;
+    border: 2px solid #1c1c1c;
+    background-color: transparent;
+    color: #1c1c1c;
+    border-radius: 5px;
+    margin: 20px 0;
+  }
+  
+  .fashion-button:hover {
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    background-color: #1c1c1c;
+    color: white;
+    border-radius: 5px;
+    margin: 20px 0;
+  }
+  
+  .fashion-card-one {
+    background-color: white;
+    border-right: 1px solid #d3d3d3;
+    width: 25%; /* Take the full width on smaller screens */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .fashion-categories-header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .fashion-categories-header2 {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .fashion-categories {
+    text-decoration: none;
+    color: #3f3f3f;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .fashion-card-two {
+    background-color: white;
+    width: 70%; /* Take the full width on smaller screens */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Style the container for fashion cards */
+  .fashion-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px;
+  }
+  
+  /* Individual fashion card */
+  .fashion-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    padding: 10px;
+    width: calc(33.33% - 20px); /* Set the width to one-third of the container */
+    text-align: center;
+    background-color: #ffffff;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .fashion-card img {
+    max-width: 100%;
+    height: 60%;
+    margin: 0 auto;
+  }
+  
+  .fashion-card p {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  /* Fashion card hover effect */
+  .fashion-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.15);
+  }
+  
+  .fashion-search-input {
+    width: 100%;
+    position: relative;
+    font-size: 12px;
+    margin-bottom: 40px;
+    margin-top: 18px;
+  }
+  
+  .fashion-search-input .fashion-search-icon {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    color: #aaaaaa;
+  }
+  
+  .fashion-search-input input {
+    border: 1px solid #aaaaaa;
+    padding: 10px 0 10px 10%;
+    width: max(100px, 100%);
+    border-radius: 10px;
+  }
+  
+  .fashion-search-input ::placeholder {
+    padding-left: 10px;
+  }
+  
+  /* Media query for screens smaller than 768px (e.g., smartphones) */
+  
+  @media (max-width: 768px) {
+    .fashion-card-one,
+    .fashion-card-two {
+      width: 100%;
+    }
+  
+    .fashion-cards {
+      flex-direction: column;
+    }
+  
+    /* Adjust card width for smaller screens */
+    .fashion-card {
+      width: 100%;
+    }
+  }
+  
+  .fashion-types {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-size: 18px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .fashion-types:hover {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-weight: bold;
+    transform: translateY(-5px);
+  }
+  
+  /* Filter Container */
+  .filter-container {
+    background-color: #fff; /* Background color for the filter container */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for a card-like appearance */
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
+  
+  /* Filter Heading */
+  .filter-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Filter Options */
+  .filter-option {
+    margin-bottom: 10px;
+  }
+  
+  /* Slider Styles */
+  .filter-slider {
+    width: 100%;
+  }
+  
+  .input-range-container {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  
+  /* Size, Weather, Material, Color */
+  .filter-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+  }
+  
+  /* Apply Button */
+  .apply-button {
+    background-color: #1c1c1c; /* Your desired button color */
+    color: #fff; /* Text color for the button */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .apply-button:hover {
+    background-color: #0056b3; /* Button color on hover */
+  }
+  
