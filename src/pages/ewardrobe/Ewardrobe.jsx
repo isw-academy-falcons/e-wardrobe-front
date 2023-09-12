@@ -25,7 +25,7 @@ const Ewardrobe = () => {
             {active == 1 ?(
                 <section className="display-wardrobe">
                     <div className="wardrobe-img1">
-                        <img src={skyImg1} alt="wardrobe image 1" />
+                        <img src={skyImg1} alt="wardrobe image 1" className='e-wardrobe-img' />
                         <div className="delete-wardrobe-item">
                             <div className="delete-wardrobe-position">
                                 <button>Delete</button>
@@ -34,7 +34,7 @@ const Ewardrobe = () => {
                         </div>
                     </div>
                     <div className="wardrobe-img2">
-                        <img src={skyImg2} alt="wardrobe image 2" />
+                        <img src={skyImg2} alt="wardrobe image 2" className='e-wardrobe-img' />
                         <div className="delete-wardrobe-item">
                             <div className="delete-wardrobe-position">
                                 <button>Delete</button>
@@ -43,7 +43,7 @@ const Ewardrobe = () => {
                         </div>
                     </div>
                     <div className="wardrobe-img3">
-                        <img src={skyImg3} alt="wardrobe image 3" />
+                        <img src={skyImg3} alt="wardrobe image 3" className='e-wardrobe-img' />
                         <div className="delete-wardrobe-item">
                             <div className="delete-wardrobe-position">
                                 <button>Delete</button>
@@ -55,7 +55,7 @@ const Ewardrobe = () => {
             ) : (
                 <section className="display-generate-collection">
                     <div className="generated-collection-img1">
-                        <img src={gcImg1} alt="generated collection image 1" />
+                        <img src={gcImg1} alt="generated collection image 1" className='e-wardrobe-img' />
                         <div className="delete-wardrobe-item">
                             <div className="delete-wardrobe-position">
                                 <button>Delete</button>
@@ -64,7 +64,7 @@ const Ewardrobe = () => {
                         </div>
                     </div>
                     <div className="generated-collection-img2">
-                        <img src={gcImg2} alt="generated collection image 2" />
+                        <img src={gcImg2} alt="generated collection image 2" className='e-wardrobe-img' />
                         <div className="delete-wardrobe-item">
                             <div className="delete-wardrobe-position">
                                 <button>Delete</button>
@@ -73,7 +73,7 @@ const Ewardrobe = () => {
                         </div>
                     </div>
                     <div className="generated-collection-img3">
-                        <img src={gcImg3} alt="generated collection image 3" />
+                        <img src={gcImg3} alt="generated collection image 3" className='e-wardrobe-img' />
                         <div className="delete-wardrobe-item">
                             <div className="delete-wardrobe-position">
                                 <button>Delete</button>
