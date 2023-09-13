@@ -2,10 +2,13 @@ import axios from "axios";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
+import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Container from "react-bootstrap/Container";
+
 import "./UploadOutfits.css";
 import Loader from "../../components/Loader";
 import Footer from "../../components/Footer";
@@ -26,7 +29,9 @@ const UploadOutfits = () => {
 	const [latitude, setLatitude] = useState(null);
   const [generate, setGenerate] = useState(false);
 	const [longitude, setLongitude] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedImages, setSelectedImages] = useState({dress: [], tops: [], bottoms: []});
 
   // Function to execute when user doesn't grant location access
@@ -89,11 +94,22 @@ const UploadOutfits = () => {
   const time = currentDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
   const date = currentDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
 
+  // Function to show the modal
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  // Function to hide the modal
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   // Function to handle image upload
   const handleImageChange = (e, category) => {
     e.preventDefault();
     const files = e.target.files;
     setSelectedImages({...selectedImages, [category]: [...selectedImages[category], ...files]});
+    handleShowModal();
     setIsUploaded(true);
   };
 
@@ -101,6 +117,16 @@ const UploadOutfits = () => {
   const handleClick = e => {
     e.preventDefault();
     setGenerate(true);
+  };
+
+  // Function to handle the category selection
+  const handleCategorySelection = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const handleReset = e => {
+    e.preventDefault();
+    setSelectedImages({dress: [], tops: [], bottoms: []});
   };
 
   return (
@@ -191,6 +217,43 @@ const UploadOutfits = () => {
           </Col>
         </Row>
       </Container>
+
+      {/* Category selection modal */}
+      <Modal show={showModal} onHide={handleCloseModal} size="lg" centered>
+        <Modal.Header className="outfit-modal-header" closeButton>
+          {/* <Modal.Title id="contained-modal-title-vcenter" className="text-center">
+          </Modal.Title> */}
+        </Modal.Header>
+        <Modal.Body >
+          <p className="text-center outfit-modal-title">Select Categories</p>          
+          <p className="text-center outfit-modal-description">Under which categories do your clothes fall under</p>
+          <Form>
+            {['Native', 'Freestyle', 'English'].map((type) => (
+              <div key={`default-${type}`} className="mb-3" style={{ marginLeft: "31.78px" }}>
+                <Form.Check
+                  id={`default-${type}`}
+                  label={`${type}`}
+                  onClick={() => handleCategorySelection(`${type}`)}
+                />
+              </div>
+            ))}
+          </Form>
+        </Modal.Body>
+        <Modal.Footer className="outfit-modal-footer">
+          <Button
+            style={{
+              background:
+                "black"
+            }}
+            variant="dark"
+            onClick={handleCloseModal}
+            className="outfit-modal-button"
+          >
+            Submit
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       {!generate ? (
         <>
           {/* Generate Outfit Body */}
@@ -282,6 +345,28 @@ const UploadOutfits = () => {
                 <Loader isLoading={true} /> 
               )}
 
+              {/* Reset button */}
+              <section
+                style={{
+                  display: "flex",
+                  marginBottom: "29px",
+                  justifyContent: "center",
+                }}
+              >
+                <Button
+                  variant="dark"
+                  style={{
+                    color: "white",
+                    width: "183.5px",
+                    marginRight: "10px"
+                  }}
+                  className="outfit-button"
+                  onClick={e => handleReset(e)}
+                >
+                  Reset
+                </Button>
+              </section>
+
               {/* Generate Buttons */}
               <Container className="outfit-buttons">
                 {selectedImages.tops.length !== 0 &&
@@ -311,21 +396,21 @@ const UploadOutfits = () => {
                   </Button>
                 )}
                 {selectedImages.dress.length !== 0 ? (
-                  <Button variant="dark" className="outfit-button" onClick={e => handleClick(e)}>
+                  <Button variant="light" className="outfit-button" onClick={e => handleClick(e)} style={{ borderColor: "black" }}>
                     Generate Best Dress
                   </Button>
                 ) : (
-                  <Button variant="dark" className="outfit-button" disabled>
+                  <Button variant="light" className="outfit-button" style={{ borderColor: "black" }} disabled>
                     Generate Best Dress
                   </Button>
                 )}
                 {selectedImages.tops.length !== 0 &&
                 selectedImages.bottoms.length !== 0 ? (
-                  <Button variant="dark" className="outfit-button" onClick={e => handleClick(e)}>
+                  <Button variant="light" className="outfit-button" onClick={e => handleClick(e)} style={{ borderColor: "black" }}>
                     Generate Best To Least
                   </Button>
                 ) : (
-                  <Button variant="dark" className="outfit-button" disabled>
+                  <Button variant="light" className="outfit-button" style={{ borderColor: "black" }} disabled>
                     Generate Best To Least
                   </Button>
                 )}
