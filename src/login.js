@@ -7,7 +7,7 @@ import "./styles/Login.css";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginError, setLoginError] = useState(false);
+  const [error, setError] = useState(null); 
   const [loginSuccess, setLoginSuccess] = useState(false);
   const navigate = useNavigate();
 
@@ -19,8 +19,8 @@ export default function Login() {
       password,
     };
 
-    try {
-      const response = await fetch("http://localhost:8080/api/v1/auth/login", {
+   try {
+      const response = await fetch("https://skyfitzz.up.railway.app/api/v1/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,11 +31,14 @@ export default function Login() {
       if (response.ok) {
         // Login successful, you can redirect the user to the dashboard or a protected route
         setLoginSuccess(true);
-        navigate("/landing-page");
+        setTimeout(() => {
+          navigate("/landing-page");
+        }, 2000);
       } else {
-        // Login failed, you can display an error message to the user
-        setLoginError(true);
-        console.error("Login failed.");
+        // Login failed, display the error message to the user
+        const errorData = await response.json();
+        setError(errorData.message); // Set the error message from the response
+        
       }
     } catch (error) {
       console.error("Error:", error);
@@ -85,8 +88,8 @@ export default function Login() {
                 Do not have an account? <Link to="/signup">Sign Up</Link>
               </p>
               <a href="#">Forgot Password?</a>
-              <div className="login-error-popup" style={{ display: loginError ? 'block' : 'none' }}>
-                <p>You entered an invalid email or password.</p>
+              <div className="login-error-popup" style={{ display: error ? 'block' : 'none' }}>
+                <p>{error}</p>
               </div>
               <div className="login-success-popup" style={{ display: loginSuccess ? 'block' : 'none' }}>
                 <p>Successful Login.</p>

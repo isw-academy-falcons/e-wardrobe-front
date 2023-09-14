@@ -24,63 +24,63 @@ const data = [
       {
         id: 1,
         category: "Just In",
-        name: "Men's Classic Blue Blazer",
+        name: " Rick flair Plain T-shirt",
         price: "$129.99",
         image: `${men1Image}`
       },
       {
         id: 2,
         category: "Just In",
-        name: "Men's Casual Denim Jeans",
+        name: " Black Issue T-shirt",
         price: "$49.95",
         image: `${men2Image}`
       },
       {
         id: 3,
         category: "Just In",
-        name: "Men's Leather Dress Shoes",
+        name: "Limited Afendi T-shirt",
         price: "$89.99",
         image: `${men3Image}`
       },
       {
         id: 4,
         category: "sold out",
-        name: "Men's Sporty Sneakers",
+        name: "Black buttonless Shirt",
         price: "$59.95",
         image: `${men4Image}`
       },
       {
         id: 5,
         category: "Just In",
-        name: "Men's Formal Necktie",
+        name: "Blue Plain T-shirt ",
         price: "$19.99",
         image: `${men5Image}`
       },
       {
         id: 6,
         category: "sold out",
-        name: "Men's Vintage Watch",
+        name: "White vinegar ",
         price: "$149.50",
         image: `${men6Image}`
       },
       {
         id: 7,
         category: "Limited",
-        name: "Men's Classic Fedora Hat",
+        name: "World striped Shirt",
         price: "$24.50",
         image: `${men7Image}`
       },
       {
         id: 8,
         category: "Limited",
-        name: "Men's Business Suit",
+        name: "Nike varey T-shirt",
         price: "$199.99",
         image: `${men8Image}`
       },
       {
         id: 9,
         category: "sold out",
-        name: "Men's Stylish Backpack",
+        name: "Calvin flair Blue T-shirt ",
         price: "$79.95",
         image: `${men9Image}`
       }
@@ -89,63 +89,63 @@ const data = [
       {
         id: 10,
         category: "Limited",
-        name: "Women's Elegant Red Dress",
+        name: "Chiffon slauch shirt",
         price: "$69.99",
         image: `${women1Image}`
       },
       {
         id: 11,
         category: "Limited",
-        name: "Women's Floral Print Skirt",
+        name: "Vintage Carmen",
         price: "$39.95",
         image: `${women2Image}`
       },
       {
         id: 12,
         category: "Limited",
-        name: "Women's High Heel Shoes",
+        name: "Empire Blouse",
         price: "$79.99",
         image: `${women3Image}`
       },
       {
         id: 13,
         category: "sold out",
-        name: "Women's Fashionable Handbag",
+        name: "Green Office Wear",
         price: "$49.50",
         image: `${women4Image}`
       },
       {
         id: 14,
         category: "Just In",
-        name: "Women's Stylish Sunglasses",
+        name: "Mummys blouse",
         price: "$29.99",
         image: `${women5Image}`
       },
       {
         id: 15,
         category: "Just In",
-        name: "Women's Chic Bracelet",
+        name: "Flower Girl Causal shirt ",
         price: "$19.95",
         image: `${women6Image}`
       },
       {
         id: 16,
         category: "Just In",
-        name: "Women's Boho Hat",
+        name: "Asahd Plain White-world",
         price: "$34.50",
         image: `${women7Image}`
       },
       {
         id: 17,
         category: "Just In",
-        name: "Women's Elegant Evening Gown",
+        name: "Red lily Blouse",
         price: "$149.99",
         image: `${women8Image}`
       },
       {
         id: 18,
         category: "Just In",
-        name: "Women's Casual Tote Bag",
+        name: "Vintage summer Shirt",
         price: "$39.95",
         image: `${women9Image}`
       }
