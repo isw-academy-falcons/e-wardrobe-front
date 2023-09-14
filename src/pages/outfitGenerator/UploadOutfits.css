@@ -90,3 +90,35 @@
 	margin-right: 3px;
 	border-radius: 5px;
 }
+
+.outfit-modal-header {
+  border-bottom: none;
+}
+
+.outfit-modal-footer {
+  border-top: none;
+  justify-content: center;
+}
+
+.outfit-modal-title {
+  color: #000;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 22.718px;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.outfit-modal-description {
+  color: #2C2C2C;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 10.378px;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.outfit-modal-button {
+	color: #FCDE7C;
+	border-radius: 5px;
+}
