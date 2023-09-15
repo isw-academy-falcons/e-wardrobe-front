@@ -27,11 +27,11 @@ const ProfilePage = () => {
 
   return (
     <div className="profile ">
-      <AppNavBar />
+       <AppNavBar />
       <div className="profile-container ">
-        <nav className="bg-[#464646] py-2 flex ">
+        <nav className="bg-[#FCDE7C] py-2 flex ">
           <div className="m-auto">
-            <ul className="list-none text-white font-[Poppins] text-left m-auto space-y-10">
+            <ul className="list-none text-white font-[Poppins] text-left font-medium m-auto space-y-10">
               <li>
                 <a
                   href="#personal-details"
