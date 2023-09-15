@@ -1,0 +1,11 @@
+.user-details{
+    @media (min-width:760px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+    }
+}
+
+label, input{
+    font-size: 12px;
+}

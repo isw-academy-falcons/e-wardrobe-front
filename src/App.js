@@ -13,6 +13,7 @@ import About from "./pages/about/About";
 import Ewardrobe from "./pages/ewardrobe/Ewardrobe";
 import UploadOutfits from "./pages/outfitGenerator/UploadOutfits";
 import Fashion from "./pages/fashion/fashion";
+import ProfilePage from "./pages/profile/ProfilePage";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path='/e-wardrobe' element={<Ewardrobe />} />
         <Route path='/outfit-generator' element={<UploadOutfits />} />
         <Route path='/fashion' element={<Fashion />} />
+        <Route path='/profile' element={<ProfilePage />} />
       </Routes>
     </Router>
 

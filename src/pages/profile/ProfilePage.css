@@ -1,0 +1,61 @@
+.profile{
+    max-height: 100vh;
+}
+ul li:hover, a:hover {
+    cursor: pointer;
+    color: #FCDE7C;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.user-profile .section{
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 2px solid #6B6B6B;
+    display: flex;
+    justify-content: space-between;
+}
+
+.camera-icon-parent{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+    
+}
+
+.profile-container{
+    @media (max-width: 600px) {
+        display: grid;
+        height: 100vh;
+    }
+}
+
+.profile-container{
+    @media (min-width: 600px) {
+        display: grid;
+        grid-template-columns: 2fr 8fr;
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .camera-icon-parent{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+       }
+       
+       .camera-icon{
+         margin-left: auto;
+       }
+
+}
