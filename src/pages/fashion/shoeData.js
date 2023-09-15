@@ -24,63 +24,63 @@ const shoeData = [
       {
         id: 1,
         category: "Just In",
-        name: "Men's Classic Blue Blazer",
+        name: "Lyst Double Brogue",
         price: "$129.99",
         image: `${menShoe1Image}`
       },
       {
         id: 2,
         category: "Just In",
-        name: "Men's Casual Denim Jeans",
+        name: "Smooth Brown Broque",
         price: "$49.95",
         image: `${menShoe2Image}`
       },
       {
         id: 3,
         category: "Just In",
-        name: "Men's Leather Dress Shoes",
+        name: "African Brogue",
         price: "$89.99",
         image: `${menShoe3Image}`
       },
       {
         id: 4,
         category: "sold out",
-        name: "Men's Sporty Sneakers",
+        name: "Handi Asian Brogue",
         price: "$59.95",
         image: `${menShoe4Image}`
       },
       {
         id: 5,
         category: "Just In",
-        name: "Men's Formal Necktie",
+        name: "Brown Leather Brogue",
         price: "$19.99",
         image: `${menShoe5Image}`
       },
       {
         id: 6,
         category: "sold out",
-        name: "Men's Vintage Watch",
+        name: "Wine Brogue Two Laced",
         price: "$149.50",
         image: `${menShoe6Image}`
       },
       {
         id: 7,
         category: "Limited",
-        name: "Men's Classic Fedora Hat",
+        name: "Fedora Double Laced",
         price: "$24.50",
         image: `${menShoe7Image}`
       },
       {
         id: 8,
         category: "Limited",
-        name: "Men's Business Suit",
+        name: "LANX Men Brogue",
         price: "$199.99",
         image: `${menShoe8Image}`
       },
       {
         id: 9,
         category: "sold out",
-        name: "Men's Stylish Backpack",
+        name: "Montag Brogues",
         price: "$79.95",
         image: `${menShoe9Image}`
       }
@@ -89,63 +89,63 @@ const shoeData = [
       {
         id: 10,
         category: "Limited",
-        name: "Women's Elegant Red Dress",
+        name: "Peach feeling",
         price: "$69.99",
         image: `${womenShoe1Image}`
       },
       {
         id: 11,
         category: "Limited",
-        name: "Women's Floral Print Skirt",
+        name: "Work fantasy",
         price: "$39.95",
         image: `${womenShoe2Image}`
       },
       {
         id: 12,
         category: "Limited",
-        name: "Women's High Heel Shoes",
+        name: "Jean Delight",
         price: "$79.99",
         image: `${womenShoe3Image}`
       },
       {
         id: 13,
         category: "sold out",
-        name: "Women's Fashionable Handbag",
+        name: "Classy chick black",
         price: "$49.50",
         image: `${womenShoe4Image}`
       },
       {
         id: 14,
         category: "Just In",
-        name: "Women's Stylish Sunglasses",
+        name: "grey Mom Wedge",
         price: "$29.99",
         image: `${womenShoe5Image}`
       },
       {
         id: 15,
         category: "Just In",
-        name: "Women's Chic Bracelet",
+        name: "red world",
         price: "$19.95",
         image: `${womenShoe6Image}`
       },
       {
         id: 16,
         category: "Just In",
-        name: "Women's Boho Hat",
+        name: "Cindys shoe",
         price: "$34.50",
         image: `${womenShoe7Image}`
       },
       {
         id: 17,
         category: "Just In",
-        name: "Women's Elegant Evening Gown",
+        name: "royalty heels",
         price: "$149.99",
         image: `${womenShoe8Image}`
       },
       {
         id: 18,
         category: "Just In",
-        name: "Women's Casual Tote Bag",
+        name: "Classy chick brown",
         price: "$39.95",
         image: `${womenShoe9Image}`
       }
