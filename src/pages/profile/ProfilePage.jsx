@@ -56,7 +56,7 @@ const ProfilePage = () => {
           </div>
         </nav>
         <main className="user-profile ">
-          <div className="text-center relative mt-2 camera-icon-parent ">
+          <div className="text-center relative mt-4 camera-icon-parent ">
             <img
               src={profileImage}
               alt="profile of the user"
@@ -106,7 +106,7 @@ const ProfilePage = () => {
           {/* ..billing section. */}
           <section id="billing" className="mt-4 px-4">
             <div className="section">
-              <span className="">Billing</span>
+              <span className="">Billing<span className="text-xs ml-2 font-thin">(current plan -premium)</span></span>
               <span onClick={() => dropDownHandle("billing")}>
                 {showDropDown.billing ? (
                   <KeyboardArrowDown />
