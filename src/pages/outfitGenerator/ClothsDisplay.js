@@ -6,7 +6,7 @@ const ClothsDisplay = ({ selectedImages }) => {
   return (
     <>
       {/* Tops Images */}
-      {selectedImages.tops.length > 0 && (
+      {selectedImages.TOPS.length > 0 && (
         <>
           <h3 className="cloth-display">Tops</h3>
           <Row
@@ -15,8 +15,8 @@ const ClothsDisplay = ({ selectedImages }) => {
             className="g-4"
             style={{ marginBottom: "77px" }}
           >
-            {selectedImages.tops.map((image) => (
-              <Col key={`tops-${image.name}`}>
+            {selectedImages.TOPS.map((image) => (
+              <Col key={`TOPS-${image.name}`}>
                 <Card className="cloth-container">
                   <Card.Img
                     variant="bottom"
@@ -30,7 +30,7 @@ const ClothsDisplay = ({ selectedImages }) => {
       )}
 
       {/* Bottoms Images */}
-      {selectedImages.bottoms.length > 0 && (
+      {selectedImages.BOTTOMS.length > 0 && (
         <>
           <h3 className="cloth-display">Bottoms</h3>
           <Row
@@ -39,8 +39,8 @@ const ClothsDisplay = ({ selectedImages }) => {
             className="g-4"
             style={{ marginBottom: "77px" }}
           >
-            {selectedImages.bottoms.map((image) => (
-              <Col key={`bottoms-${image.name}`}>
+            {selectedImages.BOTTOMS.map((image) => (
+              <Col key={`BOTTOMS-${image.name}`}>
                 <Card className="cloth-container">
                   <Card.Img
                     variant="bottom"
@@ -54,7 +54,7 @@ const ClothsDisplay = ({ selectedImages }) => {
       )}
 
       {/* Dress Images */}
-      {selectedImages.dress.length > 0 && (
+      {selectedImages.DRESS.length > 0 && (
         <>
           <h3 className="cloth-display">Dresses</h3>
           <Row
@@ -63,8 +63,8 @@ const ClothsDisplay = ({ selectedImages }) => {
             className="g-4"
             style={{ marginBottom: "77px" }}
           >
-            {selectedImages.dress.map((image) => (
-              <Col key={`dress-${image.name}`}>
+            {selectedImages.DRESS.map((image) => (
+              <Col key={`DRESS-${image.name}`}>
                 <Card className="cloth-container">
                   <Card.Img
                     variant="bottom"

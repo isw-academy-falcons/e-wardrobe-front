@@ -21,19 +21,27 @@ const UploadOutfits = () => {
   const [showModal, setShowModal] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedImages, setSelectedImages] = useState({dress: [], tops: [], bottoms: []});
+  const [selectedImages, setSelectedImages] = useState({DRESS: [], TOPS: [], BOTTOMS: []});
+
+  useEffect(() => {
+    const whenLatOrLonIsNull = async () => {
+      try {
+        const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}, ${stateCode}, ${countryCode}&limit=5&appid=${apiKey}`)
+        setLatitude(response.data[0].lat);
+        setLongitude(response.data[0].lon);
+      }
+      catch(error) {
+        console.error('Error fetching location:', error);
+      };
+    };
+
+    // When latitude or longitude is empty
+    if (!latitude || !longitude) {
+      whenLatOrLonIsNull();
+    }
+  }, [apiKey, latitude, longitude])
 
   // Function to execute when user doesn't grant location access
-  const whenLatOrLonIsNull = async () => {
-    try {
-      const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}, ${stateCode}, ${countryCode}&limit=5&appid=${apiKey}`)
-      setLatitude(response.data[0].lat);
-      setLongitude(response.data[0].lon);
-    }
-    catch(error) {
-      console.error('Error fetching location:', error);
-    };
-  };
 
   // Function to get the current location
   useEffect(() => {
@@ -49,22 +57,24 @@ const UploadOutfits = () => {
     );
   }, []);
 
-  const fetchWeather = async () => {
-    // Make an API request to get weather data
-    try {
-      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`)
-      setWeather(response.data);
-    }
-    catch(error) {
-      console.error('Error fetching weather data:', error);
-    }
-  }
-  fetchWeather();
+  useEffect(() => {
+    console.log("Category", selectedCategory);
+    console.log("File(s)", selectedImages);    
+  }, [selectedCategory, selectedImages])
 
-  // When latitude or longitude is empty
-  if (!latitude || !longitude) {
-    whenLatOrLonIsNull();
-  }
+  useEffect(() => {
+    const fetchWeather = async () => {
+      // Make an API request to get weather data
+      try {
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`)
+        setWeather(response.data);
+      }
+      catch(error) {
+        console.error('Error fetching weather data:', error);
+      }
+    }
+    fetchWeather();
+  }, [apiKey, latitude, longitude])
 
   // If weather response is empty
   if (!weather) {
@@ -86,26 +96,27 @@ const UploadOutfits = () => {
     e.preventDefault();
     const files = e.target.files;
     setSelectedImages({...selectedImages, [category]: [...selectedImages[category], ...files]});
+    console.log("Cloth Type", category);
     handleShowModal();
     setIsUploaded(true);
   };
-
+  
   // Function to handle generate match button click
   const handleClick = e => {
     e.preventDefault();
     setGenerate(true);
   };
-
+  
   // Function to handle the category selection
   const handleCategorySelection = (category) => {
     setSelectedCategory(category);
   };
-
+  
   const handleReset = e => {
     e.preventDefault();
-    setSelectedImages({dress: [], tops: [], bottoms: []});
+    setSelectedImages({DRESS: [], TOPS: [], BOTTOMS: []});
   };
-
+  
   return (
     <>
       {/* Navbar */}
