@@ -17,6 +17,7 @@ import Verification from "./verification";
 
 
 
+
 function App() {
   return (
     <Router>
@@ -33,11 +34,8 @@ function App() {
         <Route path='/e-wardrobe' element={<Ewardrobe />} />
         <Route path='/outfit-generator' element={<UploadOutfits />} />
         <Route path='/fashion' element={<Fashion />} />
-
         <Route path='/profile' element={<ProfilePage />} />
-
         <Route path='/verify' element={<Verification />} />
-
       </Routes>
     </Router>
 

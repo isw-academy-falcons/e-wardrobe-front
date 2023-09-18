@@ -29,7 +29,7 @@ const ProfilePage = () => {
     <div className="profile ">
        <AppNavBar />
       <div className="profile-container ">
-        <nav className="bg-[#FCDE7C] py-2 flex ">
+        <nav className="py-2 flex bg-[#FCDE7C] custom-shadow" id="nav">
           <div className="m-auto">
             <ul className="list-none text-white font-[Poppins] text-left font-medium m-auto space-y-10">
               <li>
