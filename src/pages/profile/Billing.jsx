@@ -4,13 +4,13 @@ import './Billing.css'
 
 const Billing = () => {
   return (
-    <div className='billing '>
-         <div className='flex justify-between my-2'>
-            <span className="">Manage Payment Info</span>
+    <div className='billing mb-4'>
+         <div className='border-bottom flex justify-between my-2'>
+            <span className="text-[12px]">Manage Payment Info</span>
             <span className='cursor-pointer'><KeyboardArrowRight /></span>
         </div>
-         <div className='flex justify-between my-2'>
-            <span className="">Payment History</span>
+         <div className='border-bottom flex justify-between my-2'>
+            <span className="text-[12px]">Payment History</span>
             <span className='cursor-pointer'><KeyboardArrowRight /></span>
         </div>
     </div>
