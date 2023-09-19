@@ -9,7 +9,7 @@ import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import Security from "./Security";
 import Billing from "./Billing";
 import { useNavigate } from "react-router-dom";
-
+import LogoutIcon from '@mui/icons-material/Logout';
 const ProfilePage = () => {
   const [showDropDown, setShowDropDown] = useState({
     personalDetails: false,
@@ -29,7 +29,7 @@ const ProfilePage = () => {
     <div className="profile ">
        <AppNavBar />
       <div className="profile-container ">
-        <nav className="py-2 flex bg-[#FCDE7C] custom-shadow" id="nav">
+        <nav className="py-2 flex bg-[#FCDE7C] custom-shadow" id="profile-nav">
           <div className="m-auto">
             <ul className="list-none text-white font-[Poppins] text-left font-medium m-auto space-y-10">
               <li>
@@ -51,7 +51,7 @@ const ProfilePage = () => {
                 </a>
               </li>
               <li onClick={() => navigate("/e-wardrobe")}>Saved collections</li>
-              <li onClick={() => navigate("/login")}>Logout</li>
+              <li onClick={() => navigate("/login")}>Logout <LogoutIcon/>  </li>
             </ul>
           </div>
         </nav>
