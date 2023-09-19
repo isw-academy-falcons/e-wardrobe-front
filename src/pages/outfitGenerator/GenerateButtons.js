@@ -4,8 +4,8 @@ import Container from "react-bootstrap/Container";
 const GenerateButtons = ({ selectedImages, handleClick }) => {
   return (
     <Container className="outfit-buttons">
-      {selectedImages.TOPS.length !== 0 &&
-      selectedImages.BOTTOMS.length !== 0 ? (
+      {selectedImages.TOP.length !== 0 &&
+      selectedImages.BOTTOM.length !== 0 ? (
         <Button
           variant="dark"
           className="outfit-button"
@@ -39,8 +39,8 @@ const GenerateButtons = ({ selectedImages, handleClick }) => {
           Generate Best Dress
         </Button>
       )}
-      {selectedImages.TOPS.length !== 0 &&
-      selectedImages.BOTTOMS.length !== 0 ? (
+      {selectedImages.TOP.length !== 0 &&
+      selectedImages.BOTTOM.length !== 0 ? (
         <Button variant="light" className="outfit-button" onClick={e => handleClick(e)} style={{ borderColor: "black" }}>
           Generate Best To Least
         </Button>

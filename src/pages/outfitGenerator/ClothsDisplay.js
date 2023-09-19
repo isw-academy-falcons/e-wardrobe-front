@@ -6,7 +6,7 @@ const ClothsDisplay = ({ selectedImages }) => {
   return (
     <>
       {/* Tops Images */}
-      {selectedImages.TOPS.length > 0 && (
+      {selectedImages.TOP.length > 0 && (
         <>
           <h3 className="cloth-display">Tops</h3>
           <Row
@@ -15,8 +15,8 @@ const ClothsDisplay = ({ selectedImages }) => {
             className="g-4"
             style={{ marginBottom: "77px" }}
           >
-            {selectedImages.TOPS.map((image) => (
-              <Col key={`TOPS-${image.name}`}>
+            {selectedImages.TOP.map((image) => (
+              <Col key={`TOP-${image.name}`}>
                 <Card className="cloth-container">
                   <Card.Img
                     variant="bottom"
@@ -30,7 +30,7 @@ const ClothsDisplay = ({ selectedImages }) => {
       )}
 
       {/* Bottoms Images */}
-      {selectedImages.BOTTOMS.length > 0 && (
+      {selectedImages.BOTTOM.length > 0 && (
         <>
           <h3 className="cloth-display">Bottoms</h3>
           <Row
@@ -39,8 +39,8 @@ const ClothsDisplay = ({ selectedImages }) => {
             className="g-4"
             style={{ marginBottom: "77px" }}
           >
-            {selectedImages.BOTTOMS.map((image) => (
-              <Col key={`BOTTOMS-${image.name}`}>
+            {selectedImages.BOTTOM.map((image) => (
+              <Col key={`BOTTOM-${image.name}`}>
                 <Card className="cloth-container">
                   <Card.Img
                     variant="bottom"

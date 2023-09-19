@@ -13,17 +13,34 @@ const UploadOutfits = () => {
 	const countryCode = 'NG';
 	const stateCode = 'Lagos State';
   const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
-
+  
 	const [weather, setWeather] = useState(null);
+  const [clothType, setClothType] = useState("");
 	const [latitude, setLatitude] = useState(null);
   const [generate, setGenerate] = useState(false);
 	const [longitude, setLongitude] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const accessToken = localStorage.getItem("token");
   const [isUploaded, setIsUploaded] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedImages, setSelectedImages] = useState({DRESS: [], TOPS: [], BOTTOMS: []});
+  const [selectedImages, setSelectedImages] = useState({DRESS: [], TOP: [], BOTTOM: []});
 
+  // Function to get the current location
   useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setLatitude(latitude);
+        setLongitude(longitude);
+      },
+      (error) => {
+        console.error('Error getting location:', error);
+      }
+    );
+  }, []);
+  
+  useEffect(() => {
+    // Function to execute when user doesn't grant location access
     const whenLatOrLonIsNull = async () => {
       try {
         const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}, ${stateCode}, ${countryCode}&limit=5&appid=${apiKey}`)
@@ -40,28 +57,7 @@ const UploadOutfits = () => {
       whenLatOrLonIsNull();
     }
   }, [apiKey, latitude, longitude])
-
-  // Function to execute when user doesn't grant location access
-
-  // Function to get the current location
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        setLatitude(latitude);
-        setLongitude(longitude);
-      },
-      (error) => {
-        console.error('Error getting location:', error);
-      }
-    );
-  }, []);
-
-  useEffect(() => {
-    console.log("Category", selectedCategory);
-    console.log("File(s)", selectedImages);    
-  }, [selectedCategory, selectedImages])
-
+  
   useEffect(() => {
     const fetchWeather = async () => {
       // Make an API request to get weather data
@@ -76,6 +72,8 @@ const UploadOutfits = () => {
     fetchWeather();
   }, [apiKey, latitude, longitude])
 
+  const clothes = {file: selectedImages, category: selectedCategory, clothType};
+
   // If weather response is empty
   if (!weather) {
     return <Loader isLoading={true} />;
@@ -87,7 +85,24 @@ const UploadOutfits = () => {
   };
 
   // Function to hide the modal
-  const handleCloseModal = () => {
+  const handleCloseModal = async () => {
+    try {
+      if (accessToken){
+        const response = await fetch("https://skyfitzz.up.railway.app/api/v1/cloth/upload", {
+          method: "POST",
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          body: JSON.stringify(clothes),
+        });
+        console.log("Category", selectedCategory);
+        console.log("File(s)", selectedImages);   
+        console.log("Cloth Type", clothType); 
+        console.log("Response: ", response.status);
+      }
+    } catch (error) {
+      console.log("You need to be logged in to perform this action.");
+    }
     setShowModal(false);
   };
 
@@ -96,7 +111,7 @@ const UploadOutfits = () => {
     e.preventDefault();
     const files = e.target.files;
     setSelectedImages({...selectedImages, [category]: [...selectedImages[category], ...files]});
-    console.log("Cloth Type", category);
+    setClothType(category);
     handleShowModal();
     setIsUploaded(true);
   };
@@ -114,7 +129,7 @@ const UploadOutfits = () => {
   
   const handleReset = e => {
     e.preventDefault();
-    setSelectedImages({DRESS: [], TOPS: [], BOTTOMS: []});
+    setSelectedImages({DRESS: [], TOP: [], BOTTOM: []});
   };
   
   return (
