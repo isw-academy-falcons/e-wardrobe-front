@@ -38,6 +38,10 @@
   margin-right: 3px;
 }
 
+.hero-top {
+  margin-top: 86.5px;
+}
+
 .generate-outfit-text {
 	font-size: 37px;
   font-weight: 700;
@@ -49,7 +53,10 @@
 
 .button-width {
   width: 350px;
+  padding: 12px;
+  font-size: 16px;
   color: #FCDE7C;
+  margin-top: 66px;
   border-radius: 5px;
   text-transform: uppercase;
 }
@@ -60,7 +67,47 @@
   justify-content: center;
 }
 
+.trending-outfit-text {
+  font-size: 32px;
+	color: #1C1C1C;
+  font-weight: 700;
+  font-style: normal;
+  margin-top: 44.5px;
+  margin-bottom: 32px;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.trending-outfit-content {
+  font-size: 10px;
+  color: #4C4C4C;
+  font-weight: 300;
+  line-height: 130%;
+  font-style: normal;
+  margin-bottom: 32.71px;
+  letter-spacing: 0.28px;
+}
+
+.trending-outfit-images {
+  display: flex;
+  height: 400px;
+  margin-right: 10px;
+  align-items: center;
+  background-size: cover;
+  justify-content: space-evenly;
+}
+
 .e-wardrobe-background {
+  height: 405.66px;
+  margin-top: 232px;
+  background: #663C1D;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.aside-background {
+  margin-top: 232px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -73,6 +120,7 @@
   font-weight: 700;
   font-style: normal;
   margin-top: 44.5px;
+  margin-bottom: 32px;
   line-height: normal;
   text-transform: uppercase;
 }
@@ -82,6 +130,7 @@
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
+  margin-bottom: 46px;
   text-transform: uppercase;
 }
 
@@ -91,6 +140,7 @@
   font-size: 14px;
   color: #FCDE7C;
   border-radius: 5px;
+  margin-bottom: 150px;
   text-transform: uppercase;
 }
 
@@ -118,22 +168,40 @@
 }
 
 .styles-text {
-  font-size: 20px;
+  font-size: 15px;
   margin-top: 39px;
   color: #1C1C1C;
-  font-weight: 500;
+  font-weight: 200;
+  line-height: 25px;
   font-style: normal;
   text-transform: uppercase;
 }
 
 .unlock-styles {
+  display:flex;
   font-size: 24px;
   color: #1C1C1C;
   font-weight: 500;
   margin-top: 133px;
   font-style: normal;
+	align-items: center;
   line-height: normal;
   text-transform: uppercase;
+  justify-content: flex-start;
+}
+
+.unlock-styles:hover {
+  cursor: pointer;
+  color: #02C5BB;
+}
+
+.arrow-right {
+  margin-left: 28px;
+}
+
+.arrow-right:hover {
+  cursor: pointer;
+  color: #02C5BB;
 }
 
 .testimonials-background {
@@ -142,18 +210,39 @@
 }
 
 .testimonials-image {
+  width: 50%;
   margin-top: 60px;
   margin-bottom: 59px;
 }
 
 .footer-background {
   background: #1C1C1C;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 44.35px;
 }
 
 .footer-text {
-  font-size: 5px;
+  font-size: 10px;
   font-weight: 400;
-  line-height: 60px;
+  line-height: 45px;
   font-style: normal;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 550px) {
+  .e-wardrobe-header {
+    font-size: 16px;
+  }
+
+  .e-wardrobe-text {
+    font-size: 8px;
+  }
+
+  .button-width-e-wardrobe {
+    width: 110px;
+    height: 31px;
+    font-size: 7px;
+  }
 }
