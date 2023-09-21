@@ -1,0 +1,72 @@
+.profile{
+    max-height: 100vh;
+}
+ul li:hover, a:hover {
+    cursor: pointer;
+ 
+}
+
+a,li{
+    text-decoration: none;
+    color: #000;   
+}
+
+
+.profile-container  #profile-nav{
+    background-color: #FCDE7C;
+    box-shadow: 0px 19px 8px 0px rgba(0, 0, 0, 0.43);
+    z-index: 999;
+}
+
+.user-profile{
+    background-color: #FCF8F8;
+   
+}
+
+.user-profile .section{
+    font-family: Poppins;
+    font-weight: bold;
+    border-bottom: 1px solid #6B6B6B;
+    display: flex;
+    justify-content: space-between;
+}
+
+.camera-icon-parent{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    
+}
+
+.profile-container{
+    @media (max-width: 600px) {
+        display: grid;
+        height: 100vh;
+    }
+}
+
+.profile-container{
+    @media (min-width: 600px) {
+        display: grid;
+        grid-template-columns: 2fr 8fr;
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .camera-icon-parent{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+       }
+       
+       .camera-icon{
+         margin-left: auto;
+       }
+
+}

@@ -12,32 +12,46 @@ export default function Signup() {
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(null); // State for error message
   const navigate = useNavigate();
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform signup logic here using the retrieved form data
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match.");
+    const user = {
+      firstName,
+      lastName,
+      email,
+      gender,
+      password,
+      confirmPassword,
+    };
+
+    try {
+      const response = await fetch("https://skyfitzz.up.railway.app/api/v1/user/sign-up", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        // Handle successful signup
+        const responseData = await response.json();
+        console.log("Signup successful:", responseData);
+        // Redirect the user to the login page or show a success message
+        navigate("/redirect");
+      } else {
+        // Handle signup errors, such as validation errors or duplicate email
+        const errorData = await response.json();
+        console.error("Signup error:", errorData);
+        // Set the error message in the state to display to the user
+        setError(errorData.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
-
-    
-    // try {
-    //   // Send a POST request to the backend signup endpoint
-    //   const response = await axios.post("http://backend-url/api/signup", user);
-
-    //   // Handle successful signup
-    //   console.log("Signup successful:", response.data);
-    //   // Redirect the user to the login page or show a success message
-    //   navigate("/redirect")
-    // } catch (error) {
-    //   // Handle signup errors, such as validation errors or duplicate email
-    //   console.error("Signup error:", error.response.data);
-    //   // Display error messages to the user
-    // }
-
-    navigate("/redirect")
 
     setFirstName("");
     setLastName("");
@@ -47,8 +61,10 @@ export default function Signup() {
     setConfirmPassword("");
   };
 
+
   return (
     <div className="SignUp">
+       
       <video
         src={loginVideo}
         type="video/mp4"
@@ -134,7 +150,9 @@ export default function Signup() {
 
           <div className="Signup-illustration">
           <p className="signup-header2">SKYFITZZ</p>
-            
+          <div className="login-error-popup" style={{ display: error ? 'block' : 'none' }}>
+        <p>{error}</p>
+      </div>
           </div>
         </div>
       </div>

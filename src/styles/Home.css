@@ -1,23 +1,23 @@
-@tailwind base;
+/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
 
-  .homescreen{
+  .home-screen{
     background-color: #FCDE7C;
   }
 
-  .dark {
+  .dark-home {
     background: #1C1C1C;
     flex: 1;
     padding: 2rem; 
   }
   
-  .yellow {
+  .yellow-home {
     color: #FCDE7C;
   }
   
 
-  .text {
+  .home-text {
     color: #FFF;
     text-transform: uppercase;
   }
@@ -28,7 +28,7 @@
     
   }
   
-  .buttons {
+  .home-buttons {
     margin-top: 2rem;
   }
   
@@ -39,15 +39,15 @@
     border-radius: 8px;
     font-weight: bolder;
   }
-  .y-btn {
+  .y-btn-home {
     background: #FCDE7C;
     
   }
   
-  .t-btn {
+  .t-btn-home {
     background: transparent;
     border: 1px solid #FCDE7C;
     color: #FCDE7C;
   }
-  .t-btn:hover{background-color:#FCDE7C; color: #1C1C1C;}
+  .t-btn-home:hover{background-color:#FCDE7C; color: #1C1C1C;}
   
