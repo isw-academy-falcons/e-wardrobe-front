@@ -5,8 +5,13 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 import "./AppNavBar.css";
 import ProfileAvatar from "../assets/images/landing/profile.svg";
+import { useEffect, useState } from "react";
 
 const AppNavBar = () => {
+  const[name, setName] = useState(null);
+  useEffect(() => {
+    setName(localStorage.getItem("name"))
+  },[name])
 	return (
 		<Navbar collapseOnSelect expand="lg" className="app-navbar">
       <Container>
@@ -44,7 +49,7 @@ const AppNavBar = () => {
           <Nav className="d-flex">
             <Nav.Link href="/landing-page" className="profile-name">
               <img src={ProfileAvatar} alt="User profile avatar" className="right-margin" height="20px" />
-              Damilola
+              {name?.split(" ")[0]||"Guest"}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
