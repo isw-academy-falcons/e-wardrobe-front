@@ -1,51 +1,58 @@
-import React from 'react';
-import homescreen from "./assets/images/image7.svg";
+import React, { useState, useEffect } from 'react'; // Import useEffect
+import homeIllustration from "./assets/images/homeIllustration.svg";
 import './styles/Home.css';
 import Logo from "./components/Logo";
 import { useNavigate } from 'react-router-dom';
+import LogoLoader from "./components/LogoLoader";
 
 const Home = () => {
   const navigate = useNavigate();
 
-// Creating the navigation handlers
-  const loginHandler =()=>navigate('/login')
-  const signUpHandler = ()=> navigate('/signup')
+  // Create a state variable to track whether the data or page is ready
+  const [isReady, setIsReady] = useState(false);
+
+  // Simulate a delay to mimic data loading
+  useEffect(() => {
+    // Simulate loading for 2 seconds (adjust as needed)
+    const delay = setTimeout(() => {
+      setIsReady(true); // Set isReady to true when the data is ready
+    }, 4000);
+
+    // Clean up the timeout to avoid memory leaks
+    return () => clearTimeout(delay);
+  }, []);
+
+  // Creating the navigation handlers
+  const loginHandler = () => navigate('/login');
+  const signUpHandler = () => navigate('/signup');
 
   return (
-    <div className="min-h-screen flex justify-center items-center p-2 home-screen">
-      <div className=" md:flex w-[90%] md:h-2/5">
-        {/* Image section */}
-        <div className="lg:w-2/5">
-          <img
-            src={homescreen}
-            alt="homescreen"
-            className="w-full h-auto lg:rounded-l-2xl"
-          />
-        </div>
-
-        {/* Details section */}
-        <div className="lg:w-3/5 sm:text-sm dark-home text-center flex lg:rounded-r-2xl">
-          <div className="m-auto">
-        
-          <Logo className="yellow-home"/>
-          <p className="home-text my-2 lg:my-10 lg:text-xl ">
-            Experience Fashion Transformation with Our Fashion Generator App!
-          </p>
-          <section className="sub-text">
-            <p>Explore a Universe of Stylish Possibilities</p>
-            <p>Start Your Journey Now to Redefine Fashion Excellence</p>
-          </section>
-          <section className="buttons mt-4">
-            <p className="text-white my-4 lg:text-xl sm:text-sm">Ready to get Started ?</p>
-            <div>
-              <button className="y-btn-home homescreen-btn" onClick={loginHandler}>LOGIN</button>
-              <button className="t-btn-home homescreen-btn" onClick={signUpHandler}>SIGN UP</button>
-            </div>
-          </section>
-      
+    <div className='home-container'>
+      {!isReady ? ( // Conditionally render LogoLoader while data is not ready
+        <LogoLoader />
+      ) : (
+        <>
+          <div className='homeSubContainer1'>
+            <img className="home-illustration" src={homeIllustration} alt="SVG" />
           </div>
-        </div>
-      </div>
+          <div className='homeSubContainer2'>
+            <Logo />
+            <div>
+              <h1 className="home-header">
+                Experience Fashion Transformation with Our Fashion Generator App!
+              </h1>
+              <p className="homeSubHeader">
+                Explore a Universe of Stylish Possibilities. Start Your Journey Now to Redefine Fashion Excellence!
+              </p>
+            </div>
+            <p className="home-paragraph">Ready to get Started?</p>
+            <div>
+              <button className="homescreen-btn-primary" onClick={loginHandler}>LOGIN</button>
+              <button className="homescreen-btn-secondary" onClick={signUpHandler}>SIGN UP</button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

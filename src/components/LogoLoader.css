@@ -1,0 +1,28 @@
+/* LogoLoader.css */
+.LogoLoader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed for your layout */
+   
+  }
+  
+  /* Animation styles */
+  .rotate {
+    animation: color-change 2s linear infinite;
+    font-size: 60px;
+  }
+  
+  @keyframes color-change {
+    0% {
+      color: white;
+    }
+    50% {
+      color: #FCDE7C;
+    }
+    100% {
+      color: rgb(160, 9, 165);
+    }
+  }
+
+  
