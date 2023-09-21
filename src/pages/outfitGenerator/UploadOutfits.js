@@ -72,8 +72,6 @@ const UploadOutfits = () => {
     fetchWeather();
   }, [apiKey, latitude, longitude])
 
-  const clothes = {file: selectedImages, category: selectedCategory, clothType};
-
   // If weather response is empty
   if (!weather) {
     return <Loader isLoading={true} />;
@@ -82,30 +80,8 @@ const UploadOutfits = () => {
   // Function to show the modal
   const handleShowModal = () => {
     setShowModal(true);
-  };
-
-  // Function to hide the modal
-  const handleCloseModal = async () => {
-    try {
-      if (accessToken){
-        const response = await fetch("https://skyfitzz.up.railway.app/api/v1/cloth/upload", {
-          method: "POST",
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          body: JSON.stringify(clothes),
-        });
-        console.log("Category", selectedCategory);
-        console.log("File(s)", selectedImages);   
-        console.log("Cloth Type", clothType); 
-        console.log("Response: ", response.status);
-      }
-    } catch (error) {
-      console.log("You need to be logged in to perform this action.");
-    }
-    setShowModal(false);
-  };
-
+  };  
+  
   // Function to handle image upload
   const handleImageChange = (e, category) => {
     e.preventDefault();
@@ -114,6 +90,44 @@ const UploadOutfits = () => {
     setClothType(category);
     handleShowModal();
     setIsUploaded(true);
+  };
+  
+  // Function to hide the modal
+  const handleCloseModal = async () => {
+    try {
+      if (accessToken !== ""){        
+        const formData = new FormData();
+
+        // Append each selected image to the FormData object
+        selectedImages[clothType].forEach(image => {
+          formData.append("file", image);
+        });
+
+        // Append other data to the FormData object
+        formData.append("category", selectedCategory);
+        formData.append("clothType", clothType);
+        
+        const response = await fetch("https://skyfitzz.up.railway.app/api/v1/cloth/upload/", {
+          method: "POST",
+          headers: {"Authorization": `Bearer ${accessToken}`},
+          body: formData
+        });
+        
+        if (response.ok) {
+          console.log(response.text());
+        }
+        else {
+          const error = await response.json();
+          console.log(error.message);
+        }
+      }
+      else{
+        console.log("You need to log in to perform this action");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setShowModal(false);
   };
   
   // Function to handle generate match button click

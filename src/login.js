@@ -28,9 +28,9 @@ export default function Login() {
         body: JSON.stringify(user),
       });
 
-      const responseData = await response.json();
       
       if (response.ok) {
+        const responseData = await response.json();
         // Save the token in local storage
         localStorage.setItem("token", responseData.accessToken);
         // Login successful, you can redirect the user to the dashboard or a protected route
