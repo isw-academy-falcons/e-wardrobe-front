@@ -47,7 +47,7 @@ const AppNavBar = () => {
             <Nav.Link href="/about">About</Nav.Link>
           </Nav>
           <Nav className="d-flex">
-            <Nav.Link href="/landing-page" className="profile-name">
+            <Nav.Link href="/profile" className="profile-name">
               <img src={ProfileAvatar} alt="User profile avatar" className="right-margin" height="20px" />
               {name?.split(" ")[0]||"Guest"}
             </Nav.Link>
