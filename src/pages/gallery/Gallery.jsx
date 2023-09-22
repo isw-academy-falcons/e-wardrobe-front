@@ -6,6 +6,7 @@ import Logo from '../../components/Logo';
 import { BsFilterLeft, BsSearch } from 'react-icons/bs';
 import { BiSolidDownload } from 'react-icons/bi';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { BASE_URL } from '../../assets/baseUrl';
 
 const Gallery = () => {
     const [images, setImages] = useState([]);
@@ -18,6 +19,14 @@ const Gallery = () => {
         fetchImages();
     }, [page, searchTerm]); // Fetch images when the page or search term changes
 
+
+    const saveCollection = async (imgUrl) => {
+        const res = await fetch(`${BASE_URL}/saveUserChoice?userId=${localStorage.getItem("userId")}&pictureUrl=${imgUrl}`,{
+            method: 'post',
+            headers: {"Content-Type": "application/json"}
+        })
+        console.log(res);
+    }
     const fetchImages = () => {
         fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${searchTerm}&per_page=7&client_id=${apiKey}`)
             .then(response => {
@@ -69,7 +78,7 @@ const Gallery = () => {
                             <div className="hover-effect-container">
                                 <div className='hover-add-collection'>
                                     <div className="hover-position-add-collection">
-                                        <button>Add to collection</button>
+                                        <button onClick={() => saveCollection(image.urls.regular)}>Add to collection</button>
                                         <span> <AiOutlinePlus /> </span>
                                     </div>
                                 </div>

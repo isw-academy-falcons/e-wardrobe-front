@@ -2,6 +2,7 @@ import MySvg from "./assets/images/illustration1.svg";
 import loginVideo from "./assets/images/loginVideo.mp4";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { BASE_URL } from "./assets/baseUrl";
 import "./styles/Login.css";
 
 export default function Login() {
@@ -20,15 +21,21 @@ export default function Login() {
     };
 
    try {
-      const response = await fetch("https://skyfitzz.up.railway.app/api/v1/auth/login", {
+      const response = await fetch(`${BASE_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(user),
       });
-
-      
+      const data = await response.json();
+      console.log(data)
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("name", data.fullName);
+      localStorage.setItem("plan",data.plan)
+      localStorage.setItem("gender",data.gender)
+      localStorage.setItem("email",data.email)
+      console.log(data);
       if (response.ok) {
         const responseData = await response.json();
         // Save the token in local storage
