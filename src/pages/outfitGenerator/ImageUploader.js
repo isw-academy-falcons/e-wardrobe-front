@@ -36,7 +36,7 @@ const ImageUploader = ({ handleImageChange, showModal, handleCategorySelection, 
               type="file"
               accept="image/*"
               id="dress-input"
-              onChange={(e) => handleImageChange(e, "dress")}
+              onChange={(e) => handleImageChange(e, "DRESS")}
             />
           </Dropdown.Item>
           <Dropdown.Divider />
@@ -51,7 +51,7 @@ const ImageUploader = ({ handleImageChange, showModal, handleCategorySelection, 
               type="file"
               id="top-input"
               accept="image/*"
-              onChange={(e) => handleImageChange(e, "tops")}
+              onChange={(e) => handleImageChange(e, "TOP")}
             />
           </Dropdown.Item>
           <Dropdown.Divider />
@@ -66,7 +66,7 @@ const ImageUploader = ({ handleImageChange, showModal, handleCategorySelection, 
               type="file"
               accept="image/*"
               id="bottoms-input"
-              onChange={(e) => handleImageChange(e, "bottoms")}
+              onChange={(e) => handleImageChange(e, "BOTTOM")}
             />
           </Dropdown.Item>
         </Dropdown.Menu>
@@ -82,7 +82,7 @@ const ImageUploader = ({ handleImageChange, showModal, handleCategorySelection, 
           <p className="text-center outfit-modal-title">Select Categories</p>          
           <p className="text-center outfit-modal-description">Under which categories do your clothes fall under</p>
           <Form>
-            {['Native', 'Freestyle', 'English'].map((type) => (
+            {['NATIVE', 'FREE_STYLE', 'ENGLISH'].map((type) => (
               <div key={`default-${type}`} className="mb-3" style={{ marginLeft: "31.78px" }}>
                 <Form.Check
                   id={`default-${type}`}
