@@ -29,8 +29,12 @@ export default function Login() {
         body: JSON.stringify(user),
       });
       const data = await response.json();
+      console.log(data)
       localStorage.setItem("userId", data.userId);
       localStorage.setItem("name", data.fullName);
+      localStorage.setItem("plan",data.plan)
+      localStorage.setItem("gender",data.gender)
+      localStorage.setItem("email",data.email)
       console.log(data);
       if (response.ok) {
         // Login successful, you can redirect the user to the dashboard or a protected route
