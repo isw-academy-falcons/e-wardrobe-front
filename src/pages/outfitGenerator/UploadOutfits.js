@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import "./UploadOutfits.css";
+import Login from "../../login";
 import Loader from "../../components/Loader";
 import Footer from "../../components/Footer";
 import OutfitGenerator from "./OutfitGenerator";
@@ -150,14 +151,21 @@ const UploadOutfits = () => {
   
   return (
     <>
-      {/* Navbar */}
-      <AppNavBar />
-      {/* Generate Outfit Header */}
-      <OutfitGeneratorHeader weather={weather} handleImageChange={handleImageChange} showModal={showModal} handleCloseModal={handleCloseModal} handleCategorySelection={handleCategorySelection} />
-      {/* Oufit Generator */}
-      <OutfitGenerator generate={generate} isUploaded={isUploaded} selectedImages={selectedImages} handleReset={handleReset} handleClick={handleClick} />
-      {/* Footer */}
-      <Footer />
+      {accessToken ?
+        <>
+          {/* Navbar */}
+          <AppNavBar />
+          {/* Generate Outfit Header */}
+          <OutfitGeneratorHeader weather={weather} handleImageChange={handleImageChange} showModal={showModal} handleCloseModal={handleCloseModal} handleCategorySelection={handleCategorySelection} />
+          {/* Oufit Generator */}
+          <OutfitGenerator generate={generate} isUploaded={isUploaded} selectedImages={selectedImages} handleReset={handleReset} handleClick={handleClick} />
+          {/* Footer */}
+          <Footer />
+        </> :
+        <>
+          <Login />
+        </>
+      }
     </>
   );
 };

@@ -22,7 +22,12 @@ const Landing = () => {
 
   // Handle button click function for outfit generation
   const handleGenerateOutfitClick = () => {
-    navigate("/outfit-generator");
+    if (accessToken) {
+      navigate("/outfit-generator");
+    }
+    else {
+      console.log("You need to login to perform this operation");
+    }
   };
 
 	return (
