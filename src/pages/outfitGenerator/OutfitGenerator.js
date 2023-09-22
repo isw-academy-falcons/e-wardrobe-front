@@ -2,7 +2,6 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
 import ClothsDisplay from "./ClothsDisplay";
-import Loader from "../../components/Loader";
 import GenerateButtons from "./GenerateButtons";
 import TopMatch from "../../assets/images/outfitGenerator/top.svg";
 import BottomMatch from "../../assets/images/outfitGenerator/bottom.svg";
@@ -29,10 +28,6 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
             <Container>
               {/* Cloths Display */}
               <ClothsDisplay selectedImages={selectedImages} />
-
-              {!isUploaded && selectedImages.dress.length > 0 && (
-                <Loader isLoading={true} /> 
-              )}
 
               {/* Reset button */}
               <section
