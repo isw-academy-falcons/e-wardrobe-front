@@ -98,38 +98,25 @@ const UploadOutfits = () => {
       if (accessToken !== ""){        
         const formData = new FormData();
 
-        const convertImageToBlob = (image) => {
-          const canvas = document.createElement('canvas');
-          canvas.width = image.width;
-          canvas.height = image.height;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(image, 0, 0);
-          const blob = canvas.toBlob();
-          return blob;
-        };
-
         // Append each selected image to the FormData object
         selectedImages[clothType].forEach(image => {
-          const blob = convertImageToBlob(image);
-          const textEncoder = new TextEncoder();
-          const stringData = textEncoder.encode(blob);
-          console.log(stringData);
-          formData.append("file", stringData);
-          // formData.append("file", image);
+          formData.append("file", image);
         });
 
         // Append other data to the FormData object
-        // formData.append("category", selectedCategory);
-        // formData.append("clothType", clothType);
+        formData.append("category", selectedCategory);
+        formData.append("clothType", clothType);
         
-        const response = await fetch(`https://skyfitzz.up.railway.app/api/v1/cloth/upload/?category=${selectedCategory}&clothType=${clothType}&file=${formData}`, {
+        const response = await fetch(`https://skyfitzz.up.railway.app/api/v1/cloth/upload`, {
           method: "POST",
           headers: {"Authorization": `Bearer ${accessToken}`},
-          // body: formData
+          body: formData
         });
+
         
         if (response.ok) {
-          console.log(response.text());
+          const responseData = await response.json();
+          console.log("Uploaded data response: ", responseData);
         }
         else {
           const error = await response.json();

@@ -35,11 +35,10 @@ export default function Login() {
       localStorage.setItem("plan",data.plan)
       localStorage.setItem("gender",data.gender)
       localStorage.setItem("email",data.email)
+      // Save the token in local storage
+      localStorage.setItem("token", data.accessToken);
       console.log(data);
       if (response.ok) {
-        const responseData = await response.json();
-        // Save the token in local storage
-        localStorage.setItem("token", responseData.accessToken);
         // Login successful, you can redirect the user to the dashboard or a protected route
         setLoginSuccess(true);
         setTimeout(() => {
