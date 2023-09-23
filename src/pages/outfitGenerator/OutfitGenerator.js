@@ -8,7 +8,7 @@ import BottomMatch from "../../assets/images/outfitGenerator/bottom.svg";
 import AddToCollection from "../../assets/images/outfitGenerator/add.svg";
 import WaitingImage from "../../assets/images/outfitGenerator/waiting.svg";
 
-const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, handleClick }) => {
+const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, handleClick, setGenerate, selectedCategory }) => {
   return (
     <>
       {!generate ? (
@@ -52,7 +52,7 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
               </section>
 
               {/* Generate Buttons */}
-              <GenerateButtons selectedImages={selectedImages} handleClick={handleClick} />
+              <GenerateButtons selectedImages={selectedImages} handleClick={handleClick} setGenerate={setGenerate} selectedCategory={selectedCategory} />
             </Container>
           )}
         </>
@@ -80,7 +80,7 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
             </section>
           </Container>
           {/* Generate Buttons */}
-          <GenerateButtons selectedImages={selectedImages} handleClick={handleClick} />
+          <GenerateButtons selectedImages={selectedImages} handleClick={handleClick} setGenerate={setGenerate} selectedCategory={selectedCategory} />
         </>
       )}
     </>
