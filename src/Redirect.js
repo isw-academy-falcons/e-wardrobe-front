@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import redirectImage from "./assets/images/redirect.svg";
 import "./styles/Redirect.css";
-import EastIcon from "@mui/icons-material/East";
 import { useNavigate } from "react-router-dom";
 
 const Redirect = () => {
@@ -21,7 +20,7 @@ const Redirect = () => {
             <img src={redirectImage} alt="redirect" className="redirect-image" />
           </div>
           <div className="redirect-flex" onClick={loginHandler}>
-          <h2>An email verification link has been sent to your inbox. <br></br>Please check your email and click the link to confirm and activate your account.</h2>
+          <p>An email verification link has been sent to your inbox. <br></br>Please check your email and click the link to confirm and activate your account.</p>
           </div>
         </div>
       </div>
