@@ -14,7 +14,7 @@ const UploadOutfits = () => {
 	const countryCode = 'NG';
 	const stateCode = 'Lagos State';
   const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
-  
+
 	const [weather, setWeather] = useState(null);
   const [clothType, setClothType] = useState("");
 	const [latitude, setLatitude] = useState(null);
@@ -39,7 +39,7 @@ const UploadOutfits = () => {
       }
     );
   }, []);
-  
+
   useEffect(() => {
     // Function to execute when user doesn't grant location access
     const whenLatOrLonIsNull = async () => {
@@ -58,7 +58,7 @@ const UploadOutfits = () => {
       whenLatOrLonIsNull();
     }
   }, [apiKey, latitude, longitude])
-  
+
   useEffect(() => {
     const fetchWeather = async () => {
       // Make an API request to get weather data
@@ -81,8 +81,8 @@ const UploadOutfits = () => {
   // Function to show the modal
   const handleShowModal = () => {
     setShowModal(true);
-  };  
-  
+  };
+
   // Function to handle image upload
   const handleImageChange = (e, category) => {
     e.preventDefault();
@@ -92,11 +92,11 @@ const UploadOutfits = () => {
     handleShowModal();
     setIsUploaded(true);
   };
-  
+
   // Function to hide the modal
   const handleCloseModal = async () => {
     try {
-      if (accessToken !== ""){        
+      if (accessToken !== ""){
         const formData = new FormData();
 
         // Append each selected image to the FormData object
@@ -107,14 +107,14 @@ const UploadOutfits = () => {
         // Append other data to the FormData object
         formData.append("category", selectedCategory);
         formData.append("clothType", clothType);
-        
+
         const response = await fetch(`https://skyfitzz.up.railway.app/api/v1/cloth/upload`, {
           method: "POST",
           headers: {"Authorization": `Bearer ${accessToken}`},
           body: formData
         });
 
-        
+
         if (response.ok) {
           const responseData = await response.json();
           console.log("Uploaded data response: ", responseData);
@@ -132,40 +132,55 @@ const UploadOutfits = () => {
     }
     setShowModal(false);
   };
-  
+
   // Function to handle generate match button click
   const handleClick = e => {
     e.preventDefault();
     setGenerate(true);
   };
-  
+
   // Function to handle the category selection
   const handleCategorySelection = (category) => {
     setSelectedCategory(category);
   };
-  
+
   const handleReset = e => {
     e.preventDefault();
     setSelectedImages({DRESS: [], TOP: [], BOTTOM: []});
   };
-  
+
   return (
     <>
-      {accessToken ?
+      {accessToken ? (
         <>
           {/* Navbar */}
           <AppNavBar />
           {/* Generate Outfit Header */}
-          <OutfitGeneratorHeader weather={weather} handleImageChange={handleImageChange} showModal={showModal} handleCloseModal={handleCloseModal} handleCategorySelection={handleCategorySelection} />
+          <OutfitGeneratorHeader
+            weather={weather}
+            showModal={showModal}
+            handleCloseModal={handleCloseModal}
+            handleImageChange={handleImageChange}
+            handleCategorySelection={handleCategorySelection}
+          />
           {/* Oufit Generator */}
-          <OutfitGenerator generate={generate} isUploaded={isUploaded} selectedImages={selectedImages} handleReset={handleReset} handleClick={handleClick} />
+          <OutfitGenerator
+            generate={generate}
+            isUploaded={isUploaded}
+            handleReset={handleReset}
+            handleClick={handleClick}
+            setGenerate={setGenerate}
+            selectedImages={selectedImages}
+            selectedCategory={selectedCategory}
+          />
           {/* Footer */}
           <Footer />
-        </> :
+        </>
+      ) : (
         <>
           <Login />
         </>
-      }
+      )}
     </>
   );
 };
