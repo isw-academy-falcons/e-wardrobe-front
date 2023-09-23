@@ -1,53 +1,115 @@
-/* @tailwind base; */
-@tailwind components;
-@tailwind utilities;
-
-  .home-screen{
-    background-color: #FCDE7C;
-  }
-
-  .dark-home {
-    background: #1C1C1C;
-    flex: 1;
-    padding: 2rem; 
-  }
+.home-container{
+  height:100vh;
+  /* background: conic-gradient(from 191deg at 98.5% 1.79%, #000312 43.70695799589157deg, #021D7D 43.74295860528946deg); */
+  background: conic-gradient(from 191deg, #000312 30%, #021D7D 100%);
+  display :flex;
+  align-items: center;
+  justify-content: space-around;
   
-  .yellow-home {
+}
+
+.home-illustration{
+  height:500px;
+  
+}
+
+.homeSubContainer2{
+  text-align: center;
+  width:50%;
+}
+
+.home-header{
+  font-size: 24px;
+  color: aliceblue;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.homeSubHeader{
+  color:#cbcbcb;
+  margin-bottom: 56px;
+  font-size: 15px;
+  font-weight: 200;
+  text-align: center;
+}
+
+.home-paragraph{
+  color:#fff;
+  font-weight: 100;
+}
+
+.homescreen-btn-secondary{
+  padding:11px 46px;
+  width:45%;
+  margin-top:48px;
+  margin-left:18px;
+  border-radius: 6.94px;
+  border:2px solid #FCDE7C;
+  background-color: transparent;
+  color: #FCDE7C;
+}
+
+.homescreen-btn-secondary:hover{
+  border:2px solid #FCDE7C;
+  background: #FCDE7C;
+  color: black;
+}
+
+
+.homescreen-btn-primary{
+  background: #FCDE7C;
+  padding:11px 46px;
+  width:45%;
+  margin-top:48px;
+  margin-right:18px;
+  border-radius: 6.94px;
+  border:none;
+}
+
+@media screen and (max-width: 767px) {
+
+  .home-illustration{
+    display: none;
+  }
+
+  .home-container{
+    height:120vh;
+    /* background: conic-gradient(from 191deg at 98.5% 1.79%, #000312 43.70695799589157deg, #021D7D 43.74295860528946deg); */
+    background: conic-gradient(from 191deg, #000312 30%, #021D7D 100%);
+    display :flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center; 
+  }
+
+
+  .homescreen-btn-secondary{
+    padding:11px 46px;
+    width:100%;
+    margin-top:18px;
+    margin-left:0;
+    border-radius: 6.94px;
+    border:2px solid #FCDE7C;
+    background-color: transparent;
     color: #FCDE7C;
   }
   
-
-  .home-text {
-    color: #FFF;
-    text-transform: uppercase;
-  }
-  
-  .sub-text {
-    color: #AAA;
-    text-transform: uppercase;
-    
-  }
-  
-  .home-buttons {
-    margin-top: 2rem;
-  }
-  
-  .homescreen-btn{
-    width: 140px;
-    height: 40px;
-    margin: 20px;
-    border-radius: 8px;
-    font-weight: bolder;
-  }
-  .y-btn-home {
+  .homescreen-btn-secondary:hover{
+    border:none;
     background: #FCDE7C;
-    
+    color: black;
   }
   
-  .t-btn-home {
-    background: transparent;
-    border: 1px solid #FCDE7C;
-    color: #FCDE7C;
-  }
-  .t-btn-home:hover{background-color:#FCDE7C; color: #1C1C1C;}
   
+  .homescreen-btn-primary{
+    background: #FCDE7C;
+    padding:11px 46px;
+    width:100%;
+    margin-top:48px;
+    margin-right:0;
+    border-radius: 6.94px;
+    border:none;
+  }
+
+}
