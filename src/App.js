@@ -9,6 +9,7 @@ import PageNotFound from './PageNotFound';
 import Landing from "./pages/landing/Landing";
 import Gallery from "./pages/gallery/Gallery";
 import About from "./pages/about/About";
+import Payment from "./pages/Payment/PaymentForm";
 import Ewardrobe from "./pages/ewardrobe/Ewardrobe";
 import UploadOutfits from "./pages/outfitGenerator/UploadOutfits";
 import Fashion from "./pages/fashion/fashion";
@@ -36,6 +37,7 @@ function App() {
         <Route path='/fashion' element={<Fashion />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/verify' element={<Verification />} />
+        <Route path='/payment' element={<Payment />} />
       </Routes>
     </Router>
 
