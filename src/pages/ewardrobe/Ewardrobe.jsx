@@ -1,94 +1,109 @@
-import React, { useState } from 'react';
-import AppNavBar from '../../components/AppNavBar';
-import Footer from '../../components/Footer';
-import Logo from '../../components/Logo';
+import axios from 'axios';
+import Login from '../../login';
+import {MdDelete} from 'react-icons/md';
+import {GrAddCircle} from 'react-icons/gr'
+import { BASE_URL } from '../../assets/baseUrl';
+import React, { useEffect, useState } from 'react';
+
 import './e-wardrobe.css';
-import skyImg1 from '../../assets/images/e-wardrobe/skyImg1.png';
-import skyImg2 from '../../assets/images/e-wardrobe/skyImg2.png';
-import skyImg3 from '../../assets/images/e-wardrobe/skyImg3.png';
+import Row from "react-bootstrap/Row";
+import Logo from '../../components/Logo';
+import Footer from '../../components/Footer';
+import AppNavBar from '../../components/AppNavBar';
 import gcImg1 from '../../assets/images/e-wardrobe/gcImg1.png';
 import gcImg2 from '../../assets/images/e-wardrobe/gcImg2.png';
 import gcImg3 from '../../assets/images/e-wardrobe/gcImg3.png';
-import {MdDelete} from 'react-icons/md';  
-import {GrAddCircle} from 'react-icons/gr'  
 
 const Ewardrobe = () => {
-    const [active, setActive] = useState(1);
-    return (
-        <div className='e-wardrobe-page'>
+  const [active, setActive] = useState(1);
+  const [clothes, setClothes] = useState([]);
+  const userId = localStorage.getItem("userId");
+  const accessToken = localStorage.getItem("token");
+
+  useEffect(() => {
+    const getClothes = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/cloth/all/${userId}`)
+        setClothes(response.data);
+      } catch (error) {
+        console.log("Error message: ", error);
+      }
+    };
+
+    getClothes();
+  }, [userId])
+
+  return (
+    <>
+      {accessToken ?
+        <>
+          <div className='e-wardrobe-page'>
             <AppNavBar/>
             <h3 className='e-wardrobe-subtitle'><Logo className='logo-gallery'/>E-WARDROBE</h3>
             <section className="switch-wardrobe-generate">
-                <h4 className={active == 1 ? 'active':''} onClick={() => setActive(1)}>SKYFITZZ WEB GALLERY</h4>
-                <h4 className={active == 2 ? 'active':''} onClick={() => setActive(2)}>GENERATED COLLECTION</h4>
+              <h4 className={active === 1 ? 'active':''} onClick={() => setActive(1)}>SKYFITZZ WEB GALLERY</h4>
+              <h4 className={active === 2 ? 'active':''} onClick={() => setActive(2)}>GENERATED COLLECTION</h4>
             </section>
-            {active == 1 ?(
-                <section className="display-wardrobe">
-                    <div className="wardrobe-img1">
-                        <img src={skyImg1} alt="wardrobe image 1" className='e-wardrobe-img' />
-                        <div className="delete-wardrobe-item">
-                            <div className="delete-wardrobe-position">
-                                <button>Delete</button>
-                                <span><MdDelete/></span>
-                            </div>
+            {active === 1 ?(
+              <section className="display-wardrobe">
+                <Row xs={1} md={3} className="g-4">
+                  {clothes.map((cloth, index) => (
+                    <div className="wardrobe-img1" key={`${cloth.clothId}`} style={{ maxHeight: "260px", overflow: "hidden" }}>
+                      <img src={`${cloth.imageUrl}`} alt={`wardrobe ${index}`} className='e-wardrobe-img' />
+
+                      <div className="delete-wardrobe-item">
+                        <div className="delete-wardrobe-position">
+                          <button>Delete</button>
+                          <span><MdDelete/></span>
                         </div>
+                      </div>
                     </div>
-                    <div className="wardrobe-img2">
-                        <img src={skyImg2} alt="wardrobe image 2" className='e-wardrobe-img' />
-                        <div className="delete-wardrobe-item">
-                            <div className="delete-wardrobe-position">
-                                <button>Delete</button>
-                                <span><MdDelete/></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="wardrobe-img3">
-                        <img src={skyImg3} alt="wardrobe image 3" className='e-wardrobe-img' />
-                        <div className="delete-wardrobe-item">
-                            <div className="delete-wardrobe-position">
-                                <button>Delete</button>
-                                <span><MdDelete/></span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                  ))}
+                </Row>
+              </section>
             ) : (
-                <section className="display-generate-collection">
-                    <div className="generated-collection-img1">
-                        <img src={gcImg1} alt="generated collection image 1" className='e-wardrobe-img' />
-                        <div className="delete-wardrobe-item">
-                            <div className="delete-wardrobe-position">
-                                <button>Delete</button>
-                                <span><MdDelete/></span>
-                            </div>
-                        </div>
+              <section className="display-generate-collection">
+                <div className="generated-collection-img1">
+                  <img src={gcImg1} alt="generated collection image 1" className='e-wardrobe-img' />
+                  <div className="delete-wardrobe-item">
+                    <div className="delete-wardrobe-position">
+                      <button>Delete</button>
+                      <span><MdDelete/></span>
                     </div>
-                    <div className="generated-collection-img2">
-                        <img src={gcImg2} alt="generated collection image 2" className='e-wardrobe-img' />
-                        <div className="delete-wardrobe-item">
-                            <div className="delete-wardrobe-position">
-                                <button>Delete</button>
-                                <span><MdDelete/></span>
-                            </div>
-                        </div>
+                  </div>
+                </div>
+                <div className="generated-collection-img2">
+                  <img src={gcImg2} alt="generated collection image 2" className='e-wardrobe-img' />
+                  <div className="delete-wardrobe-item">
+                    <div className="delete-wardrobe-position">
+                      <button>Delete</button>
+                      <span><MdDelete/></span>
                     </div>
-                    <div className="generated-collection-img3">
-                        <img src={gcImg3} alt="generated collection image 3" className='e-wardrobe-img' />
-                        <div className="delete-wardrobe-item">
-                            <div className="delete-wardrobe-position">
-                                <button>Delete</button>
-                                <span><MdDelete/></span>
-                            </div>
-                        </div>
+                  </div>
+                </div>
+                <div className="generated-collection-img3">
+                  <img src={gcImg3} alt="generated collection image 3" className='e-wardrobe-img' />
+                  <div className="delete-wardrobe-item">
+                    <div className="delete-wardrobe-position">
+                      <button>Delete</button>
+                      <span><MdDelete/></span>
                     </div>
-                </section>
+                  </div>
+                </div>
+              </section>
             )
             }
-            {active == 1 ? <span className='e-wardrobe-add-more'><GrAddCircle /></span>:''}
-            
+            {active === 1 ? <span className='e-wardrobe-add-more'><GrAddCircle /></span>:''}
+
             <Footer />
-        </div>
-    );
+          </div>
+        </> :
+        <>
+          <Login />
+        </>
+      }
+    </>
+  );
 }
 
 export default Ewardrobe;

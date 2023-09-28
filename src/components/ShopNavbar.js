@@ -1,5 +1,6 @@
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
@@ -7,9 +8,14 @@ import "./AppNavBar.css";
 import ProfileAvatar from "../assets/images/landing/profile.svg";
 
 const ShopNavBar = ({ onSelectCategory }) => {
+  const[name, setName] = useState(null);
+
+  useEffect(() => {
+    setName(localStorage.getItem("name"))
+  },[name])
+
   const handleCategoryClick = (category) => {
     onSelectCategory(category);
-    console.log(category);
   };
   return (
     <Navbar collapseOnSelect expand="lg" className="app-navbar">
@@ -65,7 +71,7 @@ const ShopNavBar = ({ onSelectCategory }) => {
                 className="right-margin"
                 height="20px"
               />
-              Damilola
+              {name?.split(" ")[0]||"Guest"}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

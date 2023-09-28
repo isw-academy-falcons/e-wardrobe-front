@@ -8,7 +8,7 @@ export const PersonalDetails = (props) => {
         <label htmlFor="firstName" className="label">First Name</label>
         <input
           type="text"
-          placeholder="Damilola"
+          placeholder="firstname"
           value={props.firstName}
           disabled
           className="input"
@@ -18,7 +18,7 @@ export const PersonalDetails = (props) => {
         <label htmlFor="lastName" className="label">Last Name</label>
         <input
           type="text"
-          placeholder="Joseph"
+          placeholder="lastname"
           value={props.lastName}
           disabled
           className="input"
@@ -28,7 +28,7 @@ export const PersonalDetails = (props) => {
         <label htmlFor="gender" className="label">Gender</label>
         <input
           type="text"
-          placeholder="Male"
+          placeholder="gender"
           value={props.gender}
           disabled
           className="input"
@@ -38,18 +38,18 @@ export const PersonalDetails = (props) => {
         <label htmlFor="email" className="label">Email</label>
         <input
           type="email"
-          placeholder="joseph.Damilola@gmail.com"
+          placeholder="email"
           value={props.email}
           disabled
           className="input"
         />
       </div>
       <div className="phoneNumber grid">
-        <label htmlFor="phoneNumber " className="label">Phone Number</label>
+        <label htmlFor="phoneNumber " className="label">Plan</label>
         <input
           type="text"
-          placeholder="08012345678"
-          value={props.phoneNumber}
+          placeholder="plan"
+          value={props.plan}
           disabled
           className="input"
         />

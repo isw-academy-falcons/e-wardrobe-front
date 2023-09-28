@@ -18,6 +18,16 @@ const ProfilePage = () => {
   });
   const navigate = useNavigate();
 
+  const userId = localStorage.getItem('userId');
+  const plan = localStorage.getItem("plan")
+  const gender= localStorage.getItem("gender")
+  const email= localStorage.getItem("email")
+
+  const userFullName=localStorage.getItem('name')
+  const firstName = userFullName.split(" ")[0]
+  const lastName =userFullName.split(" ")[1]
+
+
   const dropDownHandle = (section) => {
     setShowDropDown((prevState) => ({
       ...prevState,
@@ -67,7 +77,7 @@ const ProfilePage = () => {
           </div>
 
           <p className="font-medium text-center font-[Poppins] mt-2">
-            JOSEPH DAMILOLA
+            {userFullName}
           </p>
           <section id="personal-details" className="mt-4 px-4">
             <div className="section">
@@ -84,7 +94,13 @@ const ProfilePage = () => {
               </span>
             </div>
             <div className="personal-details">
-              {showDropDown.personalDetails && <PersonalDetails />}
+              {showDropDown.personalDetails && <PersonalDetails 
+              firstName={firstName} 
+              lastName={lastName} 
+              email={email}
+              plan={plan}
+              gender={gender}
+              />}
             </div>
           </section>
           {/* .security section.. */}
@@ -106,7 +122,7 @@ const ProfilePage = () => {
           {/* ..billing section. */}
           <section id="billing" className="mt-4 px-4">
             <div className="section">
-              <span className="">Billing<span className="text-xs ml-2 font-thin">(current plan -premium)</span></span>
+              <span className="">Billing<span className="text-xs ml-2 font-thin">(current plan -{plan})</span></span>
               <span onClick={() => dropDownHandle("billing")}>
                 {showDropDown.billing ? (
                   <KeyboardArrowDown />

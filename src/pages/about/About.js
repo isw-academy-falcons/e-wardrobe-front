@@ -7,7 +7,7 @@ const About = () => {
   return (
     <>
       <AppNavBar/>
-      <div className="about  min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center md:px-20 mt-0" style={{backgroundImage: `url(${img6})`}}>
+      <div className="about  min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center md:px-20 mt-0 about-container" style={{backgroundImage: `url(${img6})`}}>
         <div className="text-white text-center px-4 max-h-[60%]">
 
           <h2 className="text-2xl font-bold mb-2">ABOUT US</h2>
