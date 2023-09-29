@@ -30,6 +30,26 @@ const Landing = () => {
     }
   };
 
+  // Handle button click function for styles
+  const handleUnlockStyles = () => {
+    if (accessToken) {
+      navigate("/pricing");
+    }
+    else {
+      console.log("You need to login to perform this operation");
+    }
+  };
+
+  // Handle button click function for EWardrobe
+  const handleEWardrobe = () => {
+    if (accessToken) {
+      navigate("/e-wardrobe");
+    }
+    else {
+      console.log("You need to login to perform this operation");
+    }
+  };
+
 	return (
     <>
       {accessToken ?
@@ -105,7 +125,7 @@ const Landing = () => {
                   to elevate your style journey. Embrace endless inspiration and
                   elevate your wardrobe like never before.
                 </p>
-                <p className="unlock-styles">
+                <p className="unlock-styles" onClick={handleUnlockStyles}>
                   UNLOCK STYLES NOW
                   <FaLongArrowAltRight className="arrow-right" size="48px" />
                 </p>
@@ -126,6 +146,7 @@ const Landing = () => {
                   era of individualized style.
                 </p>
                 <Button
+                  onClick={handleEWardrobe}
                   variant="outline-warning"
                   style={{ marginLeft: "50px" }}
                   className="button-width-e-wardrobe mb-5"
