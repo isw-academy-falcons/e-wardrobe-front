@@ -1,6 +1,7 @@
 // PaymentForm.js
 import React, { useState } from "react";
 import "./PaymentForm.css"; // Import the CSS file for styles
+import interswitchLogo from "./interswitchLogo.svg";
 
 const PaymentForm = () => {
   const [step, setStep] = useState(1);
@@ -31,16 +32,18 @@ const PaymentForm = () => {
   };
 
   return (
+    <div className="payment-form-body">
     <div className="payment-form payment-container">
       {isPaymentSuccessful ? (
-        <div>
+        <div className="payment-successful">
           <h2>Payment Successful!</h2>
           <p>Thank you for your purchase.</p>
         </div>
       ) : (
-        <div>
+        <div className="payment-form-personal-details">
           {step === 1 ? (
             <form onSubmit={handleBillingAddressSubmit}>
+              <div ><h2 className="payment-gateway-header">Payment Gateway</h2></div>
               <div>
                 <label>Full Name</label>
                 <input
@@ -205,8 +208,12 @@ const PaymentForm = () => {
               <button type="submit">Pay Now</button>
             </form>
           )}
+            <div className="interswitchLogo-container"> 
+          <p>Powered by </p> <img className="interswitchLogo" src={interswitchLogo} alt="interswitchLogo" /> 
+          </div> 
         </div>
       )}
+    </div>
     </div>
   );
 };

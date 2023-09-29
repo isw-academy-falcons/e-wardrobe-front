@@ -3,6 +3,7 @@ import MySvg3 from "./assets/images/illustration3.svg";
 import MySvg4 from "./assets/images/illustration4.svg";
 import AppNavBar from "./components/AppNavBar";
 
+
 export default function Pricing() {
   return (
     <div className="pricing-parent-body">
@@ -31,7 +32,7 @@ export default function Pricing() {
             <li>Seasonal Trend Alerts</li>
             <li>Ad-Free Experience</li>
           </ul>
-          <button>Purchase</button>
+          <button><a href="/payment">Purchase</a></button>
         </div>
       </div>
     </div>

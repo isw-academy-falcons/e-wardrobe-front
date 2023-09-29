@@ -1,12 +1,27 @@
 
 .payment-form {
-    max-width: 400px;
+    width:40%;
     margin: 0 auto;
     padding: 10px;
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .payment-form-body{
+    background-color: rgb(9, 74, 112);
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .payment-gateway-header{
+    text-align: center;
+    text-transform: uppercase;
+    margin: 20px 0;
+    font-weight: bold;
   }
   
   .payment-form h2 {
@@ -16,8 +31,12 @@
   
   .payment-form label {
     display: block;
-    font-weight: bold;
+    font-weight: 500;
     margin-bottom: 5px;
+  }
+
+  .payment-form-personal-details{
+    width:100%;
   }
   
   .payment-form input[type="text"] {
@@ -32,8 +51,9 @@
     background-color: #007bff;
     color: #fff;
     border: none;
+    width:100%;
     border-radius: 3px;
-    padding: 10px 15px;
+    padding: 10px 36px;
     font-size: 16px;
     cursor: pointer;
   }
@@ -51,3 +71,26 @@
      /* This ensures the container takes the full height of the viewport */
   }
 
+  .interswitchLogo{
+    height:80px;
+   
+  }
+
+  .interswitchLogo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .interswitchLogo-container p{
+    margin-bottom: -3px;
+  }
+
+  .payment-successful{
+    background-color: rgb(2, 156, 2);
+    color: white;
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+  }

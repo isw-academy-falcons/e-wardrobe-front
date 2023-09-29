@@ -13,6 +13,8 @@ import Payment from "./pages/Payment/PaymentForm";
 import Ewardrobe from "./pages/ewardrobe/Ewardrobe";
 import UploadOutfits from "./pages/outfitGenerator/UploadOutfits";
 import Fashion from "./pages/fashion/fashion";
+import FashionProduct from "./pages/fashion/fashionProduct";
+import FashionCart from "./pages/fashion/fashioncart";
 import ProfilePage from "./pages/profile/ProfilePage";
 import Verification from "./verification";
 
@@ -35,6 +37,8 @@ function App() {
         <Route path='/e-wardrobe' element={<Ewardrobe />} />
         <Route path='/outfit-generator' element={<UploadOutfits />} />
         <Route path='/fashion' element={<Fashion />} />
+        <Route path='/fashion-product' element={<FashionProduct />} />
+        <Route path='/fashion-cart' element={<FashionCart />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/verify' element={<Verification />} />
         <Route path='/payment' element={<Payment />} />
