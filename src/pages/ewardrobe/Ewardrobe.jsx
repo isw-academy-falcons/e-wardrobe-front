@@ -20,18 +20,30 @@ const Ewardrobe = () => {
   const userId = localStorage.getItem("userId");
   const accessToken = localStorage.getItem("token");
 
+  const getClothes = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/cloth/all/${userId}`)
+      setClothes(response.data);
+    } catch (error) {
+      console.log("Error message: ", error);
+    }
+  };
   useEffect(() => {
-    const getClothes = async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/cloth/all/${userId}`)
-        setClothes(response.data);
-      } catch (error) {
-        console.log("Error message: ", error);
-      }
-    };
-
     getClothes();
-  }, [userId])
+  })
+
+  const deleteCloth = async (clothId) => {
+    try {
+      await axios.delete(`${BASE_URL}/cloth/delete?clothId=${clothId}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      getClothes();
+    } catch (error) {
+      console.log("Error message: ", error);
+    }
+  };
 
   return (
     <>
@@ -48,12 +60,12 @@ const Ewardrobe = () => {
               <section className="display-wardrobe">
                 <Row xs={1} md={3} className="g-4">
                   {clothes.map((cloth, index) => (
-                    <div className="wardrobe-img1" key={`${cloth.clothId}`} style={{ maxHeight: "260px", overflow: "hidden" }}>
+                    <div className="wardrobe-img1" key={`${cloth.clothId}`} style={{ height: "260px", overflow: "hidden" }}>
                       <img src={`${cloth.imageUrl}`} alt={`wardrobe ${index}`} className='e-wardrobe-img' />
 
                       <div className="delete-wardrobe-item">
                         <div className="delete-wardrobe-position">
-                          <button>Delete</button>
+                          <button onClick={() => deleteCloth(cloth.clothId)}>Delete</button>
                           <span><MdDelete/></span>
                         </div>
                       </div>
