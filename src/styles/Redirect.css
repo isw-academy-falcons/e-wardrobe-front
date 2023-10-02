@@ -1,0 +1,71 @@
+/* Base styles for larger screens */
+.redirect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: conic-gradient(from 191deg, #000312 30%, #021D7D 100%);
+    font-family: 'Poppins', sans-serif;
+    
+  }
+  
+  .redirect-h1 {
+    color: rgb(4, 207, 4);
+    text-transform: uppercase;
+   font-size: 32px;
+   font-weight: bold;
+      
+  }
+  
+  .redirect-wrapper {
+    text-align: center;
+    margin: auto;
+  }
+  
+  .redirect-image {
+    max-width: 90vw;
+    max-height: 80vh;
+  }
+  
+  .redirect-control {
+    display: flex;
+    align-items: center;
+    margin: 10px auto auto 100px;
+    color: white;
+  }
+  
+  .redirect-control:hover {
+    cursor: pointer;
+  }
+  
+  .redirect-flex span:first-child {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  
+  .redirect-flex span:last-child {
+    vertical-align: middle;
+  }
+  
+  /* Media query for screens smaller than 768px */
+  @media (max-width: 768px) {
+    .redirect {
+      flex-direction: column; 
+    }
+  
+    .redirect-image {
+      max-width: 60vw; 
+      max-height: 60vh; 
+    }
+  
+    .redirect-control {
+      margin: 10px auto; 
+    }
+  
+    .redirect-flex span:first-child {
+      margin-right: 0; 
+      margin-bottom: 10px; 
+      font-size: 16px; 
+    }
+  }
+  

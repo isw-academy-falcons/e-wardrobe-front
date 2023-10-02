@@ -1,0 +1,25 @@
+.logo-home {
+    font-family: Leckerli One;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    color: #FCDE7C;
+  }
+
+  .logo-gallery{
+    font-family: Leckerli One;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    color: black;
+  }
+
+  .yellow {
+    color: #FCDE7C;
+  }
+  
+ 

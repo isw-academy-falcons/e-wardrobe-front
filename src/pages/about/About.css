@@ -1,0 +1,21 @@
+.about h2{
+    font-family: Poppins;
+    letter-spacing: 0em;
+
+   
+}
+
+.about p{
+    font-family: Poppins;
+letter-spacing: 0em;
+/* line-height: 20px; */
+
+}
+
+.about-container{
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ 
+}
