@@ -99,8 +99,30 @@
     color:#FCDE7C;
 }
 
+.cart-checkout-btn-primary a{
+    color:#FCDE7C;
+}
+
 .cart-checkout-btn-secondary{
     border: none;
     background-color: transparent;
     margin-bottom: 40px;
+}
+
+.empty-cart{
+    text-align: center;
+    margin-top: 20%;
+}
+
+.empty-cart-button{
+    display: block;
+    margin :10px auto;
+    padding:12px 26px;
+    background-color: #1c1c1c;
+    color: #FCDE7C;
+    border-radius: 7px;
+}
+
+.empty-cart-button a{
+    color: #FCDE7C;
 }

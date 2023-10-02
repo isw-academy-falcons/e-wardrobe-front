@@ -17,35 +17,38 @@ import FashionProduct from "./pages/fashion/fashionProduct";
 import FashionCart from "./pages/fashion/fashioncart";
 import ProfilePage from "./pages/profile/ProfilePage";
 import Verification from "./verification";
-
+import { CartProvider } from './pages/fashion/CartContext';
 
 
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path="/login" element={<Login />} />
-        <Route path='/*' element={<PageNotFound/>}/>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path='/redirect' element={<Redirect/>}/>
-        <Route path='/gallery' element={<Gallery />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/landing-page' element={<Landing />} />
-        <Route path='/e-wardrobe' element={<Ewardrobe />} />
-        <Route path='/outfit-generator' element={<UploadOutfits />} />
-        <Route path='/fashion' element={<Fashion />} />
-        <Route path='/fashion-product' element={<FashionProduct />} />
-        <Route path='/fashion-cart' element={<FashionCart />} />
-        <Route path='/profile' element={<ProfilePage />} />
-        <Route path='/verify' element={<Verification />} />
-        <Route path='/payment' element={<Payment />} />
-      </Routes>
-    </Router>
-
+    <CartProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/redirect" element={<Redirect />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/landing-page" element={<Landing />} />
+          <Route path="/e-wardrobe" element={<Ewardrobe />} />
+          <Route path="/outfit-generator" element={<UploadOutfits />} />
+          <Route path="/fashion" element={<Fashion />} />
+          <Route path="/fashion-cart" element={<FashionCart />} />
+          <Route path="/fashion-product/:productData" element={<FashionProduct />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/verify" element={<Verification />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/*" element={<PageNotFound />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
-};
+}
 
 export default App;
+
+
