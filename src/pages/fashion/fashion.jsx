@@ -9,42 +9,70 @@ import { BsSearch } from "react-icons/bs";
 import Footer from "../../components/Footer";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import { Link, useNavigate } from "react-router-dom";
+import { useCart } from './CartContext'
 
 const Fashion = () => {
   // State to track the selected category (men, women)
   const [selectedCategory, setSelectedCategory] = useState("men");
   // State to track the selected option (clothing, bags, shoes)
   const [selectedOption, setSelectedOption] = useState("clothing");
-
+  // State to track the search query
+  const [searchQuery, setSearchQuery] = useState("");
   // State for size, weather, material, and color filters
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedWeather, setSelectedWeather] = useState(null);
   const [selectedMaterial, setSelectedMaterial] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
   const [sliderValue, setSliderValue] = useState(0);
+  const { cart, dispatch } = useCart(); // Added cart here
 
+  const navigate = useNavigate();
+
+  // Function to handle category selection (men, women)
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+
+  // Function to handle option selection (clothing, bags, shoes)
+  const handleOptionChange = (option) => {
+    setSelectedOption(option);
+  };
+
+  // Function to handle search input
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  // Function to handle price range change
   const handleSliderChange = (value) => {
     setSliderValue(value);
   };
 
-  // Define your size, weather, material, and color options here
+  // Function to apply filters
+  const applyFilters = () => {
+    const filteredData = currentData.filter((product) => {
+      return product.size === selectedSize;
+    });
+  };
+
   const sizeOptions = [
     { value: "small", label: "Small" },
     { value: "medium", label: "Medium" },
     { value: "large", label: "Large" }
   ];
-
+  
   const weatherOptions = [
     { value: "sunny", label: "Sunny" },
     { value: "rainy", label: "Rainy" },
     { value: "snowy", label: "Snowy" }
   ];
-
+  
   const materialOptions = [
     { value: "light", label: "Light" },
     { value: "thick", label: "Thick" }
   ];
-
+  
   const colorOptions = [
     { value: "red", label: "Red" },
     { value: "blue", label: "Blue" },
@@ -57,25 +85,7 @@ const Fashion = () => {
     { value: "purple", label: "Purple" },
     { value: "brown", label: "Brown" }
   ];
-
-  // Function to handle category selection (men, women)
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-  };
-
-  // Function to handle option selection (clothing, bags, shoes)
-  const handleOptionChange = (option) => {
-    setSelectedOption(option);
-  };
-
-  // Function to handle price range change
-
-
-  // Function to apply filters
-  const applyFilters = () => {
-    // Implement filtering logic based on selectedSize, selectedWeather, selectedMaterial, selectedColor, and priceRange
-    // Update the currentData state with the filtered data
-  };
+  
 
   // Get the current data based on the selected category and option
   const currentData =
@@ -95,7 +105,7 @@ const Fashion = () => {
           "Joggers",
           "Tanks & Sleeveless Shirts",
           "Caps & Hats",
-          "Shorts"
+          "Shorts",
         ]
       : selectedOption === "bags"
       ? [
@@ -106,7 +116,7 @@ const Fashion = () => {
           "Duffel",
           "Fanny Pack",
           "Gym Bag",
-          "Bucket Bag"
+          "Bucket Bag",
         ]
       : [
           "Sneakers",
@@ -116,8 +126,18 @@ const Fashion = () => {
           "Athletic Shoes",
           "Loafers",
           "Slippers",
-          "Oxfords"
+          "Oxfords",
         ];
+
+  // Function to handle the "Buy" button click
+  const handleBuyClick = (productData) => {
+    navigate(`/fashion-product/${encodeURIComponent(JSON.stringify(productData))}`);
+  };
+
+  // Filtering products based on search query
+  const filteredData = currentData.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div>
@@ -125,7 +145,12 @@ const Fashion = () => {
       <div className="fashion-wrapper">
         <div className="fashion-card-one">
           <div className="fashion-search-input">
-            <input type="search" placeholder="Search" />
+            <input
+              type="search"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
             <span className="fashion-search-icon">
               <BsSearch />
             </span>
@@ -149,69 +174,68 @@ const Fashion = () => {
             <div className="filter-option">
               <label>Shop by Price:</label>
               <div className="input-range-container">
-         
-      <Slider
-        min={0}
-        max={1000}
-        value={sliderValue}
-        onChange={handleSliderChange}
-      />
-      <p>Selected Value: {sliderValue}</p>
-
+                <Slider
+                  min={0}
+                  max={1000}
+                  value={sliderValue}
+                  onChange={handleSliderChange}
+                />
+                <p>Selected Value: {sliderValue}</p>
               </div>
             </div>
 
             {/* Filter by Size */}
-            <div className="filter-option">
-              <label>Size:</label>
-              <div className="select-container">
-                <Select
-                  options={sizeOptions}
-                  value={selectedSize}
-                  onChange={(value) => setSelectedSize(value)}
-                  isClearable
-                />
-              </div>
-            </div>
+<div className="filter-option">
+  <label>Size:</label>
+  <div className="select-container">
+    <Select
+      options={sizeOptions}
+      value={selectedSize}
+      onChange={(value) => setSelectedSize(value)}
+      isClearable
+    />
+  </div>
+</div>
 
-            {/* Filter by Weather */}
-            <div className="filter-option">
-              <label>Weather:</label>
-              <div className="select-container">
-                <Select
-                  options={weatherOptions}
-                  value={selectedWeather}
-                  onChange={(value) => setSelectedWeather(value)}
-                  isClearable
-                />
-              </div>
-            </div>
+{/* Filter by Weather */}
+<div className="filter-option">
+  <label>Weather:</label>
+  <div className="select-container">
+    <Select
+      options={weatherOptions}
+      value={selectedWeather}
+      onChange={(value) => setSelectedWeather(value)}
+      isClearable
+    />
+  </div>
+</div>
 
-            {/* Filter by Material */}
-            <div className="filter-option">
-              <label>Material:</label>
-              <div className="select-container">
-                <Select
-                  options={materialOptions}
-                  value={selectedMaterial}
-                  onChange={(value) => setSelectedMaterial(value)}
-                  isClearable
-                />
-              </div>
-            </div>
+{/* Filter by Material */}
+<div className="filter-option">
+  <label>Material:</label>
+  <div className="select-container">
+    <Select
+      options={materialOptions}
+      value={selectedMaterial}
+      onChange={(value) => setSelectedMaterial(value)}
+      isClearable
+    />
+  </div>
+</div>
 
-            {/* Filter by Color */}
-            <div className="filter-option">
-              <label>Color:</label>
-              <div className="multi-select-container">
-                <Select
-                  options={colorOptions}
-                  value={selectedColor}
-                  onChange={(value) => setSelectedColor(value)}
-                  isMulti
-                />
-              </div>
-            </div>
+{/* Filter by Color */}
+<div className="filter-option">
+  <label>Color:</label>
+  <div className="multi-select-container">
+    <Select
+      options={colorOptions}
+      value={selectedColor}
+      onChange={(value) => setSelectedColor(value)}
+      isMulti
+    />
+  </div>
+</div>
+
 
             <button className="apply-button" onClick={applyFilters}>
               Apply Filters
@@ -245,15 +269,22 @@ const Fashion = () => {
               >
                 Shoes
               </a>{" "}
+              |{" "}
+              <a href="/fashion-cart">Cart: {cart.length}</a>
             </p>
           </div>
           <div className="fashion-cards">
-            {currentData.map((item) => (
+            {filteredData.map((item) => (
               <div key={item.id} className="fashion-card">
                 <img src={item.image} alt={item.name} />
                 <p>{item.name}</p>
                 <p>{item.price}</p>
-                <button className="fashion-button">Buy</button>
+                <button
+                  className="fashion-button"
+                  onClick={() => handleBuyClick(item)}
+                >
+                  Buy
+                </button>
               </div>
             ))}
           </div>

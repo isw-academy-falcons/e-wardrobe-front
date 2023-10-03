@@ -1,0 +1,113 @@
+/* #PRICING */
+
+
+.pricing-container {
+    width: 30%;
+    border-radius: 6px;
+    border: 1px solid #aeaeae;
+    background: linear-gradient(
+      163deg,
+      #ffd755 -19.63%,
+      rgba(225, 45, 21, 0.63) 115.68%
+    );
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px 10px;
+    margin: 120px 30px;
+  }
+  
+  .pricing-container button , .pricing-container button a{
+    padding: 20px;
+    margin: 10px 26px 40px;
+    border-radius: 5px;
+    background: #161616;
+    color: white;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .pricing-container h2 {
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+  }
+  
+  .pricing-container ul {
+    color: white;
+    font-size: 16px;
+    line-height: 42px;
+  }
+  
+  .pricing-container-style {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .pricing-parent-body {
+    position: relative;
+    background:white;
+    
+  }
+  
+  .pricing-header {
+    text-align: center;
+    padding: 10px;
+    margin-top: 0;
+    text-transform: uppercase;
+  }
+  
+  .illustration3 {
+    position: absolute;
+    top: 145px;
+    right: 180px;
+  }
+  
+  .illustration4 {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+  }
+  
+  
+  /* BEGINNING OF MEDIA SCREEN FOR PRICING PAGE */
+  @media screen and (max-width: 767px) {
+    .illustration3 {
+      display: none;
+    }
+  
+    .illustration4 {
+      display: none;
+    }
+  
+    .pricing-container-style {
+      flex-direction: column;
+    }
+  
+    .pricing-header {
+      font-size: 20px;
+      padding: 50px;
+    }
+  
+    .pricing-container {
+      width: 90%;
+      height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0;
+      margin: 10px auto;
+    }
+    .pricing-parent-body {
+      height: 160vh;
+    }
+  
+    .spacing {
+      margin-top: 125px;
+    }
+  }
+  /*END OF MEDIA SCREEN FOR PRICING PAGE */
+  
+  
+  /* END OF PRICING PAGE */

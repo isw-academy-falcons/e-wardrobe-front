@@ -62,16 +62,27 @@
 .delete-wardrobe-position span{
     position: absolute;
     right: 10px;
-    top: 25%;
+    top: 10%;
     font-size: 20px;
 }
+
 
 .delete-wardrobe-item button{
   background-color: #ffffff;
   padding: 1em 3em 1em 2em;
   border-radius: 4px;
   font-size: 11px;
+  border:1px solid grey;
 }
+
+.delete-wardrobe-item button:hover{
+    background-color: #f03333;
+    padding: 1em 3em 1em 2em;
+    border-radius: 4px;
+    font-size: 11px;
+    border:1px solid rgb(226, 224, 224);
+    color:white;
+  }
 
 .e-wardrobe-add-more {
     font-size: 3rem;
