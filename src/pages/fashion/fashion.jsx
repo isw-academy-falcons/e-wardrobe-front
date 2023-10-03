@@ -51,8 +51,6 @@ const Fashion = () => {
 
   // Function to apply filters
   const applyFilters = () => {
-    // Implement filtering logic based on selectedSize, selectedWeather, selectedMaterial, selectedColor, and priceRange
-    // Update the currentData state with the filtered data
     const filteredData = currentData.filter((product) => {
       return product.size === selectedSize;
     });
