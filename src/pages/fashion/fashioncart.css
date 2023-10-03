@@ -1,0 +1,128 @@
+.cart-header{
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.cart-container-display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+}
+
+
+.cart-container-display h3{
+    font-size: 20px;
+}
+
+.cart-container-display p{
+    font-size: 14px;
+}
+
+.cart-container-display button{
+    padding: 6px 16px;
+    background-color: #595858;
+    border: none;
+    color:white;
+    border-radius: 8px;
+}
+
+.cart-image{
+    height: 150px;
+    margin: 0 30px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.cart-product-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap:30px;
+}
+
+.cart-coupon, .cart-price-details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.cart-coupon input, .cart-coupon button{
+    padding: 10px 50px;
+}
+
+
+.cart-coupon button{
+    background-color: #1c1c1c;
+    color: white;
+    border: none;
+    padding: 13px 50px;
+}
+
+.cart-price-details p{
+   
+    margin-right: 20px;
+    padding: 10px 28px;
+}
+
+.cart-price-details-total{
+    font-weight: bold;
+    border:4px solid #1c1c1c;
+}
+
+.cart-price-details-sub-total, .cart-price-details-delivery, .cart-price-details-discount{
+    border:1px solid #1c1c1c;
+}
+
+.cart-checkout-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:10px;
+}
+
+.cart-checkout-container button{
+    width: 40%;
+    padding:10px 28px; 
+    border-radius: 8px;
+}
+
+.cart-checkout-btn-primary{
+    margin-top: 30px;
+    border: none;
+    background-color: #1c1c1c;
+    color:#FCDE7C;
+}
+
+.cart-checkout-btn-primary a{
+    color:#FCDE7C;
+}
+
+.cart-checkout-btn-secondary{
+    border: none;
+    background-color: transparent;
+    margin-bottom: 40px;
+}
+
+.empty-cart{
+    text-align: center;
+    margin-top: 20%;
+}
+
+.empty-cart-button{
+    display: block;
+    margin :10px auto;
+    padding:12px 26px;
+    background-color: #1c1c1c;
+    color: #FCDE7C;
+    border-radius: 7px;
+}
+
+.empty-cart-button a{
+    color: #FCDE7C;
+}

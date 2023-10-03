@@ -48,11 +48,11 @@
     color: #6b6b6b;
 }
 
-.gallery-display{
-    width: max(500px,80%);
+.gallery-display {
+    width: max(500px, 80%);
     margin: 2em auto;
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Make grid items equal in size */
     gap: 1.5em;
 }
 
@@ -337,7 +337,7 @@
 
 .hover-position-add-collection span{
     position: absolute;
-    top: 30%;
+    top: 11%;
     right: 5px;
 }
 
@@ -376,7 +376,7 @@
 
 .hover-position-add-download span{
     position: absolute;
-    top: 30%;
+    top: 12%;
     right: 5px;
 }
 
