@@ -1,20 +1,23 @@
 
 .payment-form {
-    width:40%;
+    width:35%;
     margin: 0 auto;
     padding: 10px;
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  
   }
 
   .payment-form-body{
-    background-color: rgb(9, 74, 112);
-    height:100vh;
+    background-color: rgb(1, 39, 62);
+    height:100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding:20px 0;
+    border: 2px solid white;
   }
   
   .payment-gateway-header{
@@ -60,6 +63,11 @@
   
   .payment-form button:hover {
     background-color: #0056b3;
+  }
+
+ #payment-back-button{
+    background-color: transparent;
+    color:#1c1c1c;
   }
   
 

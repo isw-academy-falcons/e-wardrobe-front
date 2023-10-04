@@ -3,19 +3,22 @@ import "./gallery.css";
 import AppNavBar from '../../components/AppNavBar';
 import Footer from '../../components/Footer';
 import Logo from '../../components/Logo';
-import { BsFilterLeft, BsSearch } from 'react-icons/bs';
+import {  BsSearch } from 'react-icons/bs';
 import { BiSolidDownload } from 'react-icons/bi';
-import { AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlinePlus,AiOutlineCheck } from 'react-icons/ai';
 import { BASE_URL } from '../../assets/baseUrl';
 
 const Gallery = () => {
     const [images, setImages] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [page, setPage] = useState(1);
+    const [addedToCollection, setAddedToCollection] = useState({}); // Track added images
+
     const apiKey = process.env.REACT_APP_UNSPLASH_API_KEY;
 
 
     useEffect(() => {
+        setAddedToCollection({});
         fetchImages();
     }, [page, searchTerm]); // Fetch images when the page or search term changes
 
@@ -27,6 +30,16 @@ const Gallery = () => {
         })
         console.log(res);
     }
+
+    const handleAddToCollection = (imgUrl, index) => {
+        saveCollection(imgUrl);
+        setAddedToCollection((prevState) => ({
+            ...prevState,
+            [index]: true, // Set the image at 'index' to be added
+        }));
+    };
+
+    
     const fetchImages = () => {
         fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${searchTerm}&per_page=7&client_id=${apiKey}`)
             .then(response => {
@@ -46,11 +59,13 @@ const Gallery = () => {
 
     const handleSearch = () => {
         setPage(1);
+        setAddedToCollection({});
         fetchImages();
     };
 
     const handleLoadMore = () => {
         setPage(page + 1);
+        setAddedToCollection({});
     };
 
     return (
@@ -78,14 +93,22 @@ const Gallery = () => {
                             <div className="hover-effect-container">
                                 <div className='hover-add-collection'>
                                     <div className="hover-position-add-collection">
-                                        <button onClick={() => saveCollection(image.urls.regular)}>Add to collection</button>
-                                        <span> <AiOutlinePlus /> </span>
+                                    {addedToCollection[index] ? (
+                                            <button className="added-to-collection" disabled>Added to collection</button>
+                                            
+                                        ) : (
+                                            <button onClick={() => handleAddToCollection(image.urls.regular, index)}>
+                                                Add to collection
+                                            </button>
+                                        )}   
+                                                                           
+                                    <span>{addedToCollection[index] ? <AiOutlineCheck /> : <AiOutlinePlus />}</span>
                                     </div>
                                 </div>
                                 <div className='hover-add-download'>
                                     <div className="hover-position-add-download">
                                         <a href={image.urls.full} target="_blank" rel="noopener noreferrer" download>
-                                            <button>Download</button>
+                                            <button download >Download</button>
                                         </a>
                                         <span> <BiSolidDownload /> </span>
                                     </div>

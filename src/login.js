@@ -39,6 +39,7 @@ export default function Login() {
       localStorage.setItem("token", data.accessToken);
       console.log(data);
       if (response.ok) {
+        
         // Login successful, you can redirect the user to the dashboard or a protected route
         setLoginSuccess(true);
         setTimeout(() => {
@@ -46,18 +47,20 @@ export default function Login() {
         }, 2000);
       } else {
         // Login failed, display the error message to the user
-        const errorData = await response.json();
-        setError(errorData.message); // Set the error message from the response
+       
+        console.log("Error Data:",data);
+        setError(data.message); // Set the error message from the response
         
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("catch error message:", error);
     }
   };
 
   return (
     <div className="Login">
       <video
+        className="login-video"
         src={loginVideo}
         type="video/mp4"
         loop
