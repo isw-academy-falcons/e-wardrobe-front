@@ -1,17 +1,19 @@
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 import "./AppNavBar.css";
 import ProfileAvatar from "../assets/images/landing/profile.svg";
-import { useEffect, useState } from "react";
 
 const AppNavBar = () => {
   const[name, setName] = useState(null);
+  
   useEffect(() => {
     setName(localStorage.getItem("name"))
   },[name])
+
 	return (
 		<Navbar collapseOnSelect expand="lg" className="app-navbar">
       <Container>
@@ -43,7 +45,11 @@ const AppNavBar = () => {
               <NavDropdown.Divider />
               <NavDropdown.Item href="/e-wardrobe">Generated Collections</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/fashion">Fashion</Nav.Link>
+            <NavDropdown title="Services" id="collasible-nav-dropdown" className="e-wardrobe-dropdown">
+              <NavDropdown.Item href="/laundry">Shop</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/fashion">Fashion</NavDropdown.Item>
+            </NavDropdown>
             <Nav.Link href="/pricing">Pricing</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
           </Nav>
