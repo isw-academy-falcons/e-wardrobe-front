@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./styles/Login.css";
-import axios from "axios";
-import MySvg2 from "./assets/images/illustration2.svg";
 import loginVideo from "./assets/images/loginVideo.mp4";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -66,6 +64,7 @@ export default function Signup() {
     <div className="SignUp">
        
       <video
+        className="login-video"
         src={loginVideo}
         type="video/mp4"
         loop

@@ -11,6 +11,8 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from './CartContext'
+import searchImage from "../../assets/images/search.svg";
+
 
 const Fashion = () => {
   // State to track the selected category (men, women)
@@ -274,20 +276,30 @@ const Fashion = () => {
             </p>
           </div>
           <div className="fashion-cards">
-            {filteredData.map((item) => (
-              <div key={item.id} className="fashion-card">
-                <img src={item.image} alt={item.name} />
-                <p>{item.name}</p>
-                <p>{item.price}</p>
-                <button
-                  className="fashion-button"
-                  onClick={() => handleBuyClick(item)}
-                >
-                  Buy
-                </button>
-              </div>
-            ))}
+        {filteredData.length === 0 ? (
+          // Render a message when no search results are found
+          <div className="fashion-search-result">  
+          <img src={searchImage} alt="search Avatar" height={"200px"}/>
+          <p>No search results found.</p>
           </div>
+        ) : (
+          // Render products as usual when there are search results
+          filteredData.map((item) => (
+            <div key={item.id} className="fashion-card">
+              <img src={item.image} alt={item.name} />
+              <p>{item.name}</p>
+              <p>{item.price}</p>
+              <button
+                className="fashion-button"
+                onClick={() => handleBuyClick(item)}
+              >
+                Buy
+              </button>
+            </div>
+          ))
+        )}
+      </div>
+
         </div>
       </div>
       <Footer />
