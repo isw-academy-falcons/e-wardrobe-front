@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import "./fashionProduct.css";
-import men1Image from "../../assets/images/fashion/fashion-men/men1.svg";
 import AppNavBar from "../../components/AppNavBar";
 import { useParams } from "react-router-dom";
 import { useCart } from './CartContext';
