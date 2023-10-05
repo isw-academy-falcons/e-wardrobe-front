@@ -29,12 +29,18 @@
     padding-bottom: 8px;
 }
 
-.display-wardrobe, .display-generate-collection{
+.display-generate-collection{
     width: 80%;
     margin: 2em auto 4em auto;
     display: flex;
     justify-content: space-between;
 }
+
+.display-wardrobe{
+    width: 80%;
+    margin: 2em auto 4em auto;
+}
+
 .wardrobe-img1,
 .wardrobe-img2,
 .wardrobe-img3,
