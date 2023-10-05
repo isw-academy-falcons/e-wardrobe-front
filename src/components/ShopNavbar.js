@@ -48,7 +48,7 @@ const ShopNavBar = ({ onSelectCategory }) => {
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown
-              title="Fashion"
+              title="Shop"
               id="collasible-nav-dropdown"
               className="e-wardrobe-dropdown"
             >
