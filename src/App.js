@@ -18,8 +18,8 @@ import FashionCart from "./pages/fashion/fashioncart";
 import ProfilePage from "./pages/profile/ProfilePage";
 import Verification from "./verification";
 import { CartProvider } from './pages/fashion/CartContext';
-
-
+import Laundry from "./pages/laundry/Laundry";
+import Tailor from "./pages/laundry/Tailor";
 
 
 
@@ -45,6 +45,8 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/verify" element={<Verification />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/laundry" element={<Laundry/>}/>
+          <Route path="/tailor" element={<Tailor/>}/>
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </Router>
