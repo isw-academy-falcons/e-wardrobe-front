@@ -18,12 +18,14 @@ const UploadOutfits = () => {
 	const [weather, setWeather] = useState(null);
   const [clothType, setClothType] = useState("");
 	const [latitude, setLatitude] = useState(null);
+  const [topImages, setTopImages] = useState([]);
   const [generate, setGenerate] = useState(false);
 	const [longitude, setLongitude] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const accessToken = localStorage.getItem("token");
   const [isUploaded, setIsUploaded] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [belowTorsoImages, setBelowTorsoImages] = useState([]);
   const [selectedImages, setSelectedImages] = useState({DRESS: [], TOP: [], BOTTOM: []});
 
   // Function to get the current location
@@ -35,7 +37,6 @@ const UploadOutfits = () => {
         setLongitude(longitude);
       },
       (error) => {
-        console.error('Error getting location:', error);
       }
     );
   }, []);
@@ -49,7 +50,6 @@ const UploadOutfits = () => {
         setLongitude(response.data[0].lon);
       }
       catch(error) {
-        console.error('Error fetching location:', error);
       };
     };
 
@@ -67,7 +67,6 @@ const UploadOutfits = () => {
         setWeather(response.data);
       }
       catch(error) {
-        console.error('Error fetching weather data:', error);
       }
     }
     fetchWeather();
@@ -117,18 +116,15 @@ const UploadOutfits = () => {
 
         if (response.ok) {
           const responseData = await response.json();
-          console.log("Uploaded data response: ", responseData);
+          if (clothType === "TOP") {
+            setTopImages(responseData);
+          }
+          else if (clothType === "BOTTOM") {
+            setBelowTorsoImages(responseData);
+          }
         }
-        else {
-          const error = await response.json();
-          console.log(error.message);
-        }
-      }
-      else{
-        console.log("You need to log in to perform this action");
       }
     } catch (error) {
-      console.log(error);
     }
     setShowModal(false);
   };
@@ -166,12 +162,14 @@ const UploadOutfits = () => {
           {/* Oufit Generator */}
           <OutfitGenerator
             generate={generate}
+            topImages={topImages}
             isUploaded={isUploaded}
             handleReset={handleReset}
             handleClick={handleClick}
             setGenerate={setGenerate}
             selectedImages={selectedImages}
             selectedCategory={selectedCategory}
+            belowTorsoImages={belowTorsoImages}
           />
           {/* Footer */}
           <Footer />
