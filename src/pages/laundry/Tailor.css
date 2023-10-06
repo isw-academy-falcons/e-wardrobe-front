@@ -1,8 +1,17 @@
 
+.tailor-wrapper {
+  display: grid;
+}
+
+
+.tailor-services{
+  margin: 0 auto ;
+  width: 100%;
+}
 .tailor-header{
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 20px;
+    margin-top: 40px;
 }
 
 .tailor-header span{
@@ -23,31 +32,14 @@
      border-bottom: 2px solid black;
  }
 
-.tailor-wrapper {
-    display: grid;
-    padding: 2em;
-  }
-
-.tailor-services{
-    margin: auto;
-}
-  
-  .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
   
   .basemap img {
     max-width: 100%;
   }
   
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 600px) {
     .content {
       grid-template-columns: 1fr;
     }
   }
   
-  @media screen and (min-width:767px) {
-    .tailor-wrapper{ grid-template-columns: 1fr  3fr; gap: 10px;}
-    .basemap img {max-height: 100%;}}

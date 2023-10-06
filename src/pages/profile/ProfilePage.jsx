@@ -12,9 +12,9 @@ import { useNavigate } from "react-router-dom";
 // import LogoutIcon from '@mui/icons-material/Logout';
 const ProfilePage = () => {
   const [showDropDown, setShowDropDown] = useState({
-    personalDetails: false,
-    security: false,
-    billing: false,
+    personalDetails: true,
+    security: true,
+    billing: true,
   });
   const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ const ProfilePage = () => {
     <div className="profile ">
        <AppNavBar />
       <div className="profile-container ">
-        <nav className="py-2 flex bg-[#FCDE7C] custom-shadow" id="profile-nav">
+        <nav className="py-2 profile-nav bg-[#FCDE7C] custom-shadow" id="profile-nav">
           <div className="m-auto">
             <ul className="list-none text-white font-[Poppins] text-left font-medium m-auto space-y-10">
               <li>
@@ -70,7 +70,7 @@ const ProfilePage = () => {
             <img
               src={profileImage}
               alt="profile of the user"
-              className="w-[126px] h-[126px] camera-image "
+              className="camera-image "
             />
             <div><CameraAltIcon className="camera-icon " /></div>
             
@@ -81,7 +81,7 @@ const ProfilePage = () => {
           </p>
           <section id="personal-details" className="mt-4 px-4">
             <div className="section">
-              <span className="">Personal Details</span>
+              <span className="personal-details-section">Personal Details</span>
               <span
                 className="material-icons"
                 onClick={() => dropDownHandle("personalDetails")}
@@ -106,7 +106,7 @@ const ProfilePage = () => {
           {/* .security section.. */}
           <section id="security" className="mt-4 px-4">
             <div className="section">
-              <span className="">Security</span>
+              <span className="personal-details-section">Security</span>
               <span onClick={() => dropDownHandle("security")}>
                 {showDropDown.security ? (
                   <KeyboardArrowDown />
@@ -122,7 +122,7 @@ const ProfilePage = () => {
           {/* ..billing section. */}
           <section id="billing" className="mt-4 px-4">
             <div className="section">
-              <span className="">Billing<span className="text-xs ml-2 font-thin">(current plan -{plan})</span></span>
+              <span className="personal-details-section">Billing<span id="personal-details-plan">(current plan -{plan})</span></span>
               <span onClick={() => dropDownHandle("billing")}>
                 {showDropDown.billing ? (
                   <KeyboardArrowDown />

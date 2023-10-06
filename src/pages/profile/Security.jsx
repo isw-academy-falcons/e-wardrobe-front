@@ -6,12 +6,10 @@ const Security = () => {
   return (
     <div className='security '>
          <div className='flex justify-between my-2 sub-heading-border '>
-            <span className="text-[12px]">Change Password</span>
-            <span className='cursor-pointer '><KeyboardArrowRight /></span>
+            <span className="">Change Password</span>
         </div>
          <div className='flex justify-between my-2 sub-heading-border'>
-            <span className="text-[12px]">Enable Two Factor Authentication</span>
-            <span className='cursor-pointer '><KeyboardArrowRight /></span>
+            <span className="">Enable Two Factor Authentication</span>
         </div>
     </div>
   )

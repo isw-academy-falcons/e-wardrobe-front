@@ -1,8 +1,17 @@
+.laundry-wrapper {
+  display: grid;
+
+
+}
+.drycleaning-services{
+  margin: 0 auto;
+  width: 100%;
+}
 
 .laundry-header{
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 20px;
+    margin-top: 40px;
 }
 
 .laundry-header span:hover{
@@ -18,32 +27,13 @@
     color:  #000000;
     border-bottom: 2px solid black;
 }
-
-.laundry-wrapper {
-    display: grid;
-    padding: 2em;
-  }
-
-.drycleaning-services{
-    margin: auto;
-}
   
-  .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  
-  .basemap img {
-    max-width: 100%;
-  }
-  
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 600px) {
     .content {
       grid-template-columns: 1fr;
     }
   }
   
-  @media screen and (min-width:767px) {
-    .laundry-wrapper{ grid-template-columns: 1fr  3fr; gap: 10px;}
-    .basemap img {max-height: 100%;}}
+  @media screen and (min-width:600px) {
+    .laundry-wrapper{ grid-template-columns: 1fr  3fr; gap: 1px;padding-top: 0; padding-right: 0;}
+    .basemap img {height: 100%;}}

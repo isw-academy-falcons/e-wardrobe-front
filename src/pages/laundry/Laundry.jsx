@@ -18,8 +18,8 @@ const Laundry = () => {
             <span>LAUNDRY</span>
             <span id="inactive" onClick={()=>navigate("/tailor")}>TAILOR</span>
           </div>
-          <Search />
-          <div className="drycleaning-services">
+          <div className="drycleaning-marts">
+            <Search />
             <Mart
               name="hephzibah laundry .s"
               address="29B Ajose Adeogun Str"

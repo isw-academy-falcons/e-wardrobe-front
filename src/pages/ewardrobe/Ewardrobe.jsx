@@ -4,32 +4,47 @@ import {MdDelete} from 'react-icons/md';
 import {GrAddCircle} from 'react-icons/gr'
 import { BASE_URL } from '../../assets/baseUrl';
 import React, { useEffect, useState } from 'react';
-
 import './e-wardrobe.css';
 import Row from "react-bootstrap/Row";
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
 import AppNavBar from '../../components/AppNavBar';
-import gcImg1 from '../../assets/images/e-wardrobe/gcImg1.png';
-import gcImg2 from '../../assets/images/e-wardrobe/gcImg2.png';
-import gcImg3 from '../../assets/images/e-wardrobe/gcImg3.png';
+
 
 const Ewardrobe = () => {
-  const [active, setActive] = useState(1);
-  const [clothes, setClothes] = useState([]);
+  const [active, setActive] = useState(2);
+  const [uploadedClothes, setUploadedClothes] = useState([]);
+  const [unsplashClothes, setUnsplashClothes] = useState([]);
   const userId = localStorage.getItem("userId");
   const accessToken = localStorage.getItem("token");
 
-  const getClothes = async () => {
+  const getUploadedClothes = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/cloth/all/${userId}`)
-      setClothes(response.data);
+      const response = await axios.get(`${BASE_URL}/cloth/all/uploaded/${userId}`)
+      console.log(response)
+      setUploadedClothes(response.data);
+      console.log(uploadedClothes)
     } catch (error) {
       console.log("Error message: ", error);
     }
   };
+
+  
+  const getUnsplashClothes = async () => {
+    try {
+      const response2 = await axios.get(`${BASE_URL}/cloth/all/unsplash/${userId}`)
+      // console.log(response2)
+      setUnsplashClothes(response2.data);
+
+    } catch (error) {
+      console.log("Error message: ", error);
+    }
+  };
+
+
   useEffect(() => {
-    getClothes();
+    getUploadedClothes();
+    getUnsplashClothes();
   })
 
   const deleteCloth = async (clothId) => {
@@ -39,7 +54,7 @@ const Ewardrobe = () => {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      getClothes();
+      getUploadedClothes();
     } catch (error) {
       console.log("Error message: ", error);
     }
@@ -54,12 +69,12 @@ const Ewardrobe = () => {
             <h3 className='e-wardrobe-subtitle'><Logo className='logo-gallery'/>E-WARDROBE</h3>
             <section className="switch-wardrobe-generate">
               <h4 className={active === 1 ? 'active':''} onClick={() => setActive(1)}>SKYFITZZ WEB GALLERY</h4>
-              <h4 className={active === 2 ? 'active':''} onClick={() => setActive(2)}>GENERATED COLLECTION</h4>
+              <h4 className={active === 2 ? 'active':''} onClick={() => setActive(2)}>UNSPLASH COLLECTION</h4>
             </section>
             {active === 1 ?(
               <section className="display-wardrobe">
                 <Row xs={1} md={3} className="g-4">
-                  {clothes.map((cloth, index) => (
+                  {uploadedClothes.map((cloth, index) => (
                     <div className="wardrobe-img1" key={`${cloth.clothId}`} style={{ height: "260px", overflow: "hidden" }}>
                       <img src={`${cloth.imageUrl}`} alt={`wardrobe ${index}`} className='e-wardrobe-img' />
 
@@ -74,34 +89,21 @@ const Ewardrobe = () => {
                 </Row>
               </section>
             ) : (
-              <section className="display-generate-collection">
-                <div className="generated-collection-img1">
-                  <img src={gcImg1} alt="generated collection image 1" className='e-wardrobe-img' />
-                  <div className="delete-wardrobe-item">
-                    <div className="delete-wardrobe-position">
-                      <button>Delete</button>
-                      <span><MdDelete/></span>
+              <section className="display-wardrobe">
+                <Row xs={1} md={3} className="g-4">
+                  {unsplashClothes.map((cloth, index) => (
+                    <div className="wardrobe-img1" key={`${cloth.clothId}`} style={{ height: "260px", overflow: "hidden" }}>
+                      <img src={`${cloth.imageUrl}`} alt={`wardrobe ${index}`} className='e-wardrobe-img' />
+
+                      <div className="delete-wardrobe-item">
+                        <div className="delete-wardrobe-position">
+                          <button onClick={() => deleteCloth(cloth.clothId)}>Delete</button>
+                          <span><MdDelete/></span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="generated-collection-img2">
-                  <img src={gcImg2} alt="generated collection image 2" className='e-wardrobe-img' />
-                  <div className="delete-wardrobe-item">
-                    <div className="delete-wardrobe-position">
-                      <button>Delete</button>
-                      <span><MdDelete/></span>
-                    </div>
-                  </div>
-                </div>
-                <div className="generated-collection-img3">
-                  <img src={gcImg3} alt="generated collection image 3" className='e-wardrobe-img' />
-                  <div className="delete-wardrobe-item">
-                    <div className="delete-wardrobe-position">
-                      <button>Delete</button>
-                      <span><MdDelete/></span>
-                    </div>
-                  </div>
-                </div>
+                  ))}
+                </Row>
               </section>
             )
             }
