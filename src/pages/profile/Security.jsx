@@ -1,5 +1,4 @@
 import React from 'react'
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import './Security.css';
 
 const Security = () => {

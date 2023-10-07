@@ -11,7 +11,7 @@ const Search = () => {
         </span>
         <input
           type="search"
-          className="laundry-search-placeholder laundry-input-with-shadow"
+          className="laundry-search-placeholder"
           placeholder="Search"
         />
       </div>

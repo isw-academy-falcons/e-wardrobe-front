@@ -1,12 +1,11 @@
 .laundro-mart{
+    margin: 10px auto;
     display: grid;
 }
 
 .laundro-mart-details-container{
-    margin: 10px auto;
+    margin: auto;
     justify-content: center;
-    padding-left: 40px;
-    padding-right: 20px;
 }
 
 
@@ -14,7 +13,7 @@
 .laundro-mart-name{
     font-weight: bolder;
 }
-#laundro-text{ margin-bottom: 2px;}
+#laundro-text{ margin-bottom: 4px;}
 #opening-time{color: #ff0000;}
 .br-line{ border-bottom: 1px solid black; margin-top: 5px; }
 
@@ -25,7 +24,6 @@
     .laundry-image-container{display: flex;}
     .laundry-image{
         margin: 20px auto;
-       
     }
   }
 
@@ -34,10 +32,8 @@
         display: grid;
         grid-template-columns: 2fr 1fr;
         text-align: left;
-        
     }
-    #laundro-text{ font-size: 12px;}
+    #laundro-text{ font-size: 10px;}
     #laundro-text.laundro-mart-name{font-size: 14px;}
-    .laundro-mart-details{display: grid; grid-template-columns: repeat(1fr,4); }
-    .laundry-image{ height: 100px;}
+    .laundro-mart-details{display: grid; grid-template-columns: repeat(1fr,4);}
   }

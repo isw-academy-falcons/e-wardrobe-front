@@ -9,7 +9,6 @@ import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import Security from "./Security";
 import Billing from "./Billing";
 import { useNavigate } from "react-router-dom";
-// import LogoutIcon from '@mui/icons-material/Logout';
 const ProfilePage = () => {
   const [showDropDown, setShowDropDown] = useState({
     personalDetails: true,
