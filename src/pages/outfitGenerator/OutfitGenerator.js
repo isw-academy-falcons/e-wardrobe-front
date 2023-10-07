@@ -1,14 +1,23 @@
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
+import { Slide } from "react-slideshow-image";
 import Container from "react-bootstrap/Container";
 
 import ClothsDisplay from "./ClothsDisplay";
+import Loader from "../../components/Loader";
 import GenerateButtons from "./GenerateButtons";
-import TopMatch from "../../assets/images/outfitGenerator/top.svg";
-import BottomMatch from "../../assets/images/outfitGenerator/bottom.svg";
 import AddToCollection from "../../assets/images/outfitGenerator/add.svg";
 import WaitingImage from "../../assets/images/outfitGenerator/waiting.svg";
 
-const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, handleClick, setGenerate, selectedCategory }) => {
+const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, handleClick, setGenerate, selectedCategory, topImages, belowTorsoImages }) => {
+  const [matchesData, setMatchesData] = useState({});
+  const [matchResponse, setMatchResponse] = useState(true);
+  const new_images = {top_images: topImages, below_torso_images: belowTorsoImages};
+
+  const addToCollection = async e => {
+    e.preventDefault();
+  };
+
   return (
     <>
       {!generate ? (
@@ -42,17 +51,27 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
                   style={{
                     color: "white",
                     width: "183.5px",
-                    marginRight: "10px"
+                    marginRight: "10px",
                   }}
                   className="outfit-button"
-                  onClick={e => handleReset(e)}
+                  onClick={(e) => handleReset(e)}
                 >
                   Reset
                 </Button>
               </section>
 
               {/* Generate Buttons */}
-              <GenerateButtons selectedImages={selectedImages} handleClick={handleClick} setGenerate={setGenerate} selectedCategory={selectedCategory} />
+              <GenerateButtons
+                topImages={topImages}
+                new_images={new_images}
+                handleClick={handleClick}
+                setGenerate={setGenerate}
+                selectedImages={selectedImages}
+                setMatchesData={setMatchesData}
+                selectedCategory={selectedCategory}
+                belowTorsoImages={belowTorsoImages}
+                setMatchResponse={setMatchResponse}
+              />
             </Container>
           )}
         </>
@@ -60,27 +79,53 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
         <>
           {/* Display Match(es) */}
           <Container>
-            <section className="outfit-body">
-              <img
-                src={TopMatch}
-                alt="Best Top Match"
-              />
-              <img
-                src={BottomMatch}
-                alt="Best Bottom Match"
-                style={{ marginTop: "22px" }}
-              />
-              <img
-                height="41px"
-                width="139px"
-                src={AddToCollection}
-                alt="Add to Collection"
-                style={{ marginTop: "22px", cursor: "pointer" }}
-              />
-            </section>
+            {matchResponse ? (
+              <section className="outfit-body">
+                <Loader isLoading={matchResponse} />
+              </section>
+            ) : (
+              <section>
+                <Slide slidesToScroll={1} slidesToShow={3} indicators={true}>
+                  {matchesData.top_matches.map((top, index) => (
+                    <img key={`top-${top.imageUrl}`} src={top} alt={`Top Match${index}`} className="trending-outfit-images" />
+                  ))}
+                </Slide>
+                <Slide slidesToScroll={1} slidesToShow={3} indicators={true}>
+                  {matchesData.bottom_matches.map((bottom, index) => (
+                    <img
+                      src={bottom}
+                      alt={`Bottom Match${index}`}
+                      style={{ marginTop: "22px" }}
+                      key={`top-${bottom.imageUrl}`}
+                      className="trending-outfit-images"
+                    />
+                  ))}
+                </Slide>
+                <section className="outfit-body">
+                  <img
+                    height="41px"
+                    width="139px"
+                    src={AddToCollection}
+                    alt="Add to Collection"
+                    onClick={(e) => addToCollection(e)}
+                    style={{ marginTop: "22px", cursor: "pointer" }}
+                  />
+                </section>
+              </section>
+            )}
           </Container>
           {/* Generate Buttons */}
-          <GenerateButtons selectedImages={selectedImages} handleClick={handleClick} setGenerate={setGenerate} selectedCategory={selectedCategory} />
+          <GenerateButtons
+            topImages={topImages}
+            new_images={new_images}
+            handleClick={handleClick}
+            setGenerate={setGenerate}
+            selectedImages={selectedImages}
+            setMatchesData={setMatchesData}
+            selectedCategory={selectedCategory}
+            belowTorsoImages={belowTorsoImages}
+            setMatchResponse={setMatchResponse}
+          />
         </>
       )}
     </>

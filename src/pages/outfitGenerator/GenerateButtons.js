@@ -1,21 +1,40 @@
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
-const GenerateButtons = ({ selectedImages, handleClick, setGenerate }) => {
-  const accessToken = localStorage.getItem("token");
+const GenerateButtons = ({ selectedImages, handleClick, setGenerate, selectedCategory, topImages, belowTorsoImages, setMatchesData, setMatchResponse }) => {
   const id = localStorage.getItem("userId");
+  const accessToken = localStorage.getItem("token");
 
-  const generateBestToLeast = async e => {
-    e.preventDefault();
+  const generateBestToLeast = async () => {
     setGenerate(true);
 
-    const response = await fetch(`https://skyfitzz.up.railway.app/api/v1/cloth/generate/${id}`, {
+    const response = await fetch(`https://skyfitzz.up.railway.app/api/v1/cloth/generate/${id}?category=${selectedCategory}`, {
       method: "GET",
-      headers: {"Authorization": `Bearer ${accessToken}`},
+      headers: {"Authorization": `Bearer ${accessToken}`, "Content-Type": "application/json="},
     });
 
-    const data = await response.json();
-    console.log("Generate Data: ", data);
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Generate Data: ", data);
+    }
+    else {
+      const new_images = {"top_images": topImages, "below_torso_images": belowTorsoImages}
+      setMatchResponse(true)
+      const new_response = await fetch(`http://localhost:5000/train`, {
+        method: "POST",
+        headers: {"Authorization": `Bearer ${accessToken}`, "Content-Type": "application/json"},
+        body: JSON.stringify(new_images)
+      });
+      if (new_response.ok) {
+        const matches_response = await fetch(`http://localhost:5000/matches`, {
+          method: "GET",
+          headers: {"Authorization": `Bearer ${accessToken}`, "Content-Type": "application/json"}
+        });
+        const data = await matches_response.json()
+        setMatchResponse(false)
+        setMatchesData(data)
+      }
+    }
   };
 
   return (
@@ -57,7 +76,7 @@ const GenerateButtons = ({ selectedImages, handleClick, setGenerate }) => {
       )}
       {selectedImages.TOP.length !== 0 &&
       selectedImages.BOTTOM.length !== 0 ? (
-        <Button variant="light" className="outfit-button" onClick={e => generateBestToLeast(e)} style={{ borderColor: "black" }}>
+        <Button variant="light" className="outfit-button" onClick={() => generateBestToLeast()} style={{ borderColor: "black" }}>
           Generate Best To Least
         </Button>
       ) : (
