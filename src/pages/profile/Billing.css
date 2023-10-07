@@ -1,3 +1,13 @@
+.billing{    
+color: #000;
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+}
+
+
 .billing .border-bottom{
     border-bottom: 1px solid #6B6B6B;
 }
