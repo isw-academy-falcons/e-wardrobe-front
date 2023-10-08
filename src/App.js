@@ -21,9 +21,6 @@ import { CartProvider } from './pages/fashion/CartContext';
 import Laundry from "./pages/laundry/Laundry";
 import Tailor from "./pages/laundry/Tailor";
 
-
-
-
 function App() {
   return (
     <CartProvider>

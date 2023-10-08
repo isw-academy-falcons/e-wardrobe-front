@@ -1,18 +1,28 @@
-
 .tailor-header{
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
+.tailor-wrapper {
+  display: grid;
+}
+ 
 .tailor-header span{
-    border-bottom: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 .tailor-header span:hover{
-    cursor: pointer;
- }
- 
+  cursor: pointer;
+}
+
+.tailor-services{
+  margin: 0 auto;
+  width: 100%;
+  
+}
+
  #inactive{ color:  #6B6B6B;
      border-bottom: 2px solid white;
  }
@@ -23,20 +33,7 @@
      border-bottom: 2px solid black;
  }
 
-.tailor-wrapper {
-    display: grid;
-    padding: 2em;
-  }
-
-.tailor-services{
-    margin: auto;
-}
-  
-  .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
+.tailor-marts{margin-left: 20px; }
   
   .basemap img {
     max-width: 100%;
@@ -50,4 +47,5 @@
   
   @media screen and (min-width:767px) {
     .tailor-wrapper{ grid-template-columns: 1fr  3fr; gap: 10px;}
-    .basemap img {max-height: 100%;}}
+    .basemap img {max-height: 100%;}
+    .tailor-image {width: 100px; height: 100px;}}
