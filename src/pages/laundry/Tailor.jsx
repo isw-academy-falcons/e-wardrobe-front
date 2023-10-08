@@ -19,7 +19,7 @@ const Tailor = () => {
             <span>TAILOR</span>
           </div>
           <Search />
-          <div className="tailor-services">
+          <div className="tailor-marts">
             <Mart
               name="Tasit styles"
               address="29B Ajose Adeogun Str"
