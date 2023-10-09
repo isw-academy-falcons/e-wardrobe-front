@@ -11,7 +11,11 @@ import WaitingImage from "../../assets/images/outfitGenerator/waiting.svg";
 
 const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, handleClick, setGenerate, selectedCategory, topImages, belowTorsoImages }) => {
   const [matchesData, setMatchesData] = useState({});
+  const [topMatch, setTopMatch] = useState({});
+  const [bottomMatch, setBottomMatch] = useState({});
   const [matchResponse, setMatchResponse] = useState(true);
+  const [bestMatch, setBestMatch] = useState(false);
+  const [bestToLeastMatch, setBestToLeastMatch] = useState(false);
   const new_images = {top_images: topImages, below_torso_images: belowTorsoImages};
 
   const addToCollection = async e => {
@@ -66,11 +70,15 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
                 new_images={new_images}
                 handleClick={handleClick}
                 setGenerate={setGenerate}
+                setTopMatch={setTopMatch}
+                setBestMatch={setBestMatch}
                 selectedImages={selectedImages}
                 setMatchesData={setMatchesData}
+                setBottomMatch={setBottomMatch}
                 selectedCategory={selectedCategory}
                 belowTorsoImages={belowTorsoImages}
                 setMatchResponse={setMatchResponse}
+                setBestToLeastMatch={setBestToLeastMatch}
               />
             </Container>
           )}
@@ -85,23 +93,33 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
               </section>
             ) : (
               <section>
-                <Slide slidesToScroll={1} slidesToShow={3} indicators={true}>
-                  {matchesData.top_matches.map((top, index) => (
-                    <img key={`top-${top.imageUrl}`} src={top} alt={`Top Match${index}`} className="trending-outfit-images" />
-                  ))}
-                </Slide>
-                <Slide slidesToScroll={1} slidesToShow={3} indicators={true}>
-                  {matchesData.bottom_matches.map((bottom, index) => (
-                    <img
-                      src={bottom}
-                      alt={`Bottom Match${index}`}
-                      style={{ marginTop: "22px" }}
-                      key={`top-${bottom.imageUrl}`}
-                      className="trending-outfit-images"
-                    />
-                  ))}
-                </Slide>
+                {bestToLeastMatch &&
+                  <>
+                    <Slide slidesToScroll={1} slidesToShow={3} indicators={true}>
+                      {matchesData.top_matches.map((top, index) => (
+                        <img key={`top-${top.imageUrl}`} src={top} alt={`Top Match${index}`} className="trending-outfit-images" />
+                      ))}
+                    </Slide>
+                    <Slide slidesToScroll={1} slidesToShow={3} indicators={true}>
+                      {matchesData.bottom_matches.map((bottom, index) => (
+                        <img
+                          src={bottom}
+                          alt={`Bottom Match${index}`}
+                          style={{ marginTop: "22px" }}
+                          key={`top-${bottom.imageUrl}`}
+                          className="trending-outfit-images"
+                        />
+                      ))}
+                    </Slide>
+                  </>
+                }
                 <section className="outfit-body">
+                  {bestMatch &&
+                    <>
+                      <img src={topMatch} alt="Top match" className="trending-outfit-images" />
+                      <img src={bottomMatch} alt="Bottom Match" className="trending-outfit-images" />
+                    </>
+                  }
                   <img
                     height="41px"
                     width="139px"
@@ -120,11 +138,15 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
             new_images={new_images}
             handleClick={handleClick}
             setGenerate={setGenerate}
+            setTopMatch={setTopMatch}
+            setBestMatch={setBestMatch}
             selectedImages={selectedImages}
             setMatchesData={setMatchesData}
+            setBottomMatch={setBottomMatch}
             selectedCategory={selectedCategory}
             belowTorsoImages={belowTorsoImages}
             setMatchResponse={setMatchResponse}
+            setBestToLeastMatch={setBestToLeastMatch}
           />
         </>
       )}
