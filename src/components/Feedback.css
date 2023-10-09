@@ -51,7 +51,7 @@
     }
   }
   
-  button {
+ .feedback-container button {
     display: block;
     margin: 10px auto;
     padding: 10px 20px;
@@ -62,7 +62,7 @@
     cursor: pointer;
   }
   
-  button:hover {
+  .feedback-container button:hover {
     background-color: #00b327;
   }
   

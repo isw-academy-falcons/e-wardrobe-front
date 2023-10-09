@@ -2,6 +2,7 @@ import React from 'react';
 import AppNavBar from '../../components/AppNavBar';
 import img6 from '../../assets/images/about/Image.svg';
 import './About.css'
+import Footer from '../../components/Footer';
 
 const About = () => {
   return (
@@ -11,7 +12,7 @@ const About = () => {
         <div className="text-white text-center px-4 max-h-[60%]">
 
           <h2 className="text-2xl font-bold mb-2">ABOUT US</h2>
-          <p className="text-md mb-4">At Outfit Match Generator, we believe that fashion is an expression of individuality and personality.
+          <p className="text-md mb-4">At Falcons, we believe that fashion is an expression of individuality and personality.
            Our platform is dedicated to helping you uncover your unique style and effortlessly create outfits that 
            resonate with who you are. Whether you're a fashion enthusiast looking to experiment with new looks
             or someone seeking everyday inspiration, we're here to make outfit planning an enjoyable experience.</p>
@@ -27,6 +28,7 @@ const About = () => {
            approach. We blend styling artistry with algorithms, crafting outfits that inspire confidence. 
            With trend insight and innovation, we're thrilled to join your fashion journey.</p>
         </div>
+        <Footer />
       </div>
     </>
   );
