@@ -4,7 +4,7 @@ import './PersonalDetails.css'
 export const PersonalDetails = (props) => {
   return (
     <form className="my-4 user-details">
-      <div className="firstName grid">
+      <div className="firstName user-details-grid">
         <label htmlFor="firstName" className="label">First Name</label>
         <input
           type="text"
@@ -14,7 +14,7 @@ export const PersonalDetails = (props) => {
           className="input"
         />
       </div>
-      <div className="lastName grid">
+      <div className="lastName user-details-grid">
         <label htmlFor="lastName" className="label">Last Name</label>
         <input
           type="text"
@@ -24,7 +24,7 @@ export const PersonalDetails = (props) => {
           className="input"
         />
       </div>
-      <div className="gender grid">
+      <div className="gender user-details-grid">
         <label htmlFor="gender" className="label">Gender</label>
         <input
           type="text"
@@ -34,7 +34,7 @@ export const PersonalDetails = (props) => {
           className="input"
         />
       </div>
-      <div className="email grid">
+      <div className="email user-details-grid">
         <label htmlFor="email" className="label">Email</label>
         <input
           type="email"
@@ -44,7 +44,7 @@ export const PersonalDetails = (props) => {
           className="input"
         />
       </div>
-      <div className="phoneNumber grid">
+      <div className="phoneNumber user-details-grid">
         <label htmlFor="phoneNumber " className="label">Plan</label>
         <input
           type="text"

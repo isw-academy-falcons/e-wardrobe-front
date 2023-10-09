@@ -11,3 +11,6 @@ line-height: normal;
 .billing .border-bottom{
     border-bottom: 1px solid #6B6B6B;
 }
+
+.billing-flex{ display: flex;
+    justify-content: space-between;}
