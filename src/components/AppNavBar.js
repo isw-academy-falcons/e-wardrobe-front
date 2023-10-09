@@ -46,9 +46,9 @@ const AppNavBar = () => {
               <NavDropdown.Item href="/e-wardrobe">E-wardrobe</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Services" id="collasible-nav-dropdown" className="e-wardrobe-dropdown">
-              <NavDropdown.Item href="/laundry">Vendors</NavDropdown.Item>
+              <NavDropdown.Item href="/laundry">Laundry & Tailor</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/fashion">Shop</NavDropdown.Item>
+              <NavDropdown.Item href="/fashion">Fashion Shop</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/pricing">Pricing</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>

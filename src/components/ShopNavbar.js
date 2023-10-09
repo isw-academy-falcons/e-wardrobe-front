@@ -39,16 +39,16 @@ const ShopNavBar = ({ onSelectCategory }) => {
               id="collasible-nav-dropdown"
               className="e-wardrobe-dropdown"
             >
-              <NavDropdown.Item href="#sc">
+              <NavDropdown.Item href="/gallery">
                 SkyFitzz Web Gallery
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#ew">
+              <NavDropdown.Item href="/e-wardrobe">
                 Generated Collections
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown
-              title="Shop"
+              title="Categories"
               id="collasible-nav-dropdown"
               className="e-wardrobe-dropdown"
             >
@@ -60,7 +60,7 @@ const ShopNavBar = ({ onSelectCategory }) => {
                 Women Clothing
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/laundry">Vendors</Nav.Link>
+            <Nav.Link href="/laundry">Laundry & Tailor</Nav.Link>
             <Nav.Link href="/pricing">Pricing</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
           </Nav>

@@ -100,7 +100,7 @@
 .e-wardrobe-background {
   height: 405.66px;
   margin-top: 232px;
-  background: #663C1D;
+  background: #201f1f;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -230,6 +230,37 @@
   font-style: normal;
   text-transform: uppercase;
 }
+
+.newsletter-background{
+
+  color:#1c1c1c;
+  padding:30px;
+  height: 350px;
+  margin-bottom: 80px;
+}
+
+.newsletter-input{
+  margin: 0 auto;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newsletter-input input {
+    padding:10px 30px;
+    border-radius: 8px 0 0 8px;
+    border:1px solid rgb(147, 147, 147) ;
+}
+
+
+.newsletter-input button{
+  border-radius: 0 8px 8px 0;
+  padding:11px 15px ;
+  background-color: #1C1C1C;
+  color: #FFF;
+  border: none;
+}
+
 
 @media screen and (max-width: 550px) {
   .e-wardrobe-header {

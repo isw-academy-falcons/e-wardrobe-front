@@ -13,6 +13,13 @@ export default function Signup() {
   const [error, setError] = useState(null); // State for error message
   const navigate = useNavigate();
 
+  // Validation function to check if the input contains only characters
+const isValidName = (name) => /^[A-Za-z]+$/.test(name);
+
+// Validation function to check if the first name and last name are valid
+const isNameValid = () => isValidName(firstName) && isValidName(lastName);
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -24,6 +31,11 @@ export default function Signup() {
       password,
       confirmPassword,
     };
+
+    if (!isNameValid()) {
+      setError("First name and last name should only contain characters.");
+      return;
+    }
 
     try {
       const response = await fetch("https://skyfitzz.up.railway.app/api/v1/user/sign-up", {
