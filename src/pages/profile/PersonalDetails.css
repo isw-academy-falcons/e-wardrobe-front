@@ -1,3 +1,4 @@
+.user-details-grid{display: grid;}
 .user-details{
     @media (min-width:760px) {
         display: grid;
