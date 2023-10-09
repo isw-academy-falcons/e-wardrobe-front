@@ -20,7 +20,7 @@ export default function Pricing() {
             <li>Ad-Supported</li>
             <li>Limited Style Preferences</li>
           </ul>
-          <button>Get Started</button>
+          <button><a href="/landing-page">Get Started</a></button>
         </div>
 
         <div className="pricing-container">
