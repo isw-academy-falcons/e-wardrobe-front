@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Button from "react-bootstrap/Button";
 import { BASE_URL } from '../../assets/baseUrl';
 import Container from "react-bootstrap/Container";
+import { Toast } from '../../components/ApiResponse';
 
 const GenerateButtons = ({
   setDress,
@@ -84,6 +85,16 @@ const GenerateButtons = ({
         setMatchResponse(false);
         setBestToLeastMatch(true);
         setMatchesData(data);
+        Toast.fire({
+          icon: "success",
+          title: "Successfully generated matches"
+        })
+      }
+      else {
+        Toast.fire({
+          icon: "error",
+          title: "Unable to generate"
+        })
       }
     }
   };
@@ -136,6 +147,16 @@ const GenerateButtons = ({
         setBestMatch(true);
         setTopMatch(data.top_matches[0]);
         setBottomMatch(data.bottom_matches[0]);
+        Toast.fire({
+          icon: "success",
+          title: "Successfully generated best match"
+        })
+      }
+      else {
+        Toast.fire({
+          icon: "error",
+          title: "Unable to generate"
+        })
       }
     }
   };
@@ -159,9 +180,16 @@ const GenerateButtons = ({
       setMatchResponse(false);
       setDressChoice(true);
       setDress(data);
-    } else {
-      console.log(setGenerate);
-      console.log(selectedCategory);
+      Toast.fire({
+        icon: "success",
+        title: "Successfully generated dress"
+      })
+    }
+    else {
+      Toast.fire({
+        icon: "error",
+        title: "Unable to generate"
+      })
     }
   };
 
