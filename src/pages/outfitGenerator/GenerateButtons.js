@@ -1,7 +1,12 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
 import Button from "react-bootstrap/Button";
+import { BASE_URL } from '../../assets/baseUrl';
 import Container from "react-bootstrap/Container";
 
 const GenerateButtons = ({
+  setDress,
   topImages,
   handleClick,
   setGenerate,
@@ -10,6 +15,7 @@ const GenerateButtons = ({
   selectedImages,
   setMatchesData,
   setBottomMatch,
+  setDressChoice,
   selectedCategory,
   belowTorsoImages,
   setMatchResponse,
@@ -17,6 +23,20 @@ const GenerateButtons = ({
 }) => {
   const id = localStorage.getItem("userId");
   const accessToken = localStorage.getItem("token");
+  const [uploadedClothes, setUploadedClothes] = useState([]);
+
+  useEffect(() => {
+    const getUploadedClothes = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/cloth/all/clothes?userId=${id}&clothType=${'DRESS'}`)
+        setUploadedClothes(response.data.content.map(cloth =>  cloth.imageUrl));
+      } catch (error) {
+        console.log("Error message: ", error);
+      }
+    };
+    
+    getUploadedClothes();
+  }, [id, uploadedClothes])
 
   const generateBestToLeast = async () => {
     setGenerate(true);
@@ -35,7 +55,9 @@ const GenerateButtons = ({
     if (response.ok) {
       const data = await response.json();
       console.log("Generate Data: ", data);
-      setMatchResponse(true);
+      setMatchResponse(false);
+      setBestToLeastMatch(true);
+      setMatchesData(data);
     } else {
       const new_images = {
         top_images: topImages,
@@ -83,7 +105,10 @@ const GenerateButtons = ({
     if (response.ok) {
       const data = await response.json();
       console.log("Generate Data: ", data);
-      setMatchResponse(true);
+      setMatchResponse(false);
+      setBestMatch(true);
+      setTopMatch(data.top_matches[0]);
+      setBottomMatch(data.bottom_matches[0]);
     } else {
       const new_images = {
         top_images: topImages,
@@ -112,6 +137,31 @@ const GenerateButtons = ({
         setTopMatch(data.top_matches[0]);
         setBottomMatch(data.bottom_matches[0]);
       }
+    }
+  };
+
+  const generateDress = async () => {
+    setGenerate(true);
+    const response = await fetch(
+      `http://localhost:5000/random_dress`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 'dress_images': uploadedClothes })
+      }
+    );
+    setMatchResponse(true);
+    const data = await response.json();
+    if (response.ok) {
+      setMatchResponse(false);
+      setDressChoice(true);
+      setDress(data);
+    } else {
+      console.log(setGenerate);
+      console.log(selectedCategory);
     }
   };
 
@@ -146,7 +196,7 @@ const GenerateButtons = ({
         <Button
           variant="light"
           className="outfit-button"
-          onClick={(e) => handleClick(e)}
+          onClick={() => generateDress()}
           style={{ borderColor: "black" }}
         >
           Generate Best Dress
