@@ -10,11 +10,13 @@ import AddToCollection from "../../assets/images/outfitGenerator/add.svg";
 import WaitingImage from "../../assets/images/outfitGenerator/waiting.svg";
 
 const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, handleClick, setGenerate, selectedCategory, topImages, belowTorsoImages }) => {
-  const [matchesData, setMatchesData] = useState({});
+  const [dress, setDress] = useState("");
   const [topMatch, setTopMatch] = useState({});
-  const [bottomMatch, setBottomMatch] = useState({});
-  const [matchResponse, setMatchResponse] = useState(true);
   const [bestMatch, setBestMatch] = useState(false);
+  const [matchesData, setMatchesData] = useState({});
+  const [bottomMatch, setBottomMatch] = useState({});
+  const [dressChoice, setDressChoice] = useState(false);
+  const [matchResponse, setMatchResponse] = useState(true);
   const [bestToLeastMatch, setBestToLeastMatch] = useState(false);
   const new_images = {top_images: topImages, below_torso_images: belowTorsoImages};
 
@@ -66,6 +68,7 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
 
               {/* Generate Buttons */}
               <GenerateButtons
+                setDress={setDress}
                 topImages={topImages}
                 new_images={new_images}
                 handleClick={handleClick}
@@ -75,6 +78,7 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
                 selectedImages={selectedImages}
                 setMatchesData={setMatchesData}
                 setBottomMatch={setBottomMatch}
+                setDressChoice={setDressChoice}
                 selectedCategory={selectedCategory}
                 belowTorsoImages={belowTorsoImages}
                 setMatchResponse={setMatchResponse}
@@ -120,6 +124,11 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
                       <img src={bottomMatch} alt="Bottom Match" className="trending-outfit-images" />
                     </>
                   }
+                  {dressChoice &&
+                    <>
+                      <img src={dress.selected_dress} alt="Dress suggestion" className="trending-outfit-images" />
+                    </>
+                  }
                   <img
                     height="41px"
                     width="139px"
@@ -128,12 +137,34 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
                     onClick={(e) => addToCollection(e)}
                     style={{ marginTop: "22px", cursor: "pointer" }}
                   />
+                  {/* Reset button */}
+                  <section
+                    style={{
+                      display: "flex",
+                      marginBottom: "29px",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Button
+                      variant="dark"
+                      style={{
+                        color: "white",
+                        width: "183.5px",
+                        marginRight: "10px",
+                      }}
+                      className="outfit-button"
+                      onClick={(e) => handleReset(e)}
+                    >
+                      Reset
+                    </Button>
+                  </section>
                 </section>
               </section>
             )}
           </Container>
           {/* Generate Buttons */}
           <GenerateButtons
+            setDress={setDress}
             topImages={topImages}
             new_images={new_images}
             handleClick={handleClick}
@@ -143,6 +174,7 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
             selectedImages={selectedImages}
             setMatchesData={setMatchesData}
             setBottomMatch={setBottomMatch}
+            setDressChoice={setDressChoice}
             selectedCategory={selectedCategory}
             belowTorsoImages={belowTorsoImages}
             setMatchResponse={setMatchResponse}
