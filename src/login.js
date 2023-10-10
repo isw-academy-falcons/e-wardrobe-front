@@ -46,12 +46,15 @@ export default function Login() {
           navigate("/landing-page");
         }, 2000);
       } else {
-        // Login failed, display the error message to the user
-       
-        console.log("Error Data:",data);
-        setError(data.message); // Set the error message from the response
-        
-      }
+        // Check the specific error message from the server
+        if (data.message === "User not found!!!") {
+          setError("Email not found");
+        } else if (data.message === "Bad credentials") {
+          setError("Bad password entered");
+        } else {
+          // Handle other error cases if needed
+          setError(data.message);
+        }}
     } catch (error) {
       console.error("catch error message:", error);
     }

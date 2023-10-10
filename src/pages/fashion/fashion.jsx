@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import "./fashion.css";
 import ShopNavBar from "../../components/ShopNavbar";
@@ -12,6 +12,8 @@ import "rc-slider/assets/index.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from './CartContext'
 import searchImage from "../../assets/images/search.svg";
+import Feedback from '../../components/Feedback'; // Import the Feedback component
+
 
 
 const Fashion = () => {
@@ -28,8 +30,22 @@ const Fashion = () => {
   const [selectedColor, setSelectedColor] = useState(null);
   const [sliderValue, setSliderValue] = useState(0);
   const { cart, dispatch } = useCart(); // Added cart here
+  const [showFeedbackPopup, setShowFeedbackPopup] = useState(false);
+
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const feedbackTimeout = setTimeout(() => {
+      setShowFeedbackPopup(true);
+    }, 30000); // 30 seconds
+  
+    // Clear the timeout if the component unmounts
+    return () => {
+      clearTimeout(feedbackTimeout);
+    };
+  }, []);
+  
 
   // Function to handle category selection (men, women)
   const handleCategoryChange = (category) => {
@@ -246,6 +262,15 @@ const Fashion = () => {
         </div>
 
         <div className="fashion-card-two">
+          {showFeedbackPopup && (
+            <div>
+             <div className="backdrop"></div>
+            <div className="feedback-modal">
+              <Feedback onClose={() => setShowFeedbackPopup(false)} />
+            </div>
+            </div>
+          )}
+
           <div>
             <p>
               <a
@@ -272,7 +297,7 @@ const Fashion = () => {
                 Shoes
               </a>{" "}
               |{" "}
-              <a href="/fashion-cart">Cart: {cart.length}</a>
+              <a className="fashion-link" href="/fashion-cart">Cart: {cart.length}</a>
             </p>
           </div>
           <div className="fashion-cards">
@@ -295,9 +320,11 @@ const Fashion = () => {
               >
                 Buy
               </button>
+
             </div>
           ))
-        )}
+          )}
+          
       </div>
 
         </div>

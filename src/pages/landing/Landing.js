@@ -166,6 +166,17 @@ const Landing = () => {
               className="testimonials-image"
             />
           </section>
+
+
+          <section className="newsletter-background">
+                <h3 className="text-center landing-header">Sign Up for our newsletter</h3>
+                <p className="text-center"> Enjoy every update, every new item added to our shops and any new service offerred</p>
+                <div className="newsletter-input">
+                <input type="text" placeholder="Enter your Email" />
+                <button>Submit</button>
+                </div>
+
+          </section>
           {/* Footer */}
           <Footer />
         </>

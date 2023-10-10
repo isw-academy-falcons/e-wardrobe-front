@@ -74,8 +74,8 @@ const FashionCart = () => {
       </div>
 
       <div className='cart-checkout-container'>
-        <button className='cart-checkout-btn-primary'><a href='/payment'>Checkout</a></button>
-        <button className='cart-checkout-btn-secondary'><a href='/fashion'>Continue Shopping</a></button>
+        <button className='cart-checkout-btn-primary'><a  cart-checkout-btn-primary-link href='/payment'>Checkout</a></button>
+        <button className='cart-checkout-btn-secondary'><a cart-checkout-btn-secondary-link href='/fashion'>Continue Shopping</a></button>
       </div>
     </div>
   );

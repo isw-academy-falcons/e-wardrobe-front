@@ -20,7 +20,7 @@ export default function Pricing() {
             <li>Ad-Supported</li>
             <li>Limited Style Preferences</li>
           </ul>
-          <button>Get Started</button>
+          <button><a className="fashion-link" href="/landing-page">Get Started</a></button>
         </div>
 
         <div className="pricing-container">
@@ -32,7 +32,7 @@ export default function Pricing() {
             <li>Seasonal Trend Alerts</li>
             <li>Ad-Free Experience</li>
           </ul>
-          <button><a href="/payment">Purchase</a></button>
+          <button><a className="fashion-link" href="/payment">Purchase</a></button>
         </div>
       </div>
     </div>
