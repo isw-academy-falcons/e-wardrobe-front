@@ -297,7 +297,7 @@ const Fashion = () => {
                 Shoes
               </a>{" "}
               |{" "}
-              <a href="/fashion-cart">Cart: {cart.length}</a>
+              <a className="fashion-link" href="/fashion-cart">Cart: {cart.length}</a>
             </p>
           </div>
           <div className="fashion-cards">

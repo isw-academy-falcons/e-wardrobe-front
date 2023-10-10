@@ -89,6 +89,10 @@
       font-size: 20px;
       padding: 50px;
     }
+
+    .fashion-link{
+      text-decoration: none;
+    }
   
     .pricing-container {
       width: 90%;
