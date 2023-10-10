@@ -81,7 +81,7 @@ const FashionProduct = ({ product: initialProduct }) => {
           >
             {addedToBag ? 'Added to Bag' : 'Add to Bag'}
           </button>
-          <button className="productItem-btn productItem-btn-secondary"><a href='/fashion-cart'>Proceed to Checkout</a></button>
+          <button className="productItem-btn productItem-btn-secondary"><a className="fashion-link" href='/fashion-cart'>Proceed to Checkout</a></button>
         </div>
 
         <div className='product-Item2'>
