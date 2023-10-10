@@ -7,6 +7,7 @@ import Loader from "../../components/Loader";
 import Footer from "../../components/Footer";
 import OutfitGenerator from "./OutfitGenerator";
 import AppNavBar from "../../components/AppNavBar";
+import { Toast } from "../../components/ApiResponse";
 import OutfitGeneratorHeader from "./OutfitGeneratorHeader";
 
 const UploadOutfits = () => {
@@ -113,7 +114,6 @@ const UploadOutfits = () => {
           body: formData
         });
 
-
         if (response.ok) {
           const responseData = await response.json();
           if (clothType === "TOP") {
@@ -122,7 +122,23 @@ const UploadOutfits = () => {
           else if (clothType === "BOTTOM") {
             setBelowTorsoImages(responseData);
           }
+          Toast.fire({
+            icon: "success",
+            title: "Successfully uploaded images"
+          })
         }
+        else {
+          Toast.fire({
+            icon: "error",
+            title: "Upload failed"
+          })
+        }
+      }
+      else {
+        Toast.fire({
+          icon: "error",
+          title: "Upload failed"
+        })
       }
     } catch (error) {
     }
