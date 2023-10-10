@@ -99,14 +99,20 @@
     color:#FCDE7C;
 }
 
-.cart-checkout-btn-primary a{
+.cart-checkout-btn-primary a {
     color:#FCDE7C;
+    text-decoration: none;
 }
 
 .cart-checkout-btn-secondary{
     border: none;
     background-color: transparent;
     margin-bottom: 40px;
+}
+
+.cart-checkout-btn-secondary a{
+   text-decoration: none;
+   color:#1c1c1c;
 }
 
 .empty-cart{
