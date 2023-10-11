@@ -24,6 +24,7 @@ const UploadOutfits = () => {
 	const [longitude, setLongitude] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const accessToken = localStorage.getItem("token");
+  const [isLoading, setIsLoading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [belowTorsoImages, setBelowTorsoImages] = useState([]);
@@ -95,6 +96,8 @@ const UploadOutfits = () => {
 
   // Function to hide the modal
   const handleCloseModal = async () => {
+    setIsLoading(true);
+
     try {
       if (accessToken !== ""){
         const formData = new FormData();
@@ -114,8 +117,10 @@ const UploadOutfits = () => {
           body: formData
         });
 
+        const responseData = await response.json();
+
         if (response.ok) {
-          const responseData = await response.json();
+          setIsLoading(false);
           if (clothType === "TOP") {
             setTopImages(responseData);
           }
@@ -171,6 +176,7 @@ const UploadOutfits = () => {
           <OutfitGeneratorHeader
             weather={weather}
             showModal={showModal}
+            isLoading={isLoading}
             handleCloseModal={handleCloseModal}
             handleImageChange={handleImageChange}
             handleCategorySelection={handleCategorySelection}

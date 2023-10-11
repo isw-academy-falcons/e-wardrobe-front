@@ -5,8 +5,9 @@ import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 
 import UploadImage from "../../assets/images/outfitGenerator/upload.svg";
+import Loader from "../../components/Loader";
 
-const ImageUploader = ({ handleImageChange, showModal, handleCategorySelection, handleCloseModal }) => {
+const ImageUploader = ({ handleImageChange, showModal, handleCategorySelection, handleCloseModal, isLoading }) => {
   return (
     <Col className="text-center outfit-upload">
       <img
@@ -94,17 +95,32 @@ const ImageUploader = ({ handleImageChange, showModal, handleCategorySelection, 
           </Form>
         </Modal.Body>
         <Modal.Footer className="outfit-modal-footer">
-          <Button
-            style={{
-              background:
-                "black"
-            }}
-            variant="dark"
-            onClick={handleCloseModal}
-            className="outfit-modal-button"
-          >
-            Submit
-          </Button>
+          {isLoading ?
+            <Button
+              disabled
+              style={{
+                background:
+                  "black"
+              }}
+              variant="dark"
+              onClick={handleCloseModal}
+              className="outfit-modal-button"
+            >
+              Submit
+            </Button>
+          :
+            <Button
+              style={{
+                background:
+                  "black"
+              }}
+              variant="dark"
+              onClick={handleCloseModal}
+              className="outfit-modal-button"
+            >
+              Submit
+            </Button>
+          }
         </Modal.Footer>
       </Modal>
     </Col>
