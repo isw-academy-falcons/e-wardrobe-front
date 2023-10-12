@@ -30,15 +30,36 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
         <>
           {/* Generate Outfit Body */}
           {!isUploaded ? (
-            <Container>
-              <section className="outfit-body">
-                <img
-                  src={WaitingImage}
-                  alt="An avatar showing a boy waiting for you to upload your file(s)"
-                />
-                Waiting for you to upload images
-              </section>
-            </Container>
+            <>
+              <Container>
+                <section className="outfit-body">
+                  <img
+                    src={WaitingImage}
+                    alt="An avatar showing a boy waiting for you to upload your file(s)"
+                  />
+                  Waiting for you to upload images
+                </section>
+              </Container>
+              <p className="text-center outfit-header">OR</p>
+              {/* Generate Buttons */}
+              <GenerateButtons
+                setDress={setDress}
+                topImages={topImages}
+                new_images={new_images}
+                handleClick={handleClick}
+                setGenerate={setGenerate}
+                setTopMatch={setTopMatch}
+                setBestMatch={setBestMatch}
+                selectedImages={selectedImages}
+                setMatchesData={setMatchesData}
+                setBottomMatch={setBottomMatch}
+                setDressChoice={setDressChoice}
+                selectedCategory={selectedCategory}
+                belowTorsoImages={belowTorsoImages}
+                setMatchResponse={setMatchResponse}
+                setBestToLeastMatch={setBestToLeastMatch}
+              />
+            </>
           ) : (
             <Container>
               {/* Cloths Display */}

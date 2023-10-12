@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 
 import UploadImage from "../../assets/images/outfitGenerator/upload.svg";
-import Loader from "../../components/Loader";
 
 const ImageUploader = ({ handleImageChange, showModal, handleCategorySelection, handleCloseModal, isLoading }) => {
   return (
