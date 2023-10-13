@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { Slide } from "react-slideshow-image";
 import Container from "react-bootstrap/Container";
@@ -6,10 +6,11 @@ import Container from "react-bootstrap/Container";
 import ClothsDisplay from "./ClothsDisplay";
 import Loader from "../../components/Loader";
 import GenerateButtons from "./GenerateButtons";
+import AppContext from "../../contexts/AppContext";
 import AddToCollection from "../../assets/images/outfitGenerator/add.svg";
 import WaitingImage from "../../assets/images/outfitGenerator/waiting.svg";
 
-const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, handleClick, setGenerate, selectedCategory, topImages, belowTorsoImages }) => {
+const OutfitGenerator = () => {
   const [dress, setDress] = useState("");
   const [topMatch, setTopMatch] = useState({});
   const [bestMatch, setBestMatch] = useState(false);
@@ -18,10 +19,16 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
   const [dressChoice, setDressChoice] = useState(false);
   const [matchResponse, setMatchResponse] = useState(true);
   const [bestToLeastMatch, setBestToLeastMatch] = useState(false);
+  const { generate, isUploaded, topImages, belowTorsoImages, setSelectedImages } = useContext(AppContext);
   const new_images = {top_images: topImages, below_torso_images: belowTorsoImages};
 
   const addToCollection = async e => {
     e.preventDefault();
+  };
+
+  const handleReset = e => {
+    e.preventDefault();
+    setSelectedImages({DRESS: [], TOP: [], BOTTOM: []});
   };
 
   return (
@@ -44,18 +51,12 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
               {/* Generate Buttons */}
               <GenerateButtons
                 setDress={setDress}
-                topImages={topImages}
                 new_images={new_images}
-                handleClick={handleClick}
-                setGenerate={setGenerate}
                 setTopMatch={setTopMatch}
                 setBestMatch={setBestMatch}
-                selectedImages={selectedImages}
                 setMatchesData={setMatchesData}
                 setBottomMatch={setBottomMatch}
                 setDressChoice={setDressChoice}
-                selectedCategory={selectedCategory}
-                belowTorsoImages={belowTorsoImages}
                 setMatchResponse={setMatchResponse}
                 setBestToLeastMatch={setBestToLeastMatch}
               />
@@ -63,7 +64,7 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
           ) : (
             <Container>
               {/* Cloths Display */}
-              <ClothsDisplay selectedImages={selectedImages} />
+              <ClothsDisplay />
 
               {/* Reset button */}
               <section
@@ -90,18 +91,12 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
               {/* Generate Buttons */}
               <GenerateButtons
                 setDress={setDress}
-                topImages={topImages}
                 new_images={new_images}
-                handleClick={handleClick}
-                setGenerate={setGenerate}
                 setTopMatch={setTopMatch}
                 setBestMatch={setBestMatch}
-                selectedImages={selectedImages}
                 setMatchesData={setMatchesData}
                 setBottomMatch={setBottomMatch}
                 setDressChoice={setDressChoice}
-                selectedCategory={selectedCategory}
-                belowTorsoImages={belowTorsoImages}
                 setMatchResponse={setMatchResponse}
                 setBestToLeastMatch={setBestToLeastMatch}
               />
@@ -186,18 +181,12 @@ const OutfitGenerator = ({ generate, isUploaded, selectedImages, handleReset, ha
           {/* Generate Buttons */}
           <GenerateButtons
             setDress={setDress}
-            topImages={topImages}
             new_images={new_images}
-            handleClick={handleClick}
-            setGenerate={setGenerate}
             setTopMatch={setTopMatch}
             setBestMatch={setBestMatch}
-            selectedImages={selectedImages}
             setMatchesData={setMatchesData}
             setBottomMatch={setBottomMatch}
             setDressChoice={setDressChoice}
-            selectedCategory={selectedCategory}
-            belowTorsoImages={belowTorsoImages}
             setMatchResponse={setMatchResponse}
             setBestToLeastMatch={setBestToLeastMatch}
           />

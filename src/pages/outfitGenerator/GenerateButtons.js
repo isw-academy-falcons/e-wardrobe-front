@@ -1,30 +1,26 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import Button from "react-bootstrap/Button";
 import { BASE_URL } from '../../assets/baseUrl';
 import Container from "react-bootstrap/Container";
+import AppContext from '../../contexts/AppContext';
 import { Toast } from '../../components/ApiResponse';
 
 const GenerateButtons = ({
   setDress,
-  topImages,
-  handleClick,
-  setGenerate,
   setTopMatch,
   setBestMatch,
-  selectedImages,
   setMatchesData,
   setBottomMatch,
   setDressChoice,
-  selectedCategory,
-  belowTorsoImages,
   setMatchResponse,
   setBestToLeastMatch
 }) => {
   const id = localStorage.getItem("userId");
   const accessToken = localStorage.getItem("token");
   const [uploadedClothes, setUploadedClothes] = useState([]);
+  const { topImages, setGenerate, selectedImages, selectedCategory, belowTorsoImages } = useContext(AppContext);
 
   useEffect(() => {
     const getUploadedClothes = async () => {
@@ -35,7 +31,7 @@ const GenerateButtons = ({
         console.log("Error message: ", error);
       }
     };
-    
+
     getUploadedClothes();
   }, [id, uploadedClothes])
 

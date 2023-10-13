@@ -5,17 +5,17 @@ import Container from "react-bootstrap/Container";
 import WeatherInfo from "./WeatherInfo";
 import ImageUploader from "./ImageUploader";
 
-const OutfitGeneratorHeader = ({ weather, handleImageChange, showModal, handleCloseModal, handleCategorySelection, isLoading }) => {
+const OutfitGeneratorHeader = () => {
   return (
     <Container>
       <Row>
         {/* Weather results */}
-        <WeatherInfo weather={weather} />
+        <WeatherInfo />
         <Col xs={8} className="text-center outfit-header">
           GENERATE OUTFIT
         </Col>
         {/* Upload Image(s) */}
-        <ImageUploader handleImageChange={handleImageChange} showModal={showModal} handleCloseModal={handleCloseModal} handleCategorySelection={handleCategorySelection} isLoading={isLoading} />
+        <ImageUploader />
       </Row>
     </Container>
   );

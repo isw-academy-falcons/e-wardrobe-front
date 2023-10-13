@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Card from 'react-bootstrap/Card';
 
-const ClothsDisplay = ({ selectedImages }) => {
+import AppContext from "../../contexts/AppContext";
+
+const ClothsDisplay = () => {
+  const { selectedImages } = useContext(AppContext);
+
   return (
     <>
       {/* Tops Images */}
