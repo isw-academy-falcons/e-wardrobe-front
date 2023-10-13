@@ -37,115 +37,150 @@ const GenerateButtons = ({
 
   const generateBestToLeast = async () => {
     setGenerate(true);
-
-    const response = await fetch(
-      `https://skyfitzz.up.railway.app/api/v1/cloth/generate/${id}?category=${selectedCategory}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json=",
-        },
-      }
-    );
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log("Generate Data: ", data);
-      setMatchResponse(false);
-      setBestToLeastMatch(true);
-      setMatchesData(data);
-    } else {
-      const new_images = {
-        top_images: topImages,
-        below_torso_images: belowTorsoImages,
-      };
-      setMatchResponse(true);
-      const new_response = await fetch(`http://localhost:5000/train`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(new_images),
-      });
-      if (new_response.ok) {
-        const matches_response = await fetch(`http://localhost:5000/matches`, {
+    try {
+      const response = await fetch(
+        `https://skyfitzz.up.railway.app/api/v1/cloth/generate/${id}?category=${selectedCategory}`,
+        {
           method: "GET",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json=",
+          },
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Generate Data: ", data);
+        setMatchResponse(false);
+        setBestToLeastMatch(true);
+        setMatchesData(data);
+      } else {
+        const new_images = {
+          top_images: topImages,
+          below_torso_images: belowTorsoImages,
+        };
+        setMatchResponse(true);
+        const new_response = await fetch(`http://localhost:5000/train`, {
+          method: "POST",
           headers: {
             Authorization: `Bearer ${accessToken}`,
             "Content-Type": "application/json",
           },
+          body: JSON.stringify(new_images),
         });
-        const data = await matches_response.json();
-        setMatchResponse(false);
-        setBestToLeastMatch(true);
-        setMatchesData(data);
-        Toast.fire({
-          icon: "success",
-          title: "Successfully generated matches"
-        })
+        if (new_response.ok) {
+          const matches_response = await fetch(`http://localhost:5000/matches`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          });
+          const data = await matches_response.json();
+          setMatchResponse(false);
+          setBestToLeastMatch(true);
+          setMatchesData(data);
+          Toast.fire({
+            icon: "success",
+            title: "Successfully generated matches"
+          })
+        }
+        else {
+          Toast.fire({
+            icon: "error",
+            title: "Unable to generate"
+          })
+        }
       }
-      else {
-        Toast.fire({
-          icon: "error",
-          title: "Unable to generate"
-        })
-      }
-    }
+    } catch (error) {}
   };
 
   const generateBestMatch = async () => {
     setGenerate(true);
-
-    const response = await fetch(
-      `https://skyfitzz.up.railway.app/api/v1/cloth/generate/${id}?category=${selectedCategory}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json=",
-        },
-      }
-    );
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log("Generate Data: ", data);
-      setMatchResponse(false);
-      setBestMatch(true);
-      setTopMatch(data.top_matches[0]);
-      setBottomMatch(data.bottom_matches[0]);
-    } else {
-      const new_images = {
-        top_images: topImages,
-        below_torso_images: belowTorsoImages,
-      };
-      setMatchResponse(true);
-      const new_response = await fetch(`http://localhost:5000/train`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(new_images),
-      });
-      if (new_response.ok) {
-        const matches_response = await fetch(`http://localhost:5000/matches`, {
+    try {
+      const response = await fetch(
+        `https://skyfitzz.up.railway.app/api/v1/cloth/generate/${id}?category=${selectedCategory}`,
+        {
           method: "GET",
           headers: {
             Authorization: `Bearer ${accessToken}`,
-            "Content-Type": "application/json",
+            "Content-Type": "application/json=",
           },
-        });
-        const data = await matches_response.json();
+        }
+      );
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Generate Data: ", data);
         setMatchResponse(false);
         setBestMatch(true);
         setTopMatch(data.top_matches[0]);
         setBottomMatch(data.bottom_matches[0]);
+      } else {
+        const new_images = {
+          top_images: topImages,
+          below_torso_images: belowTorsoImages,
+        };
+        setMatchResponse(true);
+        const new_response = await fetch(`http://localhost:5000/train`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(new_images),
+        });
+        if (new_response.ok) {
+          const matches_response = await fetch(`http://localhost:5000/matches`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          });
+          const data = await matches_response.json();
+          setMatchResponse(false);
+          setBestMatch(true);
+          setTopMatch(data.top_matches[0]);
+          setBottomMatch(data.bottom_matches[0]);
+          Toast.fire({
+            icon: "success",
+            title: "Successfully generated best match"
+          })
+        }
+        else {
+          Toast.fire({
+            icon: "error",
+            title: "Unable to generate"
+          })
+        }
+      }
+    } catch (error) {}
+  };
+
+  const generateDress = async () => {
+    setGenerate(true);
+    try {
+      const response = await fetch(
+        `http://localhost:5000/random_dress`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ 'dress_images': uploadedClothes })
+        }
+      );
+      setMatchResponse(true);
+      const data = await response.json();
+      if (response.ok) {
+        setMatchResponse(false);
+        setDressChoice(true);
+        setDress(data);
         Toast.fire({
           icon: "success",
-          title: "Successfully generated best match"
+          title: "Successfully generated dress"
         })
       }
       else {
@@ -154,39 +189,7 @@ const GenerateButtons = ({
           title: "Unable to generate"
         })
       }
-    }
-  };
-
-  const generateDress = async () => {
-    setGenerate(true);
-    const response = await fetch(
-      `http://localhost:5000/random_dress`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ 'dress_images': uploadedClothes })
-      }
-    );
-    setMatchResponse(true);
-    const data = await response.json();
-    if (response.ok) {
-      setMatchResponse(false);
-      setDressChoice(true);
-      setDress(data);
-      Toast.fire({
-        icon: "success",
-        title: "Successfully generated dress"
-      })
-    }
-    else {
-      Toast.fire({
-        icon: "error",
-        title: "Unable to generate"
-      })
-    }
+    } catch (error) {}
   };
 
   return (
