@@ -1,12 +1,35 @@
+import { useContext } from "react";
 import Col from "react-bootstrap/Col";
-import Form from 'react-bootstrap/Form';
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 
+import ImageModal from "./ImageModal";
+import AppContext from "../../contexts/AppContext";
 import UploadImage from "../../assets/images/outfitGenerator/upload.svg";
 
-const ImageUploader = ({ handleImageChange, showModal, handleCategorySelection, handleCloseModal }) => {
+const ImageUploader = () => {
+  const {
+    setClothType,
+    setShowModal,
+    setIsUploaded,
+    selectedImages,
+    setSelectedImages,
+  } = useContext(AppContext);
+
+  // Function to show the modal
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  // Function to handle image upload
+  const handleImageChange = (e, category) => {
+    e.preventDefault();
+    const files = e.target.files;
+    setSelectedImages({...selectedImages, [category]: [...selectedImages[category], ...files]});
+    setClothType(category);
+    handleShowModal();
+    setIsUploaded(true);
+  };
+
   return (
     <Col className="text-center outfit-upload">
       <img
@@ -73,40 +96,7 @@ const ImageUploader = ({ handleImageChange, showModal, handleCategorySelection, 
       </Dropdown>
 
       {/* Category selection modal */}
-      <Modal show={showModal} onHide={handleCloseModal} size="lg" centered>
-        <Modal.Header className="outfit-modal-header" closeButton>
-          {/* <Modal.Title id="contained-modal-title-vcenter" className="text-center">
-          </Modal.Title> */}
-        </Modal.Header>
-        <Modal.Body >
-          <p className="text-center outfit-modal-title">Select Categories</p>          
-          <p className="text-center outfit-modal-description">Under which categories do your clothes fall under</p>
-          <Form>
-            {['NATIVE', 'FREE_STYLE', 'ENGLISH'].map((type) => (
-              <div key={`default-${type}`} className="mb-3" style={{ marginLeft: "31.78px" }}>
-                <Form.Check
-                  id={`default-${type}`}
-                  label={`${type}`}
-                  onClick={() => handleCategorySelection(`${type}`)}
-                />
-              </div>
-            ))}
-          </Form>
-        </Modal.Body>
-        <Modal.Footer className="outfit-modal-footer">
-          <Button
-            style={{
-              background:
-                "black"
-            }}
-            variant="dark"
-            onClick={handleCloseModal}
-            className="outfit-modal-button"
-          >
-            Submit
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <ImageModal />
     </Col>
   );
 };

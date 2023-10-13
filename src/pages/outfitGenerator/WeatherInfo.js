@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import Col from "react-bootstrap/Col";
+import AppContext from "../../contexts/AppContext";
 
-const WeatherInfo = ({ weather }) => {
+const WeatherInfo = () => {
+  const { weather } = useContext(AppContext);
+
   return (
     <Col>
       <section className="weather-value">
