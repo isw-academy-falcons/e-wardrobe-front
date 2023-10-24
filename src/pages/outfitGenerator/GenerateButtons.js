@@ -28,7 +28,10 @@ const GenerateButtons = ({
         const response = await axios.get(`${BASE_URL}/cloth/all/clothes?userId=${id}&clothType=${'DRESS'}`)
         setUploadedClothes(response.data.content.map(cloth =>  cloth.imageUrl));
       } catch (error) {
-        console.log("Error message: ", error);
+        Toast.fire({
+          icon: "error",
+          title: "Unfortunately not working right now"
+        })
       }
     };
 
@@ -92,7 +95,12 @@ const GenerateButtons = ({
           })
         }
       }
-    } catch (error) {}
+    } catch (error) {
+      Toast.fire({
+        icon: "error",
+        title: "Unfortunately not working right now"
+      })
+    }
   };
 
   const generateBestMatch = async () => {
@@ -155,7 +163,12 @@ const GenerateButtons = ({
           })
         }
       }
-    } catch (error) {}
+    } catch (error) {
+      Toast.fire({
+        icon: "error",
+        title: "Unfortunately not working right now"
+      })
+    }
   };
 
   const generateDress = async () => {
@@ -189,7 +202,12 @@ const GenerateButtons = ({
           title: "Unable to generate"
         })
       }
-    } catch (error) {}
+    } catch (error) {
+      Toast.fire({
+        icon: "error",
+        title: "Unfortunately not working right now"
+      })
+    }
   };
 
   return (
