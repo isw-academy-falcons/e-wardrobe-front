@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import "./gallery.css";
-import AppNavBar from '../../components/AppNavBar';
-import Footer from '../../components/Footer';
-import Logo from '../../components/Logo';
 import {  BsSearch } from 'react-icons/bs';
 import { BiSolidDownload } from 'react-icons/bi';
 import { AiOutlinePlus,AiOutlineCheck } from 'react-icons/ai';
+import React, { useState, useEffect, useCallback } from 'react';
+
+import "./gallery.css";
+import Logo from '../../components/Logo';
+import Footer from '../../components/Footer';
 import { BASE_URL } from '../../assets/baseUrl';
+import AppNavBar from '../../components/AppNavBar';
 
 const Gallery = () => {
     const [images, setImages] = useState([]);
@@ -15,13 +16,6 @@ const Gallery = () => {
     const [addedToCollection, setAddedToCollection] = useState({}); // Track added images
 
     const apiKey = process.env.REACT_APP_UNSPLASH_API_KEY;
-
-
-    useEffect(() => {
-        setAddedToCollection({});
-        fetchImages();
-    }, [page, searchTerm]); // Fetch images when the page or search term changes
-
 
     const saveCollection = async (imgUrl) => {
         const res = await fetch(`${BASE_URL}/saveUserChoice?userId=${localStorage.getItem("userId")}&pictureUrl=${imgUrl}`,{
@@ -40,7 +34,7 @@ const Gallery = () => {
     };
 
     
-    const fetchImages = () => {
+    const fetchImages = useCallback(() => {
         fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${searchTerm}&per_page=7&client_id=${apiKey}`)
             .then(response => {
                 if (!response.ok) {
@@ -55,7 +49,7 @@ const Gallery = () => {
             .catch(error => {
                 console.error("Error fetching images:", error);
             });
-    };
+    }, [apiKey, page, searchTerm]);
 
     const handleSearch = () => {
         setPage(1);
@@ -67,6 +61,11 @@ const Gallery = () => {
         setPage(page + 1);
         setAddedToCollection({});
     };
+
+		useEffect(() => {
+			setAddedToCollection({});
+			fetchImages();
+		}, [fetchImages, page, searchTerm]); // Fetch images when the page or search term changes
 
     return (
         <div className='gallery-page'>
