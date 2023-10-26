@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+
 import "./fashioncart.css";
 import AppNavBar from "../../components/AppNavBar";
 

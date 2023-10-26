@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
+import Slider from "rc-slider";
 import Select from "react-select";
+import { BsSearch } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+
 import "./fashion.css";
-import ShopNavBar from "../../components/ShopNavbar";
 import data from "./fashionData";
 import bagData from "./bagData";
 import shoeData from "./shoeData";
-import { BsSearch } from "react-icons/bs";
-import Footer from "../../components/Footer";
-import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { Link, useNavigate } from "react-router-dom";
 import { useCart } from './CartContext'
-import searchImage from "../../assets/images/search.svg";
+import Footer from "../../components/Footer";
 import Feedback from '../../components/Feedback'; // Import the Feedback component
+import ShopNavBar from "../../components/ShopNavbar";
+import searchImage from "../../assets/images/search.svg";
 
 
 
@@ -29,7 +30,7 @@ const Fashion = () => {
   const [selectedMaterial, setSelectedMaterial] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
   const [sliderValue, setSliderValue] = useState(0);
-  const { cart, dispatch } = useCart(); // Added cart here
+  const { cart } = useCart(); // Added cart here
   const [showFeedbackPopup, setShowFeedbackPopup] = useState(false);
 
 
@@ -39,13 +40,13 @@ const Fashion = () => {
     const feedbackTimeout = setTimeout(() => {
       setShowFeedbackPopup(true);
     }, 30000); // 30 seconds
-  
+
     // Clear the timeout if the component unmounts
     return () => {
       clearTimeout(feedbackTimeout);
     };
   }, []);
-  
+
 
   // Function to handle category selection (men, women)
   const handleCategoryChange = (category) => {
@@ -72,6 +73,7 @@ const Fashion = () => {
     const filteredData = currentData.filter((product) => {
       return product.size === selectedSize;
     });
+    filteredData()
   };
 
   const sizeOptions = [
@@ -79,18 +81,18 @@ const Fashion = () => {
     { value: "medium", label: "Medium" },
     { value: "large", label: "Large" }
   ];
-  
+
   const weatherOptions = [
     { value: "sunny", label: "Sunny" },
     { value: "rainy", label: "Rainy" },
     { value: "snowy", label: "Snowy" }
   ];
-  
+
   const materialOptions = [
     { value: "light", label: "Light" },
     { value: "thick", label: "Thick" }
   ];
-  
+
   const colorOptions = [
     { value: "red", label: "Red" },
     { value: "blue", label: "Blue" },
@@ -103,7 +105,7 @@ const Fashion = () => {
     { value: "purple", label: "Purple" },
     { value: "brown", label: "Brown" }
   ];
-  
+
 
   // Get the current data based on the selected category and option
   const currentData =
@@ -179,7 +181,7 @@ const Fashion = () => {
             <a
               key={category}
               className="fashion-categories"
-              href="#"
+              href="/fashion"
               onClick={() => handleOptionChange(category)}
             >
               {category}
@@ -203,56 +205,56 @@ const Fashion = () => {
             </div>
 
             {/* Filter by Size */}
-<div className="filter-option">
-  <label>Size:</label>
-  <div className="select-container">
-    <Select
-      options={sizeOptions}
-      value={selectedSize}
-      onChange={(value) => setSelectedSize(value)}
-      isClearable
-    />
-  </div>
-</div>
+            <div className="filter-option">
+              <label>Size:</label>
+              <div className="select-container">
+                <Select
+                  options={sizeOptions}
+                  value={selectedSize}
+                  onChange={(value) => setSelectedSize(value)}
+                  isClearable
+                />
+              </div>
+            </div>
 
-{/* Filter by Weather */}
-<div className="filter-option">
-  <label>Weather:</label>
-  <div className="select-container">
-    <Select
-      options={weatherOptions}
-      value={selectedWeather}
-      onChange={(value) => setSelectedWeather(value)}
-      isClearable
-    />
-  </div>
-</div>
+            {/* Filter by Weather */}
+            <div className="filter-option">
+              <label>Weather:</label>
+              <div className="select-container">
+                <Select
+                  options={weatherOptions}
+                  value={selectedWeather}
+                  onChange={(value) => setSelectedWeather(value)}
+                  isClearable
+                />
+              </div>
+            </div>
 
-{/* Filter by Material */}
-<div className="filter-option">
-  <label>Material:</label>
-  <div className="select-container">
-    <Select
-      options={materialOptions}
-      value={selectedMaterial}
-      onChange={(value) => setSelectedMaterial(value)}
-      isClearable
-    />
-  </div>
-</div>
+            {/* Filter by Material */}
+            <div className="filter-option">
+              <label>Material:</label>
+              <div className="select-container">
+                <Select
+                  options={materialOptions}
+                  value={selectedMaterial}
+                  onChange={(value) => setSelectedMaterial(value)}
+                  isClearable
+                />
+              </div>
+            </div>
 
-{/* Filter by Color */}
-<div className="filter-option">
-  <label>Color:</label>
-  <div className="multi-select-container">
-    <Select
-      options={colorOptions}
-      value={selectedColor}
-      onChange={(value) => setSelectedColor(value)}
-      isMulti
-    />
-  </div>
-</div>
+            {/* Filter by Color */}
+            <div className="filter-option">
+              <label>Color:</label>
+              <div className="multi-select-container">
+                <Select
+                  options={colorOptions}
+                  value={selectedColor}
+                  onChange={(value) => setSelectedColor(value)}
+                  isMulti
+                />
+              </div>
+            </div>
 
 
             <button className="apply-button" onClick={applyFilters}>
@@ -274,7 +276,7 @@ const Fashion = () => {
           <div>
             <p>
               <a
-                href="#"
+                href="/fashion"
                 className="fashion-types"
                 onClick={() => handleOptionChange("clothing")}
               >
@@ -282,7 +284,7 @@ const Fashion = () => {
               </a>{" "}
               |{" "}
               <a
-                href="#"
+                href="/fashion"
                 className="fashion-types"
                 onClick={() => handleOptionChange("bags")}
               >
@@ -290,7 +292,7 @@ const Fashion = () => {
               </a>{" "}
               |{" "}
               <a
-                href="#"
+                href="/fashion"
                 className="fashion-types"
                 onClick={() => handleOptionChange("shoes")}
               >
@@ -301,32 +303,30 @@ const Fashion = () => {
             </p>
           </div>
           <div className="fashion-cards">
-        {filteredData.length === 0 ? (
-          // Render a message when no search results are found
-          <div className="fashion-search-result">  
-          <img src={searchImage} alt="search Avatar" height={"200px"}/>
-          <p>No search results found.</p>
-          </div>
-        ) : (
-          // Render products as usual when there are search results
-          filteredData.map((item) => (
-            <div key={item.id} className="fashion-card">
-              <img src={item.image} alt={item.name} />
-              <p>{item.name}</p>
-              <p>{item.price}</p>
-              <button
-                className="fashion-button"
-                onClick={() => handleBuyClick(item)}
-              >
-                Buy
-              </button>
-
+          {filteredData.length === 0 ? (
+            // Render a message when no search results are found
+            <div className="fashion-search-result">
+            <img src={searchImage} alt="search Avatar" height={"200px"}/>
+            <p>No search results found.</p>
             </div>
-          ))
-          )}
-          
-      </div>
+          ) : (
+            // Render products as usual when there are search results
+            filteredData.map((item) => (
+              <div key={item.id} className="fashion-card">
+                <img src={item.image} alt={item.name} />
+                <p>{item.name}</p>
+                <p>{item.price}</p>
+                <button
+                  className="fashion-button"
+                  onClick={() => handleBuyClick(item)}
+                >
+                  Buy
+                </button>
 
+              </div>
+            ))
+            )}
+          </div>
         </div>
       </div>
       <Footer />
