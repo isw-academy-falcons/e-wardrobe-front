@@ -21,7 +21,6 @@ export default function Signup() {
   // Validation function to check if the first name and last name are valid
   const isNameValid = () => isValidName(firstName) && isValidName(lastName);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -82,10 +81,9 @@ export default function Signup() {
     setConfirmPassword("");
   };
 
-
   return (
     <div className="SignUp">
-       
+
       <video
         className="login-video"
         src={loginVideo}

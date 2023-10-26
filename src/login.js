@@ -1,15 +1,15 @@
-import MySvg from "./assets/images/illustration1.svg";
-import loginVideo from "./assets/images/loginVideo.mp4";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BASE_URL } from "./assets/baseUrl";
+
 import "./styles/Login.css";
+import { BASE_URL } from "./assets/baseUrl";
+import { Toast } from "./components/ApiResponse";
+import MySvg from "./assets/images/illustration1.svg";
+import loginVideo from "./assets/images/loginVideo.mp4";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null); 
-  const [loginSuccess, setLoginSuccess] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -29,7 +29,6 @@ export default function Login() {
         body: JSON.stringify(user),
       });
       const data = await response.json();
-      console.log(data)
       localStorage.setItem("userId", data.userId);
       localStorage.setItem("name", data.fullName);
       localStorage.setItem("plan",data.plan)
@@ -37,26 +36,39 @@ export default function Login() {
       localStorage.setItem("email",data.email)
       // Save the token in local storage
       localStorage.setItem("token", data.accessToken);
-      console.log(data);
       if (response.ok) {
-        
         // Login successful, you can redirect the user to the dashboard or a protected route
-        setLoginSuccess(true);
+        Toast.fire({
+          icon: "success",
+          title: "Login Successful"
+        })
         setTimeout(() => {
           navigate("/landing-page");
         }, 2000);
       } else {
         // Check the specific error message from the server
         if (data.message === "User not found!!!") {
-          setError("Email not found");
+          Toast.fire({
+            icon: "error",
+            title: data.message
+          })
         } else if (data.message === "Bad credentials") {
-          setError("Bad password entered");
+          Toast.fire({
+            icon: "error",
+            title: data.message
+          })
         } else {
           // Handle other error cases if needed
-          setError(data.message);
+          Toast.fire({
+            icon: "error",
+            title: data.message
+          })
         }}
     } catch (error) {
-      console.error("catch error message:", error);
+      Toast.fire({
+        icon: "error",
+        title: error
+      })
     }
   };
 
@@ -104,12 +116,6 @@ export default function Login() {
                 Do not have an account? <Link to="/signup">Sign Up</Link>
               </p>
               <a href="#">Forgot Password?</a>
-              <div className="login-error-popup" style={{ display: error ? 'block' : 'none' }}>
-                <p>{error}</p>
-              </div>
-              <div className="login-success-popup" style={{ display: loginSuccess ? 'block' : 'none' }}>
-                <p>Successful Login.</p>
-              </div>
 
               <button className="login-button" type="submit">
                 Login
