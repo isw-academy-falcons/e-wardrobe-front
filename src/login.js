@@ -115,7 +115,7 @@ export default function Login() {
               <p className="login-paragraph">
                 Do not have an account? <Link to="/signup">Sign Up</Link>
               </p>
-              <a href="#">Forgot Password?</a>
+              <a href="/login">Forgot Password?</a>
 
               <button className="login-button" type="submit">
                 Login
