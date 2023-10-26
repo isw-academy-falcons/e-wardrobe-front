@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import "./fashionProduct.css";
-import AppNavBar from "../../components/AppNavBar";
 import { useParams } from "react-router-dom";
+
+import "./fashionProduct.css";
 import { useCart } from './CartContext';
+import AppNavBar from "../../components/AppNavBar";
+import { Toast } from '../../components/ApiResponse';
 
 const FashionProduct = ({ product: initialProduct }) => {
   const { productData } = useParams();
@@ -14,7 +16,10 @@ const FashionProduct = ({ product: initialProduct }) => {
       return JSON.parse(decodedProductData);
     } catch (error) {
       // Handle the error (e.g., show an error message or redirect to a 404 page)
-      console.error("Error parsing product data:", error);
+      Toast.fire({
+        icon: "error",
+        title: error
+      })
       return null; // Set an appropriate default value or handle the error accordingly
     }
   });
@@ -32,25 +37,24 @@ const FashionProduct = ({ product: initialProduct }) => {
       image: product.image,
       quantity: quantity,
     };
-  
+
     // Retrieve existing cart data from local storage
     const existingCartData = localStorage.getItem('cart');
-  
+
     // Parse the existing cart data (or initialize an empty array if no data)
     const existingCart = existingCartData ? JSON.parse(existingCartData) : [];
-  
+
     // Update the cart with the new product
     const updatedCart = [...existingCart, productPayload];
-  
+
     // Save the updated cart data to local storage
     localStorage.setItem('cart', JSON.stringify(updatedCart));
-  
+
     // Dispatch an action to add the product to the cart (optional)
     dispatch({ type: 'ADD_TO_CART', payload: productPayload });
-  
+
     // Update the addedToBag state
     setAddedToBag(true);
-    console.log("Product added to cart:", productPayload);
   };
 
   const handleIncreaseQuantity = () => {
@@ -62,8 +66,6 @@ const FashionProduct = ({ product: initialProduct }) => {
       setQuantity(quantity - 1);
     }
   };
-
-  console.log("product data:",product); // Log the product data to check if it's correct
 
   return (
     <div>

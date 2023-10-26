@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import "./styles/Login.css";
-import loginVideo from "./assets/images/loginVideo.mp4";
 import { Link, useNavigate } from "react-router-dom";
+
+import "./styles/Login.css";
+import { Toast } from "./components/ApiResponse";
+import loginVideo from "./assets/images/loginVideo.mp4";
 
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
@@ -14,11 +16,10 @@ export default function Signup() {
   const navigate = useNavigate();
 
   // Validation function to check if the input contains only characters
-const isValidName = (name) => /^[A-Za-z]+$/.test(name);
+  const isValidName = (name) => /^[A-Za-z]+$/.test(name);
 
-// Validation function to check if the first name and last name are valid
-const isNameValid = () => isValidName(firstName) && isValidName(lastName);
-
+  // Validation function to check if the first name and last name are valid
+  const isNameValid = () => isValidName(firstName) && isValidName(lastName);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,18 +50,27 @@ const isNameValid = () => isValidName(firstName) && isValidName(lastName);
       if (response.ok) {
         // Handle successful signup
         const responseData = await response.json();
-        console.log("Signup successful:", responseData);
+        Toast.fire({
+          icon: "success",
+          title: responseData.message
+        })
         // Redirect the user to the login page or show a success message
         navigate("/redirect");
       } else {
         // Handle signup errors, such as validation errors or duplicate email
         const errorData = await response.json();
-        console.error("Signup error:", errorData);
+        Toast.fire({
+          icon: "error",
+          title: errorData.message
+        })
         // Set the error message in the state to display to the user
         setError(errorData.message);
       }
     } catch (error) {
-      console.error("Error:", error);
+      Toast.fire({
+        icon: "error",
+        title: error
+      })
     }
 
     setFirstName("");
@@ -71,10 +81,9 @@ const isNameValid = () => isValidName(firstName) && isValidName(lastName);
     setConfirmPassword("");
   };
 
-
   return (
     <div className="SignUp">
-       
+
       <video
         className="login-video"
         src={loginVideo}
@@ -160,10 +169,10 @@ const isNameValid = () => isValidName(firstName) && isValidName(lastName);
           </div>
 
           <div className="Signup-illustration">
-          <p className="signup-header2">SKYFITZZ</p>
-          <div className="login-error-popup" style={{ display: error ? 'block' : 'none' }}>
-        <p>{error}</p>
-      </div>
+            <p className="signup-header2">SKYFITZZ</p>
+            <div className="login-error-popup" style={{ display: error ? 'block' : 'none' }}>
+              <p>{error}</p>
+            </div>
           </div>
         </div>
       </div>

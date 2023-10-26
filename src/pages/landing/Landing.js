@@ -12,6 +12,7 @@ import Footer from "../../components/Footer";
 import TrendingOutfits from "./TrendingOutfits";
 import AppNavBar from "../../components/AppNavBar";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { Toast } from '../../components/ApiResponse';
 import HeroImage from "../../assets/images/landing/hero-image.svg";
 import FashionStyles from "../../assets/images/landing/fashion-pictures.svg";
 import TestimonialContainer from "../../assets/images/landing/testimonial-container.svg";
@@ -26,7 +27,10 @@ const Landing = () => {
       navigate("/outfit-generator");
     }
     else {
-      console.log("You need to login to perform this operation");
+      Toast.fire({
+        icon: "error",
+        title: "You need to login to perform this operation"
+      })
     }
   };
 
@@ -36,7 +40,10 @@ const Landing = () => {
       navigate("/pricing");
     }
     else {
-      console.log("You need to login to perform this operation");
+      Toast.fire({
+        icon: "error",
+        title: "You need to login to perform this operation"
+      })
     }
   };
 
@@ -46,7 +53,10 @@ const Landing = () => {
       navigate("/e-wardrobe");
     }
     else {
-      console.log("You need to login to perform this operation");
+      Toast.fire({
+        icon: "error",
+        title: "You need to login to perform this operation"
+      })
     }
   };
 

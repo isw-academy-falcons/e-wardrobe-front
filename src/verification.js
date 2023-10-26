@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Loader from './components/Loader';
+
 import "./styles/Login.css";
+import { Toast } from './components/ApiResponse';
 
 function VerifyEmail() {
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const token = queryParams.get('token');
-  console.log('Token:', token);
   const [verificationStatus, setVerificationStatus] = useState('verifying');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -35,7 +35,10 @@ function VerifyEmail() {
         }
       })
       .catch((error) => {
-        console.error('Error:', error);
+        Toast.fire({
+          icon: "error",
+          title: error
+        })
         setVerificationStatus('failed');
         setErrorMessage('An error occurred during verification');
       });

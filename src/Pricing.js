@@ -1,7 +1,7 @@
 import "./styles/Pricing.css";
+import AppNavBar from "./components/AppNavBar";
 import MySvg3 from "./assets/images/illustration3.svg";
 import MySvg4 from "./assets/images/illustration4.svg";
-import AppNavBar from "./components/AppNavBar";
 
 
 export default function Pricing() {

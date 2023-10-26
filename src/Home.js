@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'; // Import useEffect
-import homeIllustration from "./assets/images/homeIllustration.svg";
+
 import './styles/Home.css';
 import Logo from "./components/Logo";
 import { useNavigate } from 'react-router-dom';
 import LogoLoader from "./components/LogoLoader";
+import homeIllustration from "./assets/images/homeIllustration.svg";
 
 const Home = () => {
   const navigate = useNavigate();

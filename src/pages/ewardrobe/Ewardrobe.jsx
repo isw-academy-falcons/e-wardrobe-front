@@ -1,14 +1,16 @@
 import axios from 'axios';
-import Login from '../../login';
 import {MdDelete} from 'react-icons/md';
 import {GrAddCircle} from 'react-icons/gr'
-import { BASE_URL } from '../../assets/baseUrl';
 import React, { useEffect, useState } from 'react';
+
 import './e-wardrobe.css';
+import Login from '../../login';
 import Row from "react-bootstrap/Row";
 import Logo from '../../components/Logo';
 import Footer from '../../components/Footer';
+import { BASE_URL } from '../../assets/baseUrl';
 import AppNavBar from '../../components/AppNavBar';
+import { Toast } from '../../components/ApiResponse';
 
 
 const Ewardrobe = () => {
@@ -21,23 +23,25 @@ const Ewardrobe = () => {
   const getUploadedClothes = async () => {
     try {
       const response = await axios.get(`${BASE_URL}/cloth/all/uploaded/${userId}`)
-      console.log(response)
       setUploadedClothes(response.data);
-      console.log(uploadedClothes)
     } catch (error) {
-      console.log("Error message: ", error);
+      Toast.fire({
+        icon: "error",
+        title: error
+      })
     }
   };
 
-  
+
   const getUnsplashClothes = async () => {
     try {
       const response2 = await axios.get(`${BASE_URL}/cloth/all/unsplash/${userId}`)
-      // console.log(response2)
       setUnsplashClothes(response2.data);
-
     } catch (error) {
-      console.log("Error message: ", error);
+      Toast.fire({
+        icon: "error",
+        title: error
+      })
     }
   };
 
@@ -54,9 +58,16 @@ const Ewardrobe = () => {
           Authorization: `Bearer ${accessToken}`,
         },
       });
+      Toast.fire({
+        icon: "success",
+        title: "Item successfully deleted"
+      })
       getUploadedClothes();
     } catch (error) {
-      console.log("Error message: ", error);
+      Toast.fire({
+        icon: "error",
+        title: error
+      })
     }
   };
 
