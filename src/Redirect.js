@@ -1,21 +1,19 @@
 import React from "react";
-import redirectImage from "./assets/images/redirect.svg";
-import "./styles/Redirect.css";
 import { useNavigate } from "react-router-dom";
+
+import "./styles/Redirect.css";
+import redirectImage from "./assets/images/redirect.svg";
 
 const Redirect = () => {
   const navigate = useNavigate();
   const loginHandler = () => navigate("/login");
 
-  
-
   return (
     <div className="redirect">
       <div className="redirect-wrapper">
         <h1 className="redirect-h1">you have successfully registered</h1>
-        
+
         <div className="redirect-control">
-        
           <div>
             <img src={redirectImage} alt="redirect" className="redirect-image" />
           </div>
