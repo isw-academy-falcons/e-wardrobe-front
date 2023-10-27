@@ -103,7 +103,7 @@ const Ewardrobe = () => {
               <section className="display-wardrobe">
                 <Row xs={1} md={3} className="g-4">
                   {unsplashClothes.map((cloth, index) => (
-                    <div className="wardrobe-img1" key={`${cloth.clothId}`} style={{ height: "260px", overflow: "hidden" }}>
+                    <div className="wardrobe-img1" key={`${cloth.clothId}`} style={{ minHeight: "260px" }}>
                       <img src={`${cloth.imageUrl}`} alt={`wardrobe ${index}`} className='e-wardrobe-img' />
 
                       <div className="delete-wardrobe-item">
