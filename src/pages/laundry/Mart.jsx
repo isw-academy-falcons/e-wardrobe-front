@@ -1,5 +1,5 @@
 import React from "react";
-import laundry from "./laundry.svg";
+
 import "./Mart.css";
 
 const Mart = ({ name, address, rating, open, martImage }) => {

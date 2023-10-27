@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import AppNavBar from "../../components/AppNavBar";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./Laundry.css";
-import Search from "../../components/Search";
+import Mart from "./Mart";
 import Basemap from "./Basemap.svg";
 import laundry from "./laundry.svg";
-import Mart from "./Mart";
-import { useNavigate } from "react-router-dom";
+import Search from "../../components/Search";
+import AppNavBar from "../../components/AppNavBar";
 
 const Laundry = () => {
   const navigate = useNavigate()
+
   return (
     <>
       <AppNavBar />

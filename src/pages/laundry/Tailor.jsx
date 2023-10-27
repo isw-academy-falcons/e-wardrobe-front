@@ -1,14 +1,16 @@
 import React from 'react'
-import AppNavBar from '../../components/AppNavBar'
-import Search from '../../components/Search'
-import Mart from './Mart'
-import Basemap from "./Basemap.svg";
-import tailor from "./Tailor.svg";
-import "./Tailor.css"
 import { useNavigate } from 'react-router-dom';
 
+import "./Tailor.css"
+import Mart from './Mart'
+import tailor from "./Tailor.svg";
+import Basemap from "./Basemap.svg";
+import Search from '../../components/Search'
+import AppNavBar from '../../components/AppNavBar'
+
 const Tailor = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
+
   return (
     <>
       <AppNavBar />
