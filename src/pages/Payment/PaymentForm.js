@@ -1,10 +1,10 @@
 // PaymentForm.js
-import React, { useState, useEffect } from "react";
-import "./PaymentForm.css"; // Import the CSS file for styles
-import interswitchLogo from "./interswitchLogo.svg";
-import AppNavBar from "../../components/AppNavBar";
 import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
 
+import AppNavBar from "../../components/AppNavBar";
+import interswitchLogo from "./interswitchLogo.svg";
+import "./PaymentForm.css"; // Import the CSS file for styles
 
 const PaymentForm = () => {
   const [step, setStep] = useState(1);
@@ -51,12 +51,12 @@ const PaymentForm = () => {
         cvv: "",
       });
     }, 100); // Delay in milliseconds
-  }, []);
+  });
 
 
   useEffect(() => {
     let timerId;
-  
+
     if (isPaymentSuccessful && redirectTimer > 0) {
       timerId = setInterval(() => {
         setRedirectTimer((prevTimer) => prevTimer - 1);
@@ -65,18 +65,18 @@ const PaymentForm = () => {
       // Redirect to /landing-page when the timer reaches 0
       navigate("/fashion");
     }
-  
+
     return () => {
       clearInterval(timerId);
     };
   }, [isPaymentSuccessful, redirectTimer, navigate]);
-  
+
 
   return (
     <div>
     <AppNavBar />
     <div className="payment-form-body">
- 
+
     <div className="payment-form payment-container">
       {isPaymentSuccessful ? (
         <div className="payment-successful">
@@ -89,7 +89,6 @@ const PaymentForm = () => {
           {step === 1 ? (
             <form onSubmit={handleBillingAddressSubmit}>
               <div ><h2 className="payment-gateway-header">Payment Gateway</h2></div>
-
 
               <div>
                 <label>Full Name</label>
@@ -107,7 +106,6 @@ const PaymentForm = () => {
                 />
               </div>
 
-
               <div>
                 <label>Address</label>
                 <input
@@ -123,8 +121,6 @@ const PaymentForm = () => {
                   required
                 />
               </div>
-
-
 
               <div>
                 <label>City</label>
@@ -142,8 +138,6 @@ const PaymentForm = () => {
                 />
               </div>
 
-
-              
               <div>
                 <label>Postal Code</label>
                 <input
@@ -159,144 +153,120 @@ const PaymentForm = () => {
                   autoComplete="off"
                   required
                 />
-
-
-
               </div>
               <button type="submit">Next</button>
             </form>
           ) : (
             <form onSubmit={handlePaymentSubmit}>
+              <div ><h2 className="payment-gateway-header">Payment Gateway</h2></div>
+              <div >
+                <label>Card Type</label>
+                <div className="card-type">
+                  <label>
+                    <input
+                      type="radio"
+                      name="cardType"
+                      value="mastercard"
+                      checked={cardDetails.cardType === "mastercard"}
+                      onChange={(e) =>
+                        setCardDetails({
+                          ...cardDetails,
+                          cardType: e.target.value,
+                        })
+                      }
+                    />
+                    MasterCard
+                  </label>
 
-<div ><h2 className="payment-gateway-header">Payment Gateway</h2></div>
-
-
-
-
-            <div >
-              <label>Card Type</label>
-              <div className="card-type">
-                <label>
-                  <input
-                    type="radio"
-                    name="cardType"
-                    value="mastercard"
-                    checked={cardDetails.cardType === "mastercard"}
-                    onChange={(e) =>
-                      setCardDetails({
-                        ...cardDetails,
-                        cardType: e.target.value,
-                      })
-                    }
-                  />
-                  MasterCard
-                </label>
-
-
-
-                <label>
-                  <input
-                    type="radio"
-                    name="cardType"
-                    value="visa"
-                    checked={cardDetails.cardType === "visa"}
-                    onChange={(e) =>
-                      setCardDetails({
-                        ...cardDetails,
-                        cardType: e.target.value,
-                      })
-                    }
-                  />
-                  Visa
-                </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="cardType"
+                      value="visa"
+                      checked={cardDetails.cardType === "visa"}
+                      onChange={(e) =>
+                        setCardDetails({
+                          ...cardDetails,
+                          cardType: e.target.value,
+                        })
+                      }
+                    />
+                    Visa
+                  </label>
+                </div>
               </div>
-            </div>
-
-
-
-            <div>
-              <label>Card Number</label>
-              <input
-                type="text"
-                value={cardDetails.cardNumber}
-                onChange={(e) =>
-                  setCardDetails({
-                    ...cardDetails,
-                    cardNumber: e.target.value,
-                  })
-                }
-                placeholder="Enter card number"
-                    autoComplete="off"
-                required
-              />
-            </div>
-
-
-            <div>
-              <label>Card Holder</label>
-              <input
-                type="text"
-                value={cardDetails.cardHolder}
-                onChange={(e) =>
-                  setCardDetails({
-                    ...cardDetails,
-                    cardHolder: e.target.value,
-                  })
-                }
-                placeholder="Enter card holder name"
-                    autoComplete="off"
-                required
-              />
-            </div>
-
-
-
-            <div>
-              <label>CVV</label>
-              <input
-              name="cvv-input"
-                type="text"
-                value={cardDetails.cvv}
-                onChange={(e) =>
-                  setCardDetails({
-                    ...cardDetails,
-                    cvv: e.target.value,
-                  })
-                }
-                placeholder="Enter CVV"
-              autoComplete="off"
-                required
-              />
-            </div>
-
-
-
-            <div>
-              <label>Expiry Date</label>
-              <input
-                type="text"
-                value={cardDetails.expiryDate}
-                onChange={(e) =>
-                  setCardDetails({
-                    ...cardDetails,
-                    expiryDate: e.target.value,
-                  })
-                }
-                placeholder="MM/YYYY"
-                    autoComplete="off"
-                required
-              />
-            </div>
-
-
-
+              <div>
+                <label>Card Number</label>
+                <input
+                  type="text"
+                  value={cardDetails.cardNumber}
+                  onChange={(e) =>
+                    setCardDetails({
+                      ...cardDetails,
+                      cardNumber: e.target.value,
+                    })
+                  }
+                  placeholder="Enter card number"
+                      autoComplete="off"
+                  required
+                />
+              </div>
+              <div>
+                <label>Card Holder</label>
+                <input
+                  type="text"
+                  value={cardDetails.cardHolder}
+                  onChange={(e) =>
+                    setCardDetails({
+                      ...cardDetails,
+                      cardHolder: e.target.value,
+                    })
+                  }
+                  placeholder="Enter card holder name"
+                      autoComplete="off"
+                  required
+                />
+              </div>
+              <div>
+                <label>CVV</label>
+                <input
+                name="cvv-input"
+                  type="text"
+                  value={cardDetails.cvv}
+                  onChange={(e) =>
+                    setCardDetails({
+                      ...cardDetails,
+                      cvv: e.target.value,
+                    })
+                  }
+                  placeholder="Enter CVV"
+                autoComplete="off"
+                  required
+                />
+              </div>
+              <div>
+                <label>Expiry Date</label>
+                <input
+                  type="text"
+                  value={cardDetails.expiryDate}
+                  onChange={(e) =>
+                    setCardDetails({
+                      ...cardDetails,
+                      expiryDate: e.target.value,
+                    })
+                  }
+                  placeholder="MM/YYYY"
+                      autoComplete="off"
+                  required
+                />
+              </div>
               <button type="submit">Pay Now</button>
               <button id="payment-back-button" onClick={backtToDetails}>back</button>
             </form>
           )}
-            <div className="interswitchLogo-container"> 
-          <p>Powered by </p> <img className="interswitchLogo" src={interswitchLogo} alt="interswitchLogo" /> 
-          </div> 
+            <div className="interswitchLogo-container">
+          <p>Powered by </p> <img className="interswitchLogo" src={interswitchLogo} alt="interswitchLogo" />
+          </div>
         </div>
       )}
     </div>
