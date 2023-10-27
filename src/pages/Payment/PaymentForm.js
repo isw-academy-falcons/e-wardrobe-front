@@ -264,8 +264,8 @@ const PaymentForm = () => {
               <button id="payment-back-button" onClick={backtToDetails}>back</button>
             </form>
           )}
-            <div className="interswitchLogo-container">
-          <p>Powered by </p> <img className="interswitchLogo" src={interswitchLogo} alt="interswitchLogo" />
+          <div className="interswitchLogo-container">
+            <p>Powered by </p> <img className="interswitchLogo" src={interswitchLogo} alt="interswitchLogo" />
           </div>
         </div>
       )}
