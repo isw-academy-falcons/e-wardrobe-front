@@ -1,4 +1,5 @@
 import React from "react";
+
 import './PersonalDetails.css'
 
 export const PersonalDetails = (props) => {

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import AppNavBar from "../../components/AppNavBar";
-import profileImage from "../../assets/images/profile/profile.svg";
-import { PersonalDetails } from "./PersonalDetails";
-import "./ProfilePage.css";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import Security from "./Security";
-import Billing from "./Billing";
 import { useNavigate } from "react-router-dom";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+
+import "./ProfilePage.css";
+import Billing from "./Billing";
+import Security from "./Security";
+import AppNavBar from "../../components/AppNavBar";
+import { PersonalDetails } from "./PersonalDetails";
+import profileImage from "../../assets/images/profile/profile.svg";
+
 const ProfilePage = () => {
   const [showDropDown, setShowDropDown] = useState({
     personalDetails: true,
@@ -17,7 +19,7 @@ const ProfilePage = () => {
   });
   const navigate = useNavigate();
 
-  const userId = localStorage.getItem('userId');
+  // const userId = localStorage.getItem('userId');
   const plan = localStorage.getItem("plan")
   const gender= localStorage.getItem("gender")
   const email= localStorage.getItem("email")
@@ -72,7 +74,7 @@ const ProfilePage = () => {
               className="camera-image "
             />
             <div><CameraAltIcon className="camera-icon " /></div>
-            
+
           </div>
 
           <p className="font-medium text-center font-[Poppins] mt-2">
@@ -93,9 +95,9 @@ const ProfilePage = () => {
               </span>
             </div>
             <div className="personal-details">
-              {showDropDown.personalDetails && <PersonalDetails 
-              firstName={firstName} 
-              lastName={lastName} 
+              {showDropDown.personalDetails && <PersonalDetails
+              firstName={firstName}
+              lastName={lastName}
               email={email}
               plan={plan}
               gender={gender}
