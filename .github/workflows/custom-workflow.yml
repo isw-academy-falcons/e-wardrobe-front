@@ -3,8 +3,8 @@ name: Build and Deploy
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
 
 jobs:
   build:
@@ -62,14 +62,14 @@ jobs:
 
     #       mkdir -p /app
 
-    - name: Copy Docker Compose and Application Files
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ env.DROPLET_IP }}
-        username: root
-        password: ${{ secrets.DROPLET_PASSWORD }}
-        source: docker-compose.yml, .env 
-        target: /app/
+    # - name: Copy Docker Compose and Application Files
+    #   uses: appleboy/scp-action@master
+    #   with:
+    #     host: ${{ env.DROPLET_IP }}
+    #     username: root
+    #     password: ${{ secrets.DROPLET_PASSWORD }}
+    #     source: docker-compose.yml, .env 
+    #     target: /app/
 
     - name: Deploy to Existing Droplet
       uses: appleboy/ssh-action@master
