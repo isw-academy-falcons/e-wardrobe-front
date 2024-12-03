@@ -62,9 +62,13 @@ jobs:
 
           mkdir -p /app
 
-    - name: Detailed File Listing
+    - name: PWD
       run: |
         pwd
+        find . -type f
+    
+    - name: Detailed File Listing
+      run: |
         find . -type f
 
     - name: Copy Docker Compose and Application Files
@@ -73,7 +77,7 @@ jobs:
         host: ${{ secrets.DROPLET_IP }}
         username: root
         password: ${{ secrets.DROPLET_PASSWORD }}
-        source: docker-compose.yml
+        source: .
         target: /app/
 
     - name: Deploy to Existing Droplet
