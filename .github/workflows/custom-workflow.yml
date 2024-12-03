@@ -1,0 +1,96 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm install
+
+    # Run tests
+    # - name: Run tests
+    #   run: npm test
+
+    - name: Build Docker image
+      run: |
+        docker build -t ehizoba/falcon-nodejs:latest .
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Push Docker image
+      run: docker push ehizoba/falcon-nodejs:latest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    # - name: Prepare Droplet for Deployment
+    #   uses: appleboy/ssh-action@master
+    #   with:
+    #     host: ${{ env.DROPLET_IP }}
+    #     username: root
+    #     password: ${{ secrets.DROPLET_PASSWORD }}
+    #     script: |
+    #       # Update system
+    #       apt-get update && apt-get upgrade -y
+          
+    #       # Install Docker and Docker Compose
+    #       apt-get install -y docker.io docker-compose
+          
+    #       systemctl start docker
+    #       systemctl enable docker
+
+    #       mkdir -p /app
+
+    - name: Copy Docker Compose and Application Files
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ env.DROPLET_IP }}
+        username: root
+        password: ${{ secrets.DROPLET_PASSWORD }}
+        source: 
+          - docker-compose.yml
+          - .env 
+        target: /app/
+
+    - name: Deploy to Existing Droplet
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DROPLET_IP }}
+        username: root
+        password: ${{ secrets.DROPLET_PASSWORD }}
+        script: |
+          # Navigate to your application directory
+          # cd /
+          
+          git pull origin main
+          
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }} --password-stdin
+          
+          docker-compose pull
+          
+          docker-compose down
+          
+          docker-compose up -d
+          
+          docker image prune -f
