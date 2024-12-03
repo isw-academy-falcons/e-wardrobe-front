@@ -62,19 +62,18 @@ jobs:
 
           mkdir -p /app
 
-    - name: List files in workspace
+    - name: Detailed File Listing
       run: |
         pwd
-        ls -la
-        ls -la ${{ github.workspace }}
-        
+        find . -type f
+
     - name: Copy Docker Compose and Application Files
       uses: appleboy/scp-action@master
       with:
-        host: ${{ secrets.DROPLET_IP  }}
+        host: ${{ secrets.DROPLET_IP }}
         username: root
         password: ${{ secrets.DROPLET_PASSWORD }}
-        source: ${{ github.workspace }}/docker-compose.yml
+        source: docker-compose.yml
         target: /app/
 
     - name: Deploy to Existing Droplet
