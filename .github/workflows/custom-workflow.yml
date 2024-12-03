@@ -44,32 +44,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # - name: Prepare Droplet for Deployment
-    #   uses: appleboy/ssh-action@master
-    #   with:
-    #     host: ${{ env.DROPLET_IP }}
-    #     username: root
-    #     password: ${{ secrets.DROPLET_PASSWORD }}
-    #     script: |
-    #       # Update system
-    #       apt-get update && apt-get upgrade -y
+    - name: Prepare Droplet for Deployment
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ env.DROPLET_IP }}
+        username: root
+        password: ${{ secrets.DROPLET_PASSWORD }}
+        script: |
+          # Update system
+          apt-get update && apt-get upgrade -y
           
-    #       # Install Docker and Docker Compose
-    #       apt-get install -y docker.io docker-compose
+          # Install Docker and Docker Compose
+          apt-get install -y docker.io docker-compose
           
-    #       systemctl start docker
-    #       systemctl enable docker
+          systemctl start docker
+          systemctl enable docker
 
-    #       mkdir -p /app
+          mkdir -p /app
 
-    # - name: Copy Docker Compose and Application Files
-    #   uses: appleboy/scp-action@master
-    #   with:
-    #     host: ${{ env.DROPLET_IP }}
-    #     username: root
-    #     password: ${{ secrets.DROPLET_PASSWORD }}
-    #     source: docker-compose.yml, .env 
-    #     target: /app/
+    - name: Copy Docker Compose and Application Files
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ env.DROPLET_IP }}
+        username: root
+        password: ${{ secrets.DROPLET_PASSWORD }}
+        source: docker-compose.yml, .env 
+        target: /app/
 
     - name: Deploy to Existing Droplet
       uses: appleboy/ssh-action@master
