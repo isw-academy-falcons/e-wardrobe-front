@@ -77,11 +77,7 @@ jobs:
         host: ${{ secrets.DROPLET_IP }}
         username: root
         password: ${{ secrets.DROPLET_PASSWORD }}
-        source: |
-          docker-compose.yml
-          ./src/
-          ./package.json
-          ./package-lock.json
+        source: /home/runner/work/e-wardrobe-front/e-wardrobe-front/*
         target: /app/
         strip_components: 0
     
@@ -93,7 +89,7 @@ jobs:
         password: ${{ secrets.DROPLET_PASSWORD }}
         script: |
           echo "Listing files in /app/ on the droplet:"
-          ls -l /app/
+          ls -l /app/home/runner/work/e-wardrobe-front/e-wardrobe-front/
 
     - name: Deploy to Existing Droplet
       uses: appleboy/ssh-action@master
@@ -103,7 +99,7 @@ jobs:
         password: ${{ secrets.DROPLET_PASSWORD }}
         script: |
           # Navigate to your application directory
-          cd /app/
+          cd /app/home/runner/work/e-wardrobe-front/e-wardrobe-front/
           
           # git pull origin main
           
