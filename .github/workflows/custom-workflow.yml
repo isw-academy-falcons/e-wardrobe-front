@@ -98,7 +98,8 @@ jobs:
         password: ${{ secrets.DROPLET_PASSWORD }}
         script: |
           # Navigate to your application directory
-          cd /app/home/runner/work/e-wardrobe-front/e-wardrobe-front/
+          # cd /app/home/runner/work/e-wardrobe-front/e-wardrobe-front/
+          cd /app/
           
           # git pull origin main
           
