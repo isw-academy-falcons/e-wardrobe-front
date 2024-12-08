@@ -14,30 +14,30 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # - name: Set up Node.js
-    #   uses: actions/setup-node@v3
-    #   with:
-    #     node-version: '16'
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
 
-    # - name: Install dependencies
-    #   run: npm install
+    - name: Install dependencies
+      run: npm install
 
-    # # Run tests
-    # # - name: Run tests
-    # #   run: npm test
+    # Run tests
+    # - name: Run tests
+    #   run: npm test
 
-    # - name: Build Docker image
-    #   run: |
-    #     docker build -t ehizoba/falcon-nodejs:latest .
+    - name: Build Docker image
+      run: |
+        docker build -t ehizoba/falcon-nodejs:latest .
 
-    # - name: Log in to Docker Hub
-    #   uses: docker/login-action@v2
-    #   with:
-    #     username: ${{ secrets.DOCKER_USERNAME }}
-    #     password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
-    # - name: Push Docker image
-    #   run: docker push ehizoba/falcon-nodejs:latest
+    - name: Push Docker image
+      run: docker push ehizoba/falcon-nodejs:latest
 
   deploy:
     needs: build
@@ -105,7 +105,7 @@ jobs:
         password: ${{ secrets.DROPLET_PASSWORD }}
         script: |
           # Navigate to your application directory
-          
+
           cd /app/project
           
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
