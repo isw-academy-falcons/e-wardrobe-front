@@ -105,10 +105,8 @@ jobs:
         password: ${{ secrets.DROPLET_PASSWORD }}
         script: |
           # Navigate to your application directory
-          # cd /app/home/runner/work/e-wardrobe-front/e-wardrobe-front/
-          cd /app/e-wardrobe-front
           
-          # git pull origin main
+          cd /app/project
           
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
           
