@@ -77,9 +77,8 @@ jobs:
         host: ${{ secrets.DROPLET_IP }}
         username: root
         password: ${{ secrets.DROPLET_PASSWORD }}
-        source: /home/runner/work/e-wardrobe-front/e-wardrobe-front/*
+        source: .
         target: /app/
-        strip_components: 0
     
     - name: Verify Files on Droplet
       uses: appleboy/ssh-action@master
