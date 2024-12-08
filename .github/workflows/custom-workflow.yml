@@ -78,13 +78,13 @@ jobs:
         username: root
         password: ${{ secrets.DROPLET_PASSWORD }}
         script: |
-
-          cd /app/
+          rm -rf /app/project
+          
           # Clone the repository
-          git clone https://${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git .
+          git clone https://${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git /app/project
           
           # Optional: checkout specific branch if needed
-          cd  /app/e-wardrobe-front/
+          cd  /app/project
           git checkout ${{ github.ref_name }}
 
     - name: Verify Files on Droplet
