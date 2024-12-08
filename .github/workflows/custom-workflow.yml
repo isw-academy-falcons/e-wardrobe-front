@@ -71,45 +71,21 @@ jobs:
       run: |
         find . -type f
 
-    # - name: Copy Docker Compose and Application Files
-    #   uses: appleboy/scp-action@master
-    #   with:
-    #     host: ${{ secrets.DROPLET_IP }}
-    #     username: root
-    #     password: ${{ secrets.DROPLET_PASSWORD }}
-    #     source: .
-    #     target: /app/
-
-    - name: Run a multi-line script
-      run: |
-        mkdir ../build
-        cp -TR . ../build
-        tar -cvf deploy.tar ../build/
-    
-    - name: Debug - Show tar contents before upload
-      run: |
-        tar -tvf deploy.tar
-
-    - name: copy file via ssh password
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.DROPLET_IP }}
-        username: root
-        password: ${{ secrets.DROPLET_PASSWORD }}
-        source: "deploy.tar"
-        target: "/app/"
-    
-    - name: Extract tar file on remote server
+    - name: Clone repository to droplet
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.DROPLET_IP }}
         username: root
         password: ${{ secrets.DROPLET_PASSWORD }}
         script: |
-          cd /app
-          tar -xvf deploy.tar
-          rm deploy.tar
-          ls -la
+
+          cd /app/
+          # Clone the repository
+          git clone https://${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git .
+          
+          # Optional: checkout specific branch if needed
+          cd  /app/e-wardrobe-front/
+          git checkout ${{ github.ref_name }}
 
     - name: Verify Files on Droplet
       uses: appleboy/ssh-action@master
@@ -119,7 +95,7 @@ jobs:
         password: ${{ secrets.DROPLET_PASSWORD }}
         script: |
           echo "Listing files in /app/ on the droplet:"
-          ls -l /app/
+          ls -la /app/
 
     - name: Deploy to Existing Droplet
       uses: appleboy/ssh-action@master
@@ -130,7 +106,7 @@ jobs:
         script: |
           # Navigate to your application directory
           # cd /app/home/runner/work/e-wardrobe-front/e-wardrobe-front/
-          cd /app/build
+          cd /app/e-wardrobe-front
           
           # git pull origin main
           
